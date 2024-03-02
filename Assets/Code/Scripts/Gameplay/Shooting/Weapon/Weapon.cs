@@ -59,11 +59,11 @@ public class Weapon : MonoBehaviour
                 {
                     //shoot on all shooting points
                     float spawnableBulletAmount = Mag.ProjectileLeft;
-                    Mag.ProjectileLeft -= (int)(ProjectileCost * ShootingPoints.Count);
-
+                    Mag.ProjectileLeft -= ProjectileCost * ShootingPoints.Count;
+                    
                     for (int i = 0; i < ShootingPoints.Count; ++i)
                     {
-                        Instantiate(ProjectileToShoot, ShootingPoints[i].position, ShootingPoints[ShootingPointIndex].rotation);
+                        Instantiate(ProjectileToShoot, ShootingPoints[i].position, ShootingPoints[i].rotation);
                     }
                 }
                 else

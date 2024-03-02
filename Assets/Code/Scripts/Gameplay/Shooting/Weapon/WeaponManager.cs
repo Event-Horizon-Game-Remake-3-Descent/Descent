@@ -7,6 +7,10 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class WeaponManager : MonoBehaviour
 {
+    //Weapon Manager ready
+    public delegate void WeaponManagerReady(WeaponManager weaponManager);
+    public static event WeaponManagerReady OnManagerReady = (WeaponManager weaponManager) => { };
+
     //weapon changed event
     public delegate void WeaponChanged();
     public event WeaponChanged OnWeaponChanged = () => {};
@@ -57,6 +61,11 @@ public class WeaponManager : MonoBehaviour
         AudioSource.playOnAwake = false;
     }
 
+    private void Start()
+    {
+        OnManagerReady(this);
+    }
+
     #region TO REMOVE
     //////////TO REMOVE//////////////////////
     [Space]
@@ -68,6 +77,10 @@ public class WeaponManager : MonoBehaviour
     [Header("TO REMOVE SHOT KEYS")]
     public KeyCode PRIMARY_SHOOTKEY;
     public KeyCode SECONDARY_SHOOTKEY;
+
+    [Space]
+    [Header("SPECIAL TO REMOVE")]
+    public KeyCode FLARE_SHOOTKEY;
 
     private void Update()
     {
@@ -102,6 +115,12 @@ public class WeaponManager : MonoBehaviour
         {
             if(SecondaryWeaponList[SecondaryIndex].Shoot())
                 OnSecondaryFire();
+        }
+
+        if (Input.GetKey(FLARE_SHOOTKEY))
+        {
+            if (FlareWeapon.Shoot())
+                OnPrimaryFire();
         }
     }
     /////////////////////////////////////////

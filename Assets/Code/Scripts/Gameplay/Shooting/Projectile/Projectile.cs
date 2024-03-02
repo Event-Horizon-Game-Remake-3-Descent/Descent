@@ -12,9 +12,9 @@ public class Projectile : MonoBehaviour
     [Header("VFX")]
     [SerializeField] private Transform ParticlesOnDestroy;
     //[SerializeField] private Light LightSource;
-    [SerializeField] private AnimationCurve ExplosionLightCurve;
-    [SerializeField] private float EplosionSpeed = 1;
-    [SerializeField] private float EplosionIntensityMultiplier = 1000f;
+    //[SerializeField] private AnimationCurve ExplosionLightCurve;
+    //[SerializeField] private float EplosionSpeed = 1;
+    //[SerializeField] private float EplosionIntensityMultiplier = 1000f;
 
     Rigidbody RigidBody;
     BoxCollider BoxCollider;
@@ -24,7 +24,6 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         RigidBody = GetComponent<Rigidbody>();
-        //LightSource = GetComponent<Light>();
         BoxCollider = GetComponent<BoxCollider>();
         RigidBody.useGravity = false;
         RigidBody.freezeRotation = true;
@@ -42,10 +41,11 @@ public class Projectile : MonoBehaviour
         //Physics.OverlapSphere(transform.position, ExplosionRadius);
         Hitted = true;
         BoxCollider.enabled = false;
-        StartCoroutine(Explosion());
+        StartCoroutine(OnCollisionCoroutine());
     }
 
-    private IEnumerator Explosion()
+    
+    protected virtual IEnumerator OnCollisionCoroutine()
     {
         //float progress = 0f;
         //while(progress < 1f)

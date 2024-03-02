@@ -10,11 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: Speed
-      value: 150
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6317244324421493203, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: m_Name
-      value: SniperBullet
+      value: MinugunBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493283928935276559, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7493283928935276559, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: m_CollisionDetection

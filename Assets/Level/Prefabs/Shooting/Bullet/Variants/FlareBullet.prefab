@@ -8,17 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 494070660630850107, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_Range
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: Speed
-      value: 50
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6317244324421493203, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: m_Name
-      value: MinugunBullet
+      value: FlareBullet
       objectReference: {fileID: 0}
     - target: {fileID: 7493283928935276559, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: m_CollisionDetection
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7883898819634048106, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60,8 +64,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6317244324421493203, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 8540976507305406916}
   m_SourcePrefab: {fileID: 100100000, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+--- !u!1 &3502540434837643190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6317244324421493203, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+  m_PrefabInstance: {fileID: 7435682446152990309}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8540976507305406916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502540434837643190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e021c4f37562247458813dd010f7fa57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 0
+  ExplosionRadius: 0
+  Speed: 15
+  ParticlesOnDestroy: {fileID: 0}
+  LifeTimeOnCollision: 10
