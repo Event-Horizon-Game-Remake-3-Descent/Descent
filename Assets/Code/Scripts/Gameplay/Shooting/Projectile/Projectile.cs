@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(BoxCollider), typeof(Light))]
+[RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
 public class Projectile : MonoBehaviour
 {
     [Header("Projectile Settings")]

@@ -133,6 +133,16 @@ public class WeaponManager : MonoBehaviour
         if (Index > WeaponList.Count -1)
             Index = 0;
 
+        if (!WeaponList[Index].Unlocked)
+        {
+            Debug.Log(WeaponList[Index].WeaponName + " Is Locked");
+            Index--;
+            if (Index < 0)
+                Index = WeaponList.Count - 1;
+            return;
+        }
+
+
         //enable new weapon
         WeaponList[Index].gameObject.SetActive(true);
         //disable unused weapon
@@ -152,17 +162,6 @@ public class WeaponManager : MonoBehaviour
         //AudioSource.Play();
     }
 
-    //Unlock a new weapon
-    private void AddToPrimary(Weapon Weapon)
-    {
-        PrimaryWeaponList.Add(Weapon);
-    }
-
-    private void AddToSecondary(Weapon Weapon)
-    {
-        SecondaryWeaponList.Add(Weapon);
-    }
-
     //Get Current weapon
     public Weapon GetPrimaryWeapon() { return PrimaryWeaponList[PrimaryIndex]; }
     public Weapon GetSecondaryWeapon() { return SecondaryWeaponList[SecondaryIndex]; }
@@ -180,9 +179,14 @@ public class WeaponManager : MonoBehaviour
     //Disable all connected events
     private void OnDisable()
     {
-        //disconnect connected OnWeaponChanged function
         OnWeaponChanged -= OnWeaponChanged;
         OnPrimaryFire -= OnPrimaryFire;
+        OnSecondaryFire -= OnSecondaryFire;
+    }
+
+    private void OnDeath()
+    {
+
     }
 
 }

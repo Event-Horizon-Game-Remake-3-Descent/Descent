@@ -6,88 +6,82 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class Weapon : MonoBehaviour
 {
+    public enum WeaponType
+    {
+        DEFAULT,
+        LaserCannon,
+        VulcanCannon,
+        SpreadfireCannon,
+        ConcussionMissiles,
+        HomingMissiles,
+        ProximityBombs,
+        FlareCannon,
+    }
+
     [Header("Weapon Settings")]
-    [SerializeField] private string Name = "No Name";
+    [SerializeField] protected string Name = "No Name";
     public string WeaponName { get; private set; } = null;
-
-    [SerializeField] private Projectile ProjectileToShoot;
-    [SerializeField] private float ShootDelay = 1f;
-    [SerializeField] private Mag Mag;
-    [SerializeField] private float ProjectileCost = 1;
-    [SerializeField] List<Transform> ShootingPoints = new List<Transform>();
-    [SerializeField] private bool SynchronousShooting = false;
+    [SerializeField] protected WeaponType Type = WeaponType.DEFAULT;
+    public WeaponType WType {  get; private set; }
+    [SerializeField] protected Projectile ProjectileToShoot;
+    [SerializeField] protected float ShootDelay = 1f;
+    [SerializeField] protected Mag Mag;
+    [SerializeField] protected float ProjectileCost = 1;
+    [SerializeField] protected List<Transform> ShootingPoints = new List<Transform>();
+    [SerializeField] protected bool SynchronousShooting = false;
+    [SerializeField] protected bool IsUnlocked = false;
+    public bool Unlocked { get; private set; }
     [Space]
+
     [Header("UI Settings")]
-    [SerializeField] private Texture _WeaponSprite;
+    [SerializeField] protected Texture _WeaponSprite;
     public Texture WeaponSprite { get; private set; }
-    [Header("SFX")]
-    [SerializeField] private List<AudioClip> ShootSounds;
     [Space]
-    [Header("Gizsmo Settings")]
-    [SerializeField] private Color Weapon_GizsmoColor = Color.blue;
-    [SerializeField] private float WeaponGismoSize = 0.1f;
-    [SerializeField] private Color Direction_GizsmoColor = Color.red;
-    [SerializeField] private float ShootDirectionLenght_Gizsmo = 3f;
 
-    private float NextShootTime = 0;
+    [Header("SFX")]
+    [SerializeField] protected List<AudioClip> ShootSounds;
+    [Space]
+
+    [Header("Gizsmo Settings")]
+    [SerializeField] protected Color Weapon_GizsmoColor = Color.blue;
+    [SerializeField] protected float WeaponGismoSize = 0.1f;
+    [SerializeField] protected Color Direction_GizsmoColor = Color.red;
+    [SerializeField] protected float ShootDirectionLenght_Gizsmo = 3f;
 
     public Mag WeaponMag { get; private set; }
-    public int ShootingPointIndex { get; private set; } = 0;
+    public int ShootingPointIndex { get; protected set; } = 0;
+    public int ShootingPointsAmount { get; protected set; }
 
-    private AudioSource AudioSource;
-
+    protected float NextShootTime = 0;
+    protected AudioSource AudioSource;
+    
     private void Awake()
     {
         WeaponName = Name;
+        Unlocked = IsUnlocked;
+
+        WType = Type;
+
+        if (Mag == null)
+            Debug.LogError("No MAG assigned to this weapon: "+gameObject.name);
+
         WeaponMag = Mag;
         WeaponSprite = _WeaponSprite;
+        ShootingPointsAmount = ShootingPoints.Count;
         AudioSource = GetComponent<AudioSource>();
     }
 
-    public bool Shoot()
+    public virtual bool Shoot()
     {
-        //Shoot
-        if(Time.time > NextShootTime && Mag.ProjectileLeft > 0)
-        {
-            //Update delay
-            NextShootTime = Time.time + ShootDelay;
-            //Intanciate Bullet
-            if(ProjectileToShoot)
-            {
-                //Update Shooting point
-                if(SynchronousShooting)
-                {
-                    //shoot on all shooting points
-                    float spawnableBulletAmount = Mag.ProjectileLeft;
-                    Mag.ProjectileLeft -= ProjectileCost * ShootingPoints.Count;
-                    
-                    for (int i = 0; i < ShootingPoints.Count; ++i)
-                    {
-                        Instantiate(ProjectileToShoot, ShootingPoints[i].position, ShootingPoints[i].rotation);
-                    }
-                }
-                else
-                {
-                    //shoot on one shooting point
-                    Mag.ProjectileLeft -= (int)ProjectileCost;
-                    Instantiate(ProjectileToShoot, ShootingPoints[ShootingPointIndex].position, ShootingPoints[ShootingPointIndex].rotation);
-                    ShootingPointIndex++;
-                    if (ShootingPointIndex > ShootingPoints.Count - 1)
-                        ShootingPointIndex = 0;
-                }
-            }
-            //Play Sound
-            if(ShootSounds.Count>0)
-            {
-                AudioSource.Stop();
-                AudioSource.clip = ShootSounds[UnityEngine.Random.Range(0, ShootSounds.Count)];
-                AudioSource.Play();
-            }
-            return true;
-        }
-        //Don't Shoot
-        else
-            return false;
+        return false;
+    }
+
+    protected virtual void UnlockWeapon()
+    {
+        if(!IsUnlocked)
+            IsUnlocked = true;
+        //else
+            // increement mag size
     }
 
 #if UNITY_EDITOR

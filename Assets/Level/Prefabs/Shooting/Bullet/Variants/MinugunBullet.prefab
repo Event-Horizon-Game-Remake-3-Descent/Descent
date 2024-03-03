@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 494070660630850107, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_Range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 494070660630850107, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_Intensity
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: Speed
       value: 50

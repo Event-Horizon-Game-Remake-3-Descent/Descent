@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponHUD_Rocket : MonoBehaviour
+public class MultipleShootingPoints_HUD : MonoBehaviour
 {
     [SerializeField] private RawImage RightHUD;
     [SerializeField] private RawImage LeftHUD;

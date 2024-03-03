@@ -4,12 +4,33 @@ using UnityEngine;
 
 public class Mag : MonoBehaviour
 {
-    [SerializeField] public int MagSize;
+    public enum MagType
+    {
+        Energy,
+        Vulkan,
+        Spread,
+        Concussion_Rocket,
+        HeatSeeking_Rocket,
+        PlasmaCannon,
+        Bomb,
+    };
+
+    [Header("Mag Settings")]
+    [SerializeField] public int InitialMagSize;
+    [SerializeField] public MagType MagMagType;
+
     [HideInInspector] public float ProjectileLeft;
 
     private void Awake()
     {
-        ProjectileLeft = MagSize;
+        ProjectileLeft = InitialMagSize;
+    }
+
+    private void OnAmmoTaken(MagType type, float amount)
+    {
+        if (type == MagMagType)
+            return;
+        //ProjectileLeft + cazzo palle
     }
 
 }
