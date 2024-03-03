@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public float PlayerSpeed;
     public AnimationCurve DecelerationCurve;
     public float DecelerationSpeed;
+    public float BankingSpeed;
+    
     Rigidbody Rb;
     float X = 0; // up and down mov
     float Y = 0; // left and right mov
@@ -23,23 +25,11 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         Rb = GetComponent<Rigidbody>();
+        
         Cursor.lockState = CursorLockMode.Locked;
         InputManager.InputMap.Overworld.Movement.canceled += Decelerate;
         InputManager.InputMap.Overworld.Movement.started += StopSlowDownCycle;
     }
-
-
-
-
-
-
-
-   
-        
-        
-
-
-
     private void FixedUpdate()
     {
         float mouseX = InputManager.InputMap.Overworld.MouseX.ReadValue<float>() * mouseSensitivity *Time.fixedDeltaTime ;
@@ -59,10 +49,15 @@ public class PlayerController : MonoBehaviour
              StopCoroutine(SlowDown());
             
             Rb.AddForce(direction.y * Rb.transform.forward* PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+            Rb.AddForce(direction.x * Rb.transform.right * PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
         }
-        
-    }
 
+        if (InputManager.IsBanking(out Vector3 banking))
+        {
+            Quaternion deltaRotation = Quaternion.Euler(0,0, banking.z);
+            Rb.MoveRotation(Rb.rotation*deltaRotation);
+        }
+    }
     void Decelerate(InputAction.CallbackContext obj )
     {
         StartCoroutine(SlowDown());
@@ -89,9 +84,28 @@ public class PlayerController : MonoBehaviour
 
     void StopSlowDownCycle(InputAction.CallbackContext obj )
     {
-        Debug.Log("porcodio" );
         StopAllCoroutines();
     }
+        
+
+
+
+
+
+
+
+   
+        
+        
+
+
+
+            
+
+
+       
+
+
             
 
         

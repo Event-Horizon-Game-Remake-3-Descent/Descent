@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance;
 
     public static Vector2 MovementInput => InputMap.Overworld.Movement.ReadValue<Vector2>();
+    public static Vector3 BankingInput => InputMap.Overworld.Banking.ReadValue<Vector3>();
 
     private void Awake()
     {
@@ -31,6 +32,12 @@ public class InputManager : MonoBehaviour
         
         direction = MovementInput;
         return direction != Vector2.zero;
+    }
+
+    public static bool IsBanking (out Vector3 direction)
+    {
+        direction = BankingInput; 
+        return direction != Vector3.zero;
     }
 
 }

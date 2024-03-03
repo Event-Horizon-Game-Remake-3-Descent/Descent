@@ -62,6 +62,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Banking"",
+                    ""type"": ""Value"",
+                    ""id"": ""ce2caab5-1758-44aa-9c57-e0154770a705"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -99,7 +108,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
+                    ""name"": ""Cardinals"",
                     ""id"": ""7607e432-83c6-4f50-86f3-4a4c8d49edb1"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
@@ -134,7 +143,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Left"",
                     ""id"": ""7b27e050-60d0-414c-ae9b-dcc9c6cb4b48"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -145,11 +154,88 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Right"",
                     ""id"": ""42c4111a-5912-4033-bd1a-e4349e16af57"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""3D Vector"",
+                    ""id"": ""20d3c83a-4072-4e19-8e4c-ab1e440fe6de"",
+                    ""path"": ""3DVector(mode=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Banking"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""ff8c593b-f0f2-446e-ac27-09bf3b095f64"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Banking"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b871cd57-72b2-45a9-af2a-a7c1107cff5e"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Banking"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""759a326c-8cb1-4fae-9117-005fcc25e308"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Banking"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""6926cfcd-0bb0-4ad2-8ec7-e3fe6e9d8f70"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Banking"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""5c963046-dbe0-4226-8a39-dbead8f51410"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Banking"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""d66d9856-df92-4e4e-a701-a8bcdcf8837f"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Banking"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -164,6 +250,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_Overworld_MouseY = m_Overworld.FindAction("MouseY", throwIfNotFound: true);
         m_Overworld_Shoot = m_Overworld.FindAction("Shoot", throwIfNotFound: true);
         m_Overworld_Movement = m_Overworld.FindAction("Movement", throwIfNotFound: true);
+        m_Overworld_Banking = m_Overworld.FindAction("Banking", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,6 +316,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Overworld_MouseY;
     private readonly InputAction m_Overworld_Shoot;
     private readonly InputAction m_Overworld_Movement;
+    private readonly InputAction m_Overworld_Banking;
     public struct OverworldActions
     {
         private @InputMap m_Wrapper;
@@ -237,6 +325,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         public InputAction @MouseY => m_Wrapper.m_Overworld_MouseY;
         public InputAction @Shoot => m_Wrapper.m_Overworld_Shoot;
         public InputAction @Movement => m_Wrapper.m_Overworld_Movement;
+        public InputAction @Banking => m_Wrapper.m_Overworld_Banking;
         public InputActionMap Get() { return m_Wrapper.m_Overworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +347,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @Banking.started += instance.OnBanking;
+            @Banking.performed += instance.OnBanking;
+            @Banking.canceled += instance.OnBanking;
         }
 
         private void UnregisterCallbacks(IOverworldActions instance)
@@ -274,6 +366,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @Banking.started -= instance.OnBanking;
+            @Banking.performed -= instance.OnBanking;
+            @Banking.canceled -= instance.OnBanking;
         }
 
         public void RemoveCallbacks(IOverworldActions instance)
@@ -297,5 +392,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         void OnMouseY(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
+        void OnBanking(InputAction.CallbackContext context);
     }
 }
