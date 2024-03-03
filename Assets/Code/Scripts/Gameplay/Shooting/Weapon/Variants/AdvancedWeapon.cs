@@ -12,8 +12,9 @@ public class AdvancedWeapon : Weapon
 
     private int WeaponLevel = 0;
 
-    private void Awake()
+    new private void Awake()
     {
+        base.Awake();
         CurrentProjectile = base.ProjectileToShoot;
     }
 
@@ -62,7 +63,6 @@ public class AdvancedWeapon : Weapon
         else
             return false;
     }
-
 
     private void IncreaseWeaponLevel()
     {

@@ -1114,6 +1114,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4001446695921715516, guid: f60cfa7cb8141564295d8f53668a6f09, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4001446695921715516, guid: f60cfa7cb8141564295d8f53668a6f09, type: 3}
       propertyPath: weaponManager
       value: 
       objectReference: {fileID: 486590546}
@@ -1128,6 +1132,10 @@ PrefabInstance:
     - target: {fileID: 4706688766683044757, guid: f60cfa7cb8141564295d8f53668a6f09, type: 3}
       propertyPath: m_Name
       value: WeaponTest_UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706688766683044757, guid: f60cfa7cb8141564295d8f53668a6f09, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5175197805435135506, guid: f60cfa7cb8141564295d8f53668a6f09, type: 3}
       propertyPath: m_Pivot.x

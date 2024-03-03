@@ -55,11 +55,10 @@ public class Weapon : MonoBehaviour
     protected float NextShootTime = 0;
     protected AudioSource AudioSource;
     
-    private void Awake()
+    protected void Awake()
     {
         WeaponName = Name;
         Unlocked = IsUnlocked;
-
         WType = Type;
 
         if (Mag == null)

@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -179,6 +177,7 @@ public class WeaponManager : MonoBehaviour
     //Disable all connected events
     private void OnDisable()
     {
+        OnManagerReady -= OnManagerReady;
         OnWeaponChanged -= OnWeaponChanged;
         OnPrimaryFire -= OnPrimaryFire;
         OnSecondaryFire -= OnSecondaryFire;

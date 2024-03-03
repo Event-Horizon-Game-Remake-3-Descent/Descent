@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Mag : MonoBehaviour
@@ -16,7 +14,7 @@ public class Mag : MonoBehaviour
     };
 
     [Header("Mag Settings")]
-    [SerializeField] public int InitialMagSize;
+    [SerializeField] public float InitialMagSize = 0f;
     [SerializeField] public MagType MagMagType;
 
     [HideInInspector] public float ProjectileLeft;
