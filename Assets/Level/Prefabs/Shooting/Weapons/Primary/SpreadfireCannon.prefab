@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2098721148393533346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 987879705831637878}
+  m_Layer: 0
+  m_Name: ShootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &987879705831637878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098721148393533346}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4329179110808754130}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &4477380810818619327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 694428566611234813}
+  m_Layer: 0
+  m_Name: ShootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &694428566611234813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477380810818619327}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4329179110808754130}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8512821723351251693
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4329179110808754130}
-  - component: {fileID: 4643532096417616845}
+  - component: {fileID: 6001106362676622534}
   - component: {fileID: 2530549692162416831}
   - component: {fileID: 1438675172145536965}
   m_Layer: 0
@@ -27,14 +89,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8512821723351251693}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.299, z: 1.016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 694428566611234813}
+  - {fileID: 987879705831637878}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4643532096417616845
+--- !u!114 &6001106362676622534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,27 +107,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 8512821723351251693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c57e91579b3011438651dd588988f9f, type: 3}
+  m_Script: {fileID: 11500000, guid: bd1cd35bca306454a8c03d82886cb788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: ' Spreadfire Cannon'
+  Name: Spread Fire Cannon
   Type: 3
-  ProjectileToShoot: {fileID: 8422522784167290584, guid: 5b2dcdd766a5381478d7002a5a1e709d, type: 3}
+  ProjectileToShoot: {fileID: 8540976507305406916, guid: 35f2c28a43988b74cb0901ffd504794c, type: 3}
   ShootDelay: 1
   Mag: {fileID: 2530549692162416831}
   ProjectileCost: 1
   ShootingPoints:
-  - {fileID: 4329179110808754130}
+  - {fileID: 694428566611234813}
+  - {fileID: 987879705831637878}
   SynchronousShooting: 0
-  IsUnlocked: 0
+  IsUnlocked: 1
   _WeaponSprite: {fileID: 0}
-  ShootSounds:
-  - {fileID: 8300000, guid: 8c7358b2d0e73624389e292ec621b5b5, type: 3}
-  Weapon_GizsmoColor: {r: 0, g: 0.8857479, b: 1, a: 1}
+  ShootSounds: []
+  Weapon_GizsmoColor: {r: 0, g: 0.91849303, b: 1, a: 1}
   WeaponGismoSize: 0.1
   Direction_GizsmoColor: {r: 1, g: 0, b: 0, a: 1}
   ShootDirectionLenght_Gizsmo: 3
-  OtherProjectiles: []
 --- !u!114 &2530549692162416831
 MonoBehaviour:
   m_ObjectHideFlags: 0

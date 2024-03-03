@@ -509,7 +509,7 @@ MonoBehaviour:
   PrimaryWeaponList:
   - {fileID: 13485840}
   - {fileID: 43356230}
-  - {fileID: 8647361189114486123}
+  - {fileID: 4424945208266539990}
   SecondaryWeaponList:
   - {fileID: 1351252737}
   - {fileID: 1809978877}
@@ -1817,15 +1817,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4329179110808754130, guid: f5f1936361970604b920a2623f128b3f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4329179110808754130, guid: f5f1936361970604b920a2623f128b3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.299
+      value: -0.026
       objectReference: {fileID: 0}
     - target: {fileID: 4329179110808754130, guid: f5f1936361970604b920a2623f128b3f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.016
+      value: 1.435
       objectReference: {fileID: 0}
     - target: {fileID: 4329179110808754130, guid: f5f1936361970604b920a2623f128b3f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1855,17 +1855,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4643532096417616845, guid: f5f1936361970604b920a2623f128b3f, type: 3}
-      propertyPath: IsUnlocked
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 6001106362676622534, guid: f5f1936361970604b920a2623f128b3f, type: 3}
+      propertyPath: ProjectileToShoot
+      value: 
+      objectReference: {fileID: 8083705041285587465, guid: c1efc0ac9d4e4664788732f6ad2a4374, type: 3}
     - target: {fileID: 8512821723351251693, guid: f5f1936361970604b920a2623f128b3f, type: 3}
       propertyPath: m_Name
       value: SpreadfireCannon
-      objectReference: {fileID: 0}
-    - target: {fileID: 8512821723351251693, guid: f5f1936361970604b920a2623f128b3f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1923,10 +1919,6 @@ PrefabInstance:
     - target: {fileID: 4424945207096776785, guid: a3891bd153cf969428c7ef178f677992, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287767302417986672, guid: a3891bd153cf969428c7ef178f677992, type: 3}
-      propertyPath: IsUnlocked
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2056,6 +2048,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4329179110808754130, guid: f5f1936361970604b920a2623f128b3f, type: 3}
   m_PrefabInstance: {fileID: 1738819055253894603}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4424945208266539990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6001106362676622534, guid: f5f1936361970604b920a2623f128b3f, type: 3}
+  m_PrefabInstance: {fileID: 1738819055253894603}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1cd35bca306454a8c03d82886cb788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4902081510752844381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2117,17 +2120,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 144baf4afe5d4474ea2cc4cabec52dfd, type: 3}
---- !u!114 &8647361189114486123 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4643532096417616845, guid: f5f1936361970604b920a2623f128b3f, type: 3}
-  m_PrefabInstance: {fileID: 1738819055253894603}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c57e91579b3011438651dd588988f9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

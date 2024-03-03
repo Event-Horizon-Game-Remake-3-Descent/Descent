@@ -51,7 +51,7 @@ MonoBehaviour:
   Name: Vulkan
   Type: 2
   ProjectileToShoot: {fileID: 8422522784167290584, guid: df77af9dbf819164fa5d84644d09c1a7, type: 3}
-  ShootDelay: 0.005
+  ShootDelay: 0.05
   Mag: {fileID: 8647361190352275182}
   ProjectileCost: 1
   ShootingPoints:
