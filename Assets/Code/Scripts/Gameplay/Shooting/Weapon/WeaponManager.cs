@@ -44,12 +44,12 @@ public class WeaponManager : MonoBehaviour
 
     private void Awake()
     {
-        //Disable primary weapons except for the first one
-        for (int i = 1; i < PrimaryWeaponList.Count; i++)
-            PrimaryWeaponList[i].gameObject.SetActive(false);
-        //Disable secondary weapons except for the first one
-        for (int i = 1; i < SecondaryWeaponList.Count; i++)
-            SecondaryWeaponList[i].gameObject.SetActive(false);
+        ////Disable primary weapons except for the first one
+        //for (int i = 1; i < PrimaryWeaponList.Count; i++)
+        //    PrimaryWeaponList[i].gameObject.SetActive(false);
+        ////Disable secondary weapons except for the first one
+        //for (int i = 1; i < SecondaryWeaponList.Count; i++)
+        //    SecondaryWeaponList[i].gameObject.SetActive(false);
 
         CurrentPrimary = PrimaryWeaponList[PrimaryIndex];
         CurrentSecondary = SecondaryWeaponList[SecondaryIndex];
@@ -140,20 +140,19 @@ public class WeaponManager : MonoBehaviour
             return;
         }
 
-
-        //enable new weapon
-        WeaponList[Index].gameObject.SetActive(true);
-        //disable unused weapon
-        for (int i = 0; i < WeaponList.Count; i++)
-        {
-            if (i == Index)
-                continue;
-            else
-                WeaponList[i].gameObject.SetActive(false);
-        }
+        ////enable new weapon
+        //WeaponList[Index].gameObject.SetActive(true);
+        ////disable unused weapon
+        //for (int i = 0; i < WeaponList.Count; i++)
+        //{
+        //    if (i == Index)
+        //        continue;
+        //    else
+        //        WeaponList[i].gameObject.SetActive(false);
+        //}
     }
 
-    IEnumerator StartCooldown()
+    private IEnumerator StartCooldown()
     {
         yield return new WaitForSeconds(ChangeWeaponCooldown);
         CanChange = true;
@@ -169,7 +168,7 @@ public class WeaponManager : MonoBehaviour
     {
         OnWeaponChanged += () =>
         {
-            StopCoroutine(StartCooldown());
+            //StopCoroutine(StartCooldown());
             StartCoroutine(StartCooldown());
         };
     }

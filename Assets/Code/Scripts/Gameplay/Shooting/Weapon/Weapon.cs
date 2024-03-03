@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
     public enum WeaponType
     {
@@ -70,10 +70,7 @@ public class Weapon : MonoBehaviour
         AudioSource = GetComponent<AudioSource>();
     }
 
-    public virtual bool Shoot()
-    {
-        return false;
-    }
+    public abstract bool Shoot();
 
     protected virtual void UnlockWeapon()
     {

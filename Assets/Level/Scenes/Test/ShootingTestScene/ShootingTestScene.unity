@@ -176,15 +176,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4424945207096776785, guid: a3891bd153cf969428c7ef178f677992, type: 3}
   m_PrefabInstance: {fileID: 1809093638469784495}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &43356229 stripped
+--- !u!114 &43356230 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3469430561969926639, guid: a3891bd153cf969428c7ef178f677992, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7287767302417986672, guid: a3891bd153cf969428c7ef178f677992, type: 3}
   m_PrefabInstance: {fileID: 1809093638469784495}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ef5d98025d050c4eb068561c1fe743c, type: 3}
+  m_Script: {fileID: 11500000, guid: bd1cd35bca306454a8c03d82886cb788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &196249693
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrimaryWeaponList:
   - {fileID: 13485840}
-  - {fileID: 43356229}
+  - {fileID: 43356230}
   - {fileID: 8647361189114486123}
   SecondaryWeaponList:
   - {fileID: 1351252737}
@@ -1883,22 +1883,6 @@ PrefabInstance:
     - target: {fileID: 1662002311716375818, guid: a3891bd153cf969428c7ef178f677992, type: 3}
       propertyPath: m_Name
       value: Vulkan
-      objectReference: {fileID: 0}
-    - target: {fileID: 1662002311716375818, guid: a3891bd153cf969428c7ef178f677992, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369784755757588581, guid: a3891bd153cf969428c7ef178f677992, type: 3}
-      propertyPath: Name
-      value: Vulcan
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369784755757588581, guid: a3891bd153cf969428c7ef178f677992, type: 3}
-      propertyPath: Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369784755757588581, guid: a3891bd153cf969428c7ef178f677992, type: 3}
-      propertyPath: IsUnlocked
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4424945207096776785, guid: a3891bd153cf969428c7ef178f677992, type: 3}
       propertyPath: m_LocalPosition.x
