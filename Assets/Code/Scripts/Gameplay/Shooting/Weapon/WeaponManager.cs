@@ -134,22 +134,11 @@ public class WeaponManager : MonoBehaviour
         if (!WeaponList[Index].Unlocked)
         {
             Debug.Log(WeaponList[Index].WeaponName + " Is Locked");
-            Index--;
-            if (Index < 0)
-                Index = WeaponList.Count - 1;
+            Index++;
+            if (Index > WeaponList.Count - 1)
+                Index = 0;
             return;
         }
-
-        ////enable new weapon
-        //WeaponList[Index].gameObject.SetActive(true);
-        ////disable unused weapon
-        //for (int i = 0; i < WeaponList.Count; i++)
-        //{
-        //    if (i == Index)
-        //        continue;
-        //    else
-        //        WeaponList[i].gameObject.SetActive(false);
-        //}
     }
 
     private IEnumerator StartCooldown()
