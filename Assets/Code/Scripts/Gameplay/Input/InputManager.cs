@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
     public static Vector3 BankingInput => InputMap.Overworld.Banking.ReadValue<Vector3>();
 
     public static Vector2 VerticalMovement => InputMap.Overworld.VerticalMovement.ReadValue<Vector2>();
-    public static bool ShootingInput => InputMap.Overworld.Shoot.triggered;
+    
     
 
     private void Awake()
@@ -55,16 +55,6 @@ public class InputManager : MonoBehaviour
         return direction != Vector2.zero;
     }
 
-    //public static bool IsShooting()
-    //{
-    //    bool shoot = ShootingInput;
-    //    if (shoot)
-    //    {
-    //        Debug.Log("Shooting!");
-    //        ShootPrimary?.Invoke();
-    //    }
-    //    return shoot;
-    //}
-
+    
     
 }

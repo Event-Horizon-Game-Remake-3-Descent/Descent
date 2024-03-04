@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         InputManager.InputMap.Overworld.Movement.started += StopSlowDownCycle;
         InputManager.InputMap.Overworld.VerticalMovement.canceled += Decelerate;
         InputManager.InputMap.Overworld.VerticalMovement.started += StopSlowDownCycle;
-        InputManager.InputMap.Overworld.Shoot.performed += (InputAction.CallbackContext shoot) => Debug.Log("sparo dal player");
+        //InputManager.InputMap.Overworld.ShootPrimary.performed += (InputAction.CallbackContext shoot) => Debug.Log("sparo dal player");
     }
 
     private void OnDisable()
