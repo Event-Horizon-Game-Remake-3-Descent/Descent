@@ -46,15 +46,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Shoot"",
-                    ""type"": ""Button"",
-                    ""id"": ""b83f1fbc-ed43-4399-829b-cbb0e91a5286"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Movement"",
                     ""type"": ""Value"",
                     ""id"": ""a04c26e1-fcd4-49f8-927e-399d1a1aee5e"",
@@ -80,6 +71,24 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ShootPrimary"",
+                    ""type"": ""Button"",
+                    ""id"": ""b83f1fbc-ed43-4399-829b-cbb0e91a5286"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShootSecondary"",
+                    ""type"": ""Button"",
+                    ""id"": ""91ca0a75-2833-46dd-a0ff-a63b84cb3514"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -157,39 +166,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""13cfefa9-13de-4efe-9f8c-13d38148ad2a"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""378150f4-8422-4c03-96f3-497a8072afab"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""6ffb7a48-3319-42ef-a605-0cecac452c8c"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -280,6 +256,28 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""VerticalMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f0b52489-806f-4cf7-b3bd-9d5da149fb3b"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootSecondary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87cbcdb4-78e4-4667-89b7-f4aebeadb206"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootPrimary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -290,10 +288,11 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_Overworld = asset.FindActionMap("Overworld", throwIfNotFound: true);
         m_Overworld_MouseX = m_Overworld.FindAction("MouseX", throwIfNotFound: true);
         m_Overworld_MouseY = m_Overworld.FindAction("MouseY", throwIfNotFound: true);
-        m_Overworld_Shoot = m_Overworld.FindAction("Shoot", throwIfNotFound: true);
         m_Overworld_Movement = m_Overworld.FindAction("Movement", throwIfNotFound: true);
         m_Overworld_Banking = m_Overworld.FindAction("Banking", throwIfNotFound: true);
         m_Overworld_VerticalMovement = m_Overworld.FindAction("VerticalMovement", throwIfNotFound: true);
+        m_Overworld_ShootPrimary = m_Overworld.FindAction("ShootPrimary", throwIfNotFound: true);
+        m_Overworld_ShootSecondary = m_Overworld.FindAction("ShootSecondary", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -357,20 +356,22 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private List<IOverworldActions> m_OverworldActionsCallbackInterfaces = new List<IOverworldActions>();
     private readonly InputAction m_Overworld_MouseX;
     private readonly InputAction m_Overworld_MouseY;
-    private readonly InputAction m_Overworld_Shoot;
     private readonly InputAction m_Overworld_Movement;
     private readonly InputAction m_Overworld_Banking;
     private readonly InputAction m_Overworld_VerticalMovement;
+    private readonly InputAction m_Overworld_ShootPrimary;
+    private readonly InputAction m_Overworld_ShootSecondary;
     public struct OverworldActions
     {
         private @InputMap m_Wrapper;
         public OverworldActions(@InputMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @MouseX => m_Wrapper.m_Overworld_MouseX;
         public InputAction @MouseY => m_Wrapper.m_Overworld_MouseY;
-        public InputAction @Shoot => m_Wrapper.m_Overworld_Shoot;
         public InputAction @Movement => m_Wrapper.m_Overworld_Movement;
         public InputAction @Banking => m_Wrapper.m_Overworld_Banking;
         public InputAction @VerticalMovement => m_Wrapper.m_Overworld_VerticalMovement;
+        public InputAction @ShootPrimary => m_Wrapper.m_Overworld_ShootPrimary;
+        public InputAction @ShootSecondary => m_Wrapper.m_Overworld_ShootSecondary;
         public InputActionMap Get() { return m_Wrapper.m_Overworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -386,9 +387,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @MouseY.started += instance.OnMouseY;
             @MouseY.performed += instance.OnMouseY;
             @MouseY.canceled += instance.OnMouseY;
-            @Shoot.started += instance.OnShoot;
-            @Shoot.performed += instance.OnShoot;
-            @Shoot.canceled += instance.OnShoot;
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
@@ -398,6 +396,12 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @VerticalMovement.started += instance.OnVerticalMovement;
             @VerticalMovement.performed += instance.OnVerticalMovement;
             @VerticalMovement.canceled += instance.OnVerticalMovement;
+            @ShootPrimary.started += instance.OnShootPrimary;
+            @ShootPrimary.performed += instance.OnShootPrimary;
+            @ShootPrimary.canceled += instance.OnShootPrimary;
+            @ShootSecondary.started += instance.OnShootSecondary;
+            @ShootSecondary.performed += instance.OnShootSecondary;
+            @ShootSecondary.canceled += instance.OnShootSecondary;
         }
 
         private void UnregisterCallbacks(IOverworldActions instance)
@@ -408,9 +412,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @MouseY.started -= instance.OnMouseY;
             @MouseY.performed -= instance.OnMouseY;
             @MouseY.canceled -= instance.OnMouseY;
-            @Shoot.started -= instance.OnShoot;
-            @Shoot.performed -= instance.OnShoot;
-            @Shoot.canceled -= instance.OnShoot;
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
@@ -420,6 +421,12 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @VerticalMovement.started -= instance.OnVerticalMovement;
             @VerticalMovement.performed -= instance.OnVerticalMovement;
             @VerticalMovement.canceled -= instance.OnVerticalMovement;
+            @ShootPrimary.started -= instance.OnShootPrimary;
+            @ShootPrimary.performed -= instance.OnShootPrimary;
+            @ShootPrimary.canceled -= instance.OnShootPrimary;
+            @ShootSecondary.started -= instance.OnShootSecondary;
+            @ShootSecondary.performed -= instance.OnShootSecondary;
+            @ShootSecondary.canceled -= instance.OnShootSecondary;
         }
 
         public void RemoveCallbacks(IOverworldActions instance)
@@ -441,9 +448,10 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     {
         void OnMouseX(InputAction.CallbackContext context);
         void OnMouseY(InputAction.CallbackContext context);
-        void OnShoot(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnBanking(InputAction.CallbackContext context);
         void OnVerticalMovement(InputAction.CallbackContext context);
+        void OnShootPrimary(InputAction.CallbackContext context);
+        void OnShootSecondary(InputAction.CallbackContext context);
     }
 }

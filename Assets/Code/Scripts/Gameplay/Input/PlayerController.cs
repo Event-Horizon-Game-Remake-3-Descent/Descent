@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         InputManager.InputMap.Overworld.Movement.started += StopSlowDownCycle;
         InputManager.InputMap.Overworld.VerticalMovement.canceled += Decelerate;
         InputManager.InputMap.Overworld.VerticalMovement.started += StopSlowDownCycle;
+        InputManager.InputMap.Overworld.Shoot.performed += (InputAction.CallbackContext shoot) => Debug.Log("sparo dal player");
     }
 
     private void OnDisable()
@@ -74,6 +75,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log("cazzopalle");
             Rb.AddForce(verticaldirection.y * Rb.transform.up * PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
         }
+
+        
+
+        
     }
     void Decelerate(InputAction.CallbackContext obj )
     {
