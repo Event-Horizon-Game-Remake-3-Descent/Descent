@@ -8,7 +8,7 @@ public class Door : MonoBehaviour
     [Header("Animation Settings")]
     [SerializeField] Transform UpperDoor;
     [SerializeField] Transform LowerDoor;
-    [SerializeField] float OpenDistance = 5f;
+    [SerializeField] float OpenDistance;
     [SerializeField] float AnimationSpeed;
     [Header("SFX")]
     [SerializeField] AudioClip OpenSound;

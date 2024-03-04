@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(AudioSource))]
 public class WeaponManager : MonoBehaviour
@@ -104,16 +105,6 @@ public class WeaponManager : MonoBehaviour
                 OnWeaponChanged();
             }
         }
-        if (Input.GetKey(PRIMARY_SHOOTKEY))
-        {
-            if(PrimaryWeaponList[PrimaryIndex].Shoot())
-                OnPrimaryFire();
-        }
-        if (Input.GetKey(SECONDARY_SHOOTKEY))
-        {
-            if(SecondaryWeaponList[SecondaryIndex].Shoot())
-                OnSecondaryFire();
-        }
 
         if (Input.GetKey(FLARE_SHOOTKEY))
         {
@@ -141,6 +132,19 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    //shoot functions
+    private void ShootPrimary()
+    {
+        if (PrimaryWeaponList[PrimaryIndex].Shoot())
+            OnPrimaryFire();
+    }
+    
+    private void ShootSecondary()
+    {
+        if (SecondaryWeaponList[SecondaryIndex].Shoot())
+            OnSecondaryFire();
+    }
+
     private IEnumerator StartCooldown()
     {
         yield return new WaitForSeconds(ChangeWeaponCooldown);
@@ -160,6 +164,9 @@ public class WeaponManager : MonoBehaviour
             //StopCoroutine(StartCooldown());
             StartCoroutine(StartCooldown());
         };
+
+        InputManager.OnPrimaryCalled += ShootPrimary;
+        InputManager.OnSecondaryCalled += ShootSecondary;
     }
 
     //Disable all connected events
@@ -169,6 +176,9 @@ public class WeaponManager : MonoBehaviour
         OnWeaponChanged -= OnWeaponChanged;
         OnPrimaryFire -= OnPrimaryFire;
         OnSecondaryFire -= OnSecondaryFire;
+
+        InputManager.OnPrimaryCalled -= ShootPrimary;
+        InputManager.OnSecondaryCalled -= ShootSecondary;
     }
 
     private void OnDeath()

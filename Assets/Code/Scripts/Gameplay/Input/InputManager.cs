@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    public delegate void Shoot();
-    public static event Shoot ShootPrimary;
-    public static event Shoot ShootSecondary;
+    public delegate void OnShoot();
+    public static event OnShoot OnPrimaryCalled;
+    public static event OnShoot OnSecondaryCalled;
     public static InputMap InputMap;
     public InputMap prova;
 
@@ -22,12 +21,12 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         InputMap = new InputMap();
-
     }
     private void OnEnable()
     {
         InputMap.Enable();
-        
+        InputMap.Overworld.ShootPrimary.performed += (InputAction.CallbackContext f) => OnPrimaryCalled();
+        InputMap.Overworld.ShootSecondary.performed += (InputAction.CallbackContext f) => OnSecondaryCalled();
     }
 
     private void OnDisable()
