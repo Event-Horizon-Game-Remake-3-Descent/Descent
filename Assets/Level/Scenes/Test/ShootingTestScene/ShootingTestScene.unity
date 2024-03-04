@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 486590546}
   - component: {fileID: 486590547}
   m_Layer: 0
-  m_Name: Weapons
+  m_Name: WeaponManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1920,6 +1920,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7287767302417986672, guid: a3891bd153cf969428c7ef178f677992, type: 3}
+      propertyPath: ProjectileToShoot
+      value: 
+      objectReference: {fileID: 4367396707578440162, guid: 48e8258772583a149bf359d22d71c196, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

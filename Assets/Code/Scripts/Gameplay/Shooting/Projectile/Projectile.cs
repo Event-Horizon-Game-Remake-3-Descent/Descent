@@ -1,25 +1,24 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
 public class Projectile : MonoBehaviour
 {
     [Header("Projectile Settings")]
-    [SerializeField] private float Damage;
-    [SerializeField] private float ExplosionRadius;
-    [SerializeField] private float Speed = 15f;
+    [SerializeField] public float Damage = 1f;
+    [SerializeField] protected float ExplosionRadius = 0f;
+    [SerializeField] protected float Speed = 15f;
 
     [Header("VFX")]
-    [SerializeField] private Transform ParticlesOnDestroy;
+    [SerializeField] protected ParticleSystem ParticlesOnDestroy;
     //[SerializeField] private Light LightSource;
     //[SerializeField] private AnimationCurve ExplosionLightCurve;
     //[SerializeField] private float EplosionSpeed = 1;
     //[SerializeField] private float EplosionIntensityMultiplier = 1000f;
 
-    Rigidbody RigidBody;
-    BoxCollider BoxCollider;
+    protected Rigidbody RigidBody;
+    protected BoxCollider BoxCollider;
 
-    private bool Hitted = false;
+    protected bool Hitted = false;
 
     private void Awake()
     {
@@ -29,22 +28,23 @@ public class Projectile : MonoBehaviour
         RigidBody.freezeRotation = true;
     }
 
-    private void Start()
+    protected void Start()
     {
         RigidBody.velocity = transform.forward * Speed;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected void OnCollisionEnter(Collision collision)
     {
         if (Hitted)
             return;
+
         //Physics.OverlapSphere(transform.position, ExplosionRadius);
         Hitted = true;
         BoxCollider.enabled = false;
         StartCoroutine(OnCollisionCoroutine());
     }
 
-    
+
     protected virtual IEnumerator OnCollisionCoroutine()
     {
         //float progress = 0f;
