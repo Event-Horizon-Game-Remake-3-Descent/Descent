@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public AnimationCurve DecelerationCurve;
     public float DecelerationSpeed;
     public float BankingSpeed;
+    public float PlayerMaxSpeed;
     
     Rigidbody Rb;
     float X = 0; // up and down mov
@@ -31,7 +34,7 @@ public class PlayerController : MonoBehaviour
         InputManager.InputMap.Overworld.Movement.started += StopSlowDownCycle;
         InputManager.InputMap.Overworld.VerticalMovement.canceled += Decelerate;
         InputManager.InputMap.Overworld.VerticalMovement.started += StopSlowDownCycle;
-        //InputManager.InputMap.Overworld.ShootPrimary.performed += (InputAction.CallbackContext shoot) => Debug.Log("sparo dal player");
+        
     }
 
     private void OnDisable()
@@ -46,14 +49,14 @@ public class PlayerController : MonoBehaviour
        
         float mouseX = InputManager.InputMap.Overworld.MouseX.ReadValue<float>() * mouseSensitivity *Time.fixedDeltaTime ;
         float mouseY = InputManager.InputMap.Overworld.MouseY.ReadValue<float>() * mouseSensitivity * Time.fixedDeltaTime ;
-
+        Rb.velocity = Vector3.ClampMagnitude(Rb.velocity, PlayerMaxSpeed);
         X = Mathf.SmoothDamp(X, mouseY, ref XSpeed, CamSpeed); 
         Y = Mathf.SmoothDamp(Y, mouseX, ref YSpeed, CamSpeed);
 
 
         Quaternion rotation = Quaternion.Euler(-X * Time.fixedDeltaTime, Y * Time.fixedDeltaTime, 0); // asse y invertito con (-x)
         
-        //rb.MoveRotation(Quaternion.Euler (Vector3.SmoothDamp(rb.rotation.eulerAngles, rb.rotation.eulerAngles, ref camSpeed, 1f))) ;
+        
         Rb.MoveRotation(Rb.rotation * rotation);
 
         if (InputManager.IsMoving(out Vector2 direction)) 
@@ -72,9 +75,9 @@ public class PlayerController : MonoBehaviour
 
         if (InputManager.IsMovingVertically(out Vector2 verticaldirection))
         {
-            Debug.Log("cazzopalle");
             Rb.AddForce(verticaldirection.y * Rb.transform.up * PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
         }
+           
 
         
 
@@ -87,28 +90,27 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator SlowDown()
     {
-        Debug.Log("cazzopalle");
-
         Vector3 initialVelocity = Rb.velocity;
         float time = 0;
-        
         
         while (time < 1) 
         {
             Rb.velocity = DecelerationCurve.Evaluate(time) * initialVelocity;
             time += DecelerationSpeed * Time.fixedDeltaTime ; 
             yield return null;
-            //Debug.Log(DecelerationCurve.Evaluate(time));
-            Debug.Log(Rb.velocity );
         }
-
         Rb.velocity = Vector3.zero;
     }
-
     void StopSlowDownCycle(InputAction.CallbackContext obj )
     {
         StopAllCoroutines();
     }
+        
+
+        
+           
+
+
         
 
 

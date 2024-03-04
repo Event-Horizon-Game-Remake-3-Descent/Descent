@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public delegate void OnShoot();
-    public static event OnShoot OnPrimaryCalled;
-    public static event OnShoot OnSecondaryCalled;
+    public static event OnShoot OnPrimaryCalled = ()=> { };
+    public static event OnShoot OnSecondaryCalled = () => { };
     public static InputMap InputMap;
     public InputMap prova;
 
@@ -52,7 +52,7 @@ public class InputManager : MonoBehaviour
     {
         while (InputMap.Overworld.ShootSecondary.IsPressed())
         {
-            OnPrimaryCalled();
+            OnSecondaryCalled();
             yield return null;
         }
     }
