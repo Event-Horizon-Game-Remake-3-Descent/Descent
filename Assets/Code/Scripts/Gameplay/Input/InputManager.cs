@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,25 +16,54 @@ public class InputManager : MonoBehaviour
     public static Vector3 BankingInput => InputMap.Overworld.Banking.ReadValue<Vector3>();
 
     public static Vector2 VerticalMovement => InputMap.Overworld.VerticalMovement.ReadValue<Vector2>();
-    
-    
 
     private void Awake()
     {
         InputMap = new InputMap();
     }
+
     private void OnEnable()
     {
         InputMap.Enable();
-        InputMap.Overworld.ShootPrimary.performed += (InputAction.CallbackContext f) => OnPrimaryCalled();
-        InputMap.Overworld.ShootSecondary.performed += (InputAction.CallbackContext f) => OnSecondaryCalled();
+        InputMap.Overworld.ShootPrimary.performed += TriggerPrimary;
+        InputMap.Overworld.ShootSecondary.performed += TriggerSecondary;
+    }
+
+    private void TriggerPrimary(InputAction.CallbackContext f)
+    {
+        StartCoroutine(PrimaryPressed());
+    }
+    
+    private void TriggerSecondary(InputAction.CallbackContext f)
+    {
+        StartCoroutine(SecondaryPressed());
+    }
+
+    private IEnumerator PrimaryPressed()
+    {
+        while(InputMap.Overworld.ShootPrimary.IsPressed())
+        {
+            OnPrimaryCalled();
+            yield return null;
+        }
+    }
+
+    private IEnumerator SecondaryPressed()
+    {
+        while (InputMap.Overworld.ShootSecondary.IsPressed())
+        {
+            OnPrimaryCalled();
+            yield return null;
+        }
     }
 
     private void OnDisable()
     {
+        StopAllCoroutines();
+        InputMap.Overworld.ShootPrimary.performed -= TriggerPrimary;
+        InputMap.Overworld.ShootSecondary.performed -= TriggerSecondary;
         InputMap.Disable();
     }
-    
 
     public static bool IsMoving (out Vector2 direction)
     {

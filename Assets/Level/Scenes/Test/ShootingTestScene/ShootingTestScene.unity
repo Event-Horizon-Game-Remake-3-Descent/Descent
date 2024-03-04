@@ -480,7 +480,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5000001
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &304993758
 GameObject:
@@ -2215,6 +2215,10 @@ PrefabInstance:
       propertyPath: Mag
       value: 
       objectReference: {fileID: 887618058}
+    - target: {fileID: 8153603472356905875, guid: db98e32f006ec9e4d926d3a37e284993, type: 3}
+      propertyPath: ShootDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8432625004779198175, guid: db98e32f006ec9e4d926d3a37e284993, type: 3}
       propertyPath: m_Name
       value: LaserCannon
