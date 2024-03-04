@@ -29,9 +29,20 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         InputManager.InputMap.Overworld.Movement.canceled += Decelerate;
         InputManager.InputMap.Overworld.Movement.started += StopSlowDownCycle;
+        InputManager.InputMap.Overworld.VerticalMovement.canceled += Decelerate;
+        InputManager.InputMap.Overworld.VerticalMovement.started += StopSlowDownCycle;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.InputMap.Overworld.Movement.canceled -= Decelerate;
+        InputManager.InputMap.Overworld.Movement.started -= StopSlowDownCycle;
+        InputManager.InputMap.Overworld.VerticalMovement.canceled -= Decelerate;
+        InputManager.InputMap.Overworld.VerticalMovement.started -= StopSlowDownCycle;
     }
     private void FixedUpdate()
     {
+       
         float mouseX = InputManager.InputMap.Overworld.MouseX.ReadValue<float>() * mouseSensitivity *Time.fixedDeltaTime ;
         float mouseY = InputManager.InputMap.Overworld.MouseY.ReadValue<float>() * mouseSensitivity * Time.fixedDeltaTime ;
 
@@ -57,6 +68,12 @@ public class PlayerController : MonoBehaviour
             Quaternion deltaRotation = Quaternion.Euler(0,0, banking.z);
             Rb.MoveRotation(Rb.rotation*deltaRotation);
         }
+
+        if (InputManager.IsMovingVertically(out Vector2 verticaldirection))
+        {
+            Debug.Log("cazzopalle");
+            Rb.AddForce(verticaldirection.y * Rb.transform.up * PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        }
     }
     void Decelerate(InputAction.CallbackContext obj )
     {
@@ -65,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator SlowDown()
     {
+        Debug.Log("cazzopalle");
 
         Vector3 initialVelocity = Rb.velocity;
         float time = 0;
