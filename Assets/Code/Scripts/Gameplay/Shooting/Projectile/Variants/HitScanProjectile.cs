@@ -5,6 +5,7 @@ public class HitScanProjectile : Projectile
 {
     [Header("Hitscan Property")]
     [SerializeField] private float HitscanRayDistance = 150f;
+    [SerializeField] private float RayThichness = 0.25f;
 
     private RaycastHit RaycastHit;
 
@@ -16,7 +17,7 @@ public class HitScanProjectile : Projectile
     new void Start()
     {
         Ray ray = new Ray(transform.position, transform.forward);
-        if(Physics.Raycast(ray, out RaycastHit, HitscanRayDistance, ~(1<<8) ))
+        if(Physics.SphereCast(ray, RayThichness, out RaycastHit, HitscanRayDistance, ~(1<<8 | 1<<9)))
         {
             transform.position = RaycastHit.point;
             transform.rotation = Quaternion.Euler(RaycastHit.normal);

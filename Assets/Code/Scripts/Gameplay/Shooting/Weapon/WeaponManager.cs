@@ -73,11 +73,6 @@ public class WeaponManager : MonoBehaviour
     public KeyCode CHANGE_SECONDARY;
 
     [Space]
-    [Header("TO REMOVE SHOT KEYS")]
-    public KeyCode PRIMARY_SHOOTKEY;
-    public KeyCode SECONDARY_SHOOTKEY;
-
-    [Space]
     [Header("SPECIAL TO REMOVE")]
     public KeyCode FLARE_SHOOTKEY;
 

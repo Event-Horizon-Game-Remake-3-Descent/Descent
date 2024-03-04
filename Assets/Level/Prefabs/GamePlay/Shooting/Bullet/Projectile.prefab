@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 9170005421607565004}
   m_Layer: 8
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   ExplosionRadius: 0
-  Speed: 15
+  Speed: 25
   ParticlesOnDestroy: {fileID: 0}
 --- !u!54 &7493283928935276559
 Rigidbody:
