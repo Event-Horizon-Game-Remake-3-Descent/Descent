@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using static Collectible;
 using static Mag;
@@ -12,7 +13,7 @@ public class Collectible : MonoBehaviour
     //generic collectible delegate
     public delegate void CollectibleTaken(float value);
     public static event CollectibleTaken OnShieldTaken = (float value) => {};
-    public static event CollectibleTaken OnIncreaseScore = (float value) => {};
+    public static Action<float> OnIncreaseScore;
 
     //Weapon taken event
     public delegate void WeaponTaken(WeaponType type);
@@ -88,21 +89,21 @@ public class Collectible : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnDisable()
-    {
-        OnUpdateUI -= OnUpdateUI;
-        OnShieldTaken -= OnShieldTaken;
-        OnIncreaseScore -= OnIncreaseScore;
-        OnWeaponTaken -= OnWeaponTaken;
-        OnMagTaken -= OnMagTaken;
-    }
+    //private void OnDisable()
+    //{
+    //    OnUpdateUI -= OnUpdateUI;
+    //    OnShieldTaken -= OnShieldTaken;
+    //    OnIncreaseScore -= OnIncreaseScore;
+    //    OnWeaponTaken -= OnWeaponTaken;
+    //    OnMagTaken -= OnMagTaken;
+    //}
 
-    private void OnDestroy()
-    {
-        OnUpdateUI -= OnUpdateUI;
-        OnShieldTaken -= OnShieldTaken;
-        OnIncreaseScore -= OnIncreaseScore;
-        OnWeaponTaken -= OnWeaponTaken;
-        OnMagTaken -= OnMagTaken;
-    }
+    //private void OnDestroy()
+    //{
+    //    OnUpdateUI -= OnUpdateUI;
+    //    OnShieldTaken -= OnShieldTaken;
+    //    OnIncreaseScore -= OnIncreaseScore;
+    //    OnWeaponTaken -= OnWeaponTaken;
+    //    OnMagTaken -= OnMagTaken;
+    //}
 }
