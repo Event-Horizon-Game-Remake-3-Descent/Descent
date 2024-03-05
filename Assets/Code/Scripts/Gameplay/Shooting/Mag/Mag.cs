@@ -26,9 +26,21 @@ public class Mag : MonoBehaviour
 
     private void OnAmmoTaken(MagType type, float amount)
     {
-        if (type == MagMagType)
+        if (type != MagMagType)
             return;
-        //ProjectileLeft + cazzo palle
+        Debug.Log("Ammo Taken: " + type + "\nThis Mag Type: " + MagMagType);
+
+        ProjectileLeft += amount;
+    }
+
+    private void OnEnable()
+    {
+        Collectible.OnMagTaken += OnAmmoTaken;
+    }
+
+    private void OnDisable()
+    {
+        Collectible.OnMagTaken -= OnAmmoTaken;
     }
 
 }

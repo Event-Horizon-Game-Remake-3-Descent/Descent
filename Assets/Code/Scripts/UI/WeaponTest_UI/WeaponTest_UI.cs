@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class WeaponTest_UI : MonoBehaviour
 {
     [Header("Primay Weapon")]
@@ -108,12 +107,14 @@ public class WeaponTest_UI : MonoBehaviour
             UpdateInfo();
             MultipleShootingPoints.UpdateHud(0);
         };
+
+        Collectible.OnUpdateUI += UpdateInfo;
     }
 
     private void OnDisable()
     {
-        weaponManager.OnSecondaryFire -= UpdateBulletCount;
-        weaponManager.OnPrimaryFire -= UpdateBulletCount;
-        weaponManager.OnWeaponChanged -= UpdateInfo;
+        //weaponManager.OnSecondaryFire -= UpdateBulletCount;
+        //weaponManager.OnPrimaryFire -= UpdateBulletCount;
+        //weaponManager.OnWeaponChanged -= UpdateInfo;
     }
 }

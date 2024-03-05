@@ -9,7 +9,7 @@ public class Dummy : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Projectile"))
         {
-            Debug.Log("Hitted By: " + collision.gameObject.name + "\nDamage: ");
+            Debug.Log("Hitted By: " + collision.gameObject.name + "\nDamage: "+collision.gameObject.GetComponent<Projectile>().Damage);
             Destroy(this.gameObject);
         }
     }
@@ -18,7 +18,7 @@ public class Dummy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Projectile"))
         {
-            Debug.Log("Hitted By: " + other.gameObject.name + "\nDamage: ");
+            Debug.Log("Hitted By: " + other.gameObject.name + "\nDamage: "+ other.GetComponent<Projectile>().Damage);
             Destroy(this.gameObject);
         }
     }

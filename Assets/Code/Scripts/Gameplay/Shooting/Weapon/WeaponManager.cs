@@ -20,11 +20,15 @@ public class WeaponManager : MonoBehaviour
     public event WeaponShoot OnSecondaryFire = () => { };
 
     [Header("Weapons")]
+    [Tooltip("")]
     [SerializeField] private List<Weapon> PrimaryWeaponList;
     [SerializeField] private List<Weapon> SecondaryWeaponList;
     [SerializeField] private Weapon FlareWeapon;
     [SerializeField] private Weapon BombWeapon;
     [Space]
+    [Header("Exposed Mags")]
+    [SerializeField] private Mag _EnergyMag;
+    [SerializeField] private Mag _BombsMag;
     [Header("Change Weapon")]
     [SerializeField] private float ChangeWeaponCooldown;
     [Space]
@@ -34,6 +38,8 @@ public class WeaponManager : MonoBehaviour
     //public using weapon
     [HideInInspector] public Weapon CurrentPrimary{ get; private set; }
     [HideInInspector] public Weapon CurrentSecondary{ get; private set; }
+    [HideInInspector] public Mag EnergyMag{ get; private set; }
+    [HideInInspector] public Mag BombsMag { get; private set; }
 
     //Indexers
     private int PrimaryIndex = 0;
@@ -54,6 +60,9 @@ public class WeaponManager : MonoBehaviour
 
         CurrentPrimary = PrimaryWeaponList[PrimaryIndex];
         CurrentSecondary = SecondaryWeaponList[SecondaryIndex];
+
+        EnergyMag = _EnergyMag;
+        BombsMag = _BombsMag;
 
         AudioSource = GetComponent<AudioSource>();
         AudioSource.clip = WeaponReadyAudoClip;

@@ -67,5 +67,6 @@ public class AdvancedWeapon : Weapon
     private void IncreaseWeaponLevel()
     {
         WeaponLevel++;
+        base.ProjectileToShoot = OtherProjectiles[WeaponLevel];
     }
 }
