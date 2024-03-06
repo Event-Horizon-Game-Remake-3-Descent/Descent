@@ -19,22 +19,32 @@ public class PlayerController : MonoBehaviour
     public float DecelerationSpeed;
     public float BankingSpeed;
     public float PlayerMaxSpeed;
+    Coroutine coroutine;
     
     Rigidbody Rb;
     float X = 0; // up and down mov
     float Y = 0; // left and right mov
-    
+
+    private void Awake()
+    {
+        Rb = GetComponent<Rigidbody>();
+    }
 
     private void Start()
     {
-        Rb = GetComponent<Rigidbody>();
+        Application.targetFrameRate = 60;
         
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked; //TODO: da spostare
+        
+    }
+
+    private void OnEnable()
+    {
         InputManager.InputMap.Overworld.Movement.canceled += Decelerate;
         InputManager.InputMap.Overworld.Movement.started += StopSlowDownCycle;
         InputManager.InputMap.Overworld.VerticalMovement.canceled += Decelerate;
         InputManager.InputMap.Overworld.VerticalMovement.started += StopSlowDownCycle;
-        
+
     }
 
     private void OnDisable()
@@ -61,7 +71,8 @@ public class PlayerController : MonoBehaviour
 
         if (InputManager.IsMoving(out Vector2 direction)) 
         {
-             StopCoroutine(SlowDown());
+            if (coroutine != null) { StopCoroutine(coroutine); }
+             
             
             Rb.AddForce(direction.y * Rb.transform.forward* PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
             Rb.AddForce(direction.x * Rb.transform.right * PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
@@ -75,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
         if (InputManager.IsMovingVertically(out Vector2 verticaldirection))
         {
+            if (coroutine != null) { StopCoroutine(coroutine); }
             Rb.AddForce(verticaldirection.y * Rb.transform.up * PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
         }
            
@@ -85,8 +97,9 @@ public class PlayerController : MonoBehaviour
     }
     void Decelerate(InputAction.CallbackContext obj )
     {
-        StartCoroutine(SlowDown());
+        coroutine = StartCoroutine(SlowDown());
     }
+        
 
     IEnumerator SlowDown()
     {
