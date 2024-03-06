@@ -36,7 +36,7 @@ public class WeaponTest_UI : MonoBehaviour
     private void UpdateSecondaryBulletCount()
     {
         SecondaryBulletLeft = weaponManager.CurrentSecondary.WeaponMag.ProjectileLeft;
-        BulletLeftSecondary_Text.SetText("Bullet Left Secondary: " + Mathf.Round(SecondaryBulletLeft + +0.45f));
+        BulletLeftSecondary_Text.text = (Mathf.Round(SecondaryBulletLeft + +0.45f)).ToString();
         MultipleShootingPoints.UpdateHud(SecondaryBulletLeft);
     }
 
