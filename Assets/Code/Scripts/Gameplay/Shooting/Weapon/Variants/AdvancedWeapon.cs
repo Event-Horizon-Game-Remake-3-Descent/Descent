@@ -76,7 +76,7 @@ public class AdvancedWeapon : Weapon
             return;
 
         base.ProjectileToShoot = OtherProjectiles[WeaponLevel];
-        base.WeaponName = base.Name+ " LV "+ (WeaponLevel+1);
         WeaponLevel++;
+        base.WeaponName = base.Name+" LV "+(WeaponLevel+1);
     }
 }
