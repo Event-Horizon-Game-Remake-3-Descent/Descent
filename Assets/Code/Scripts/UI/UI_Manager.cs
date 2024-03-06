@@ -15,33 +15,44 @@ public class UI_Manager : MonoBehaviour
         SettingsPanel.gameObject.SetActive(false);
     }
 
-    //TO REMOVE
-    private void Update()
+    private void OnEnable()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
-        {
+        InputManager.OnPauseMenu += Menu;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.OnPauseMenu -= Menu;
+    }
+
+    
+    private void Menu()
+    {
+        
+        
             if(!OnPause)
             {
-                HUD.gameObject.SetActive(false);
                 SettingsPanel.gameObject.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                Time.timeScale = 0;
+                
+                
             }
             else
             {
-                HUD.gameObject.SetActive(true);
                 SettingsPanel.gameObject.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-                Time.timeScale = 1;
+                
+                
             }
-            
+                
             OnPause = !OnPause;
-        }
     }
-    ////////////////////////////////////////////
-
+                
     public void QuitGame()
     {
         Application.Quit();
     }
+                
+            
+        
+    
+
 }

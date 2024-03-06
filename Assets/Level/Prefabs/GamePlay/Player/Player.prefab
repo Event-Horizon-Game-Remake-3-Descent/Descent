@@ -495,6 +495,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8846025007939096435, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
+      propertyPath: _BombsMag
+      value: 
+      objectReference: {fileID: 8082965349077687686}
+    - target: {fileID: 8846025007939096435, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
+      propertyPath: _EnergyMag
+      value: 
+      objectReference: {fileID: 300269040194405995}
     - target: {fileID: 9195268809870406435, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -504,8 +512,30 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
+--- !u!114 &300269040194405995 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 137728713501850004, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
+  m_PrefabInstance: {fileID: 415327945594503167}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85653c2af210fb54cb4bfd098e07a214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5981752515716130348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6251276282713922003, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
   m_PrefabInstance: {fileID: 415327945594503167}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8082965349077687686 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8498288890113876601, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
+  m_PrefabInstance: {fileID: 415327945594503167}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85653c2af210fb54cb4bfd098e07a214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

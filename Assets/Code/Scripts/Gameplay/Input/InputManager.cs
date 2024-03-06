@@ -7,15 +7,19 @@ public class InputManager : MonoBehaviour
     public delegate void OnShoot();
     public static event OnShoot OnPrimaryCalled = ()=> { };
     public static event OnShoot OnSecondaryCalled = () => { };
+    public delegate void OnPause();
+    public static event OnPause OnPauseMenu = () => { };
     public static InputMap InputMap;
-    public InputMap prova;
 
-    public static InputManager Instance;
+    bool AlreadyOnMenu;
+    
 
     public static Vector2 MovementInput => InputMap.Overworld.Movement.ReadValue<Vector2>();
     public static Vector3 BankingInput => InputMap.Overworld.Banking.ReadValue<Vector3>();
-
     public static Vector2 VerticalMovement => InputMap.Overworld.VerticalMovement.ReadValue<Vector2>();
+
+   
+
 
     private void Awake()
     {
@@ -27,6 +31,7 @@ public class InputManager : MonoBehaviour
         InputMap.Enable();
         InputMap.Overworld.ShootPrimary.performed += TriggerPrimary;
         InputMap.Overworld.ShootSecondary.performed += TriggerSecondary;
+        InputMap.Menu.Pause.performed += Paused;
     }
 
     private void TriggerPrimary(InputAction.CallbackContext f)
@@ -84,6 +89,31 @@ public class InputManager : MonoBehaviour
         return direction != Vector2.zero;
     }
 
-    
-    
+    private void Paused(InputAction.CallbackContext context )
+    {
+        if (!AlreadyOnMenu)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0f;
+            InputMap.Overworld.Disable();
+            
+            
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            InputMap.Overworld.Enable();
+            
+
+        }
+        AlreadyOnMenu =! AlreadyOnMenu;
+        OnPauseMenu();
+    }
+
+
+
+
+
+
 }
