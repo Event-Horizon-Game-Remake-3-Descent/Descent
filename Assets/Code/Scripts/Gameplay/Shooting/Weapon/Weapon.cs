@@ -20,7 +20,7 @@ public abstract class Weapon : MonoBehaviour
 
     [Header("Weapon Settings")]
     [SerializeField] protected string Name = "No Name";
-    public string WeaponName { get; private set; } = null;
+    public string WeaponName { get; protected set; } = null;
     [SerializeField] protected WeaponType Type = WeaponType.DEFAULT;
     public WeaponType WType {  get; private set; }
     [SerializeField] protected Projectile ProjectileToShoot;
@@ -30,6 +30,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected List<Transform> ShootingPoints = new List<Transform>();
     [SerializeField] protected bool SynchronousShooting = false;
     [SerializeField] protected bool IsUnlocked = false;
+    [SerializeField] protected int ScoreIfAlreadyUnlocked = 0;
     public bool Unlocked { get; private set; }
     [Space]
 
@@ -72,12 +73,29 @@ public abstract class Weapon : MonoBehaviour
 
     public abstract bool Shoot();
 
-    protected virtual void UnlockWeapon()
+    private void UnlockWeapon(WeaponType type)
     {
-        if(!IsUnlocked)
-            IsUnlocked = true;
-        //else
-            // increement mag size
+        if(type != WType)
+            return;
+
+        OnUnlock();
+    }
+
+    protected virtual void OnUnlock()
+    {
+        if (Unlocked)
+        {
+            Collectible.OnIncreaseScore?.Invoke(ScoreIfAlreadyUnlocked);
+        }
+        else
+        {
+            Unlocked = true;
+        }
+    }
+
+    protected void OnEnable()
+    {
+        Collectible.OnWeaponTaken += UnlockWeapon;
     }
 
 #if UNITY_EDITOR

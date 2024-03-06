@@ -16,6 +16,8 @@ public class Mag : MonoBehaviour
     [Header("Mag Settings")]
     [SerializeField] public float InitialMagSize = 0f;
     [SerializeField] public MagType MagMagType;
+    [SerializeField] public bool IsCapped = false;
+    [SerializeField] private float MaxValue = 200f;
 
     [HideInInspector] public float ProjectileLeft;
 
@@ -29,8 +31,10 @@ public class Mag : MonoBehaviour
         if (type != MagMagType)
             return;
         Debug.Log("Ammo Taken: " + type + "\nThis Mag Type: " + MagMagType);
-
+        
         ProjectileLeft += amount;
+        if(IsCapped && ProjectileLeft>MaxValue)
+            ProjectileLeft = MaxValue;
     }
 
     private void OnEnable()

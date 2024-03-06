@@ -16,6 +16,7 @@ public class AdvancedWeapon : Weapon
     {
         base.Awake();
         CurrentProjectile = base.ProjectileToShoot;
+        base.WeaponName = base.Name + " LV " + (WeaponLevel + 1);
     }
 
     public override bool Shoot()
@@ -64,9 +65,18 @@ public class AdvancedWeapon : Weapon
             return false;
     }
 
+    protected override void OnUnlock()
+    {
+        IncreaseWeaponLevel();
+    }
+
     private void IncreaseWeaponLevel()
     {
-        WeaponLevel++;
+        if (WeaponLevel > OtherProjectiles.Count - 1)
+            return;
+
         base.ProjectileToShoot = OtherProjectiles[WeaponLevel];
+        base.WeaponName = base.Name+ " LV "+ (WeaponLevel+1);
+        WeaponLevel++;
     }
 }

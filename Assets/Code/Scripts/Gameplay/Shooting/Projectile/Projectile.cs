@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     protected Rigidbody RigidBody;
     protected BoxCollider BoxCollider;
 
-    protected bool Hitted = false;
+    protected bool Hit = false;
 
     private void Awake()
     {
@@ -35,11 +35,9 @@ public class Projectile : MonoBehaviour
 
     protected void OnCollisionEnter(Collision collision)
     {
-        if (Hitted)
-            return;
-
         //Physics.OverlapSphere(transform.position, ExplosionRadius);
-        Hitted = true;
+        this.RigidBody.velocity = Vector3.zero;
+        Hit = true;
         BoxCollider.enabled = false;
         StartCoroutine(OnCollisionCoroutine());
     }

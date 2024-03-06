@@ -75,7 +75,7 @@ public class WeaponManager : MonoBehaviour
     }
 
     #region TO REMOVE
-    //////////TO REMOVE//////////////////////
+    //TODO: REMOVE
     [Space]
     [Header("TO REMOVE CHANGE KEYS")]
     public KeyCode CHANGE_PRIMARY;
@@ -122,18 +122,13 @@ public class WeaponManager : MonoBehaviour
     //Use The next index weapon
     private void ChangeWeapon(ref int Index, List<Weapon> WeaponList)
     {
-        Index++;
-        if (Index > WeaponList.Count -1)
-            Index = 0;
-
-        if (!WeaponList[Index].Unlocked)
+        do
         {
-            Debug.Log(WeaponList[Index].WeaponName + " Is Locked");
             Index++;
             if (Index > WeaponList.Count - 1)
                 Index = 0;
-            return;
-        }
+
+        } while (!WeaponList[Index].Unlocked);
     }
 
     //shoot functions
