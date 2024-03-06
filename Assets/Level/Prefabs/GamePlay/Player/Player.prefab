@@ -193,17 +193,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -1
-      outSlope: -1
+      inSlope: -5.418551
+      outSlope: -5.418551
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.14764103
+      value: 0.19999957
+      inSlope: -0.9027645
+      outSlope: -0.9027645
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.14355335
+    - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1
-      outSlope: -1
+      inSlope: -0.23464243
+      outSlope: -0.23464243
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -333,6 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoBankingSpeed: 30
   SmoothTime: 0.3
+  AutoBankingTreshold: 10
 --- !u!1001 &415327945594503167
 PrefabInstance:
   m_ObjectHideFlags: 0
