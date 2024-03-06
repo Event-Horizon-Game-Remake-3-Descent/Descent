@@ -75,7 +75,7 @@ public class WeaponManager : MonoBehaviour
     }
 
     #region TO REMOVE
-    //////////TO REMOVE//////////////////////
+    //TODO: REMOVE
     [Space]
     [Header("TO REMOVE CHANGE KEYS")]
     public KeyCode CHANGE_PRIMARY;
