@@ -13,6 +13,8 @@ public class WeaponTest_UI : MonoBehaviour
     [SerializeField] TMP_Text WeaponNameSecondary_Text;
     [SerializeField] TMP_Text BulletLeftSecondary_Text;
     [SerializeField] RawImage SecondaryWeaponImage;
+    [Header("Generic Weapon")]
+    [SerializeField] TMP_Text Energy_Text;
     [Space]
     [Header("HUD")]
     [SerializeField] RectTransform SingleShootingPoint;
@@ -25,18 +27,28 @@ public class WeaponTest_UI : MonoBehaviour
     private string SecondaryWeaponName = "";
 
     private float PrimaryBulletLeft;
+    private float EnergyLeft;
     private float SecondaryBulletLeft;
 
     private void UpdatePrimaryBulletCount()
     {
         PrimaryBulletLeft = weaponManager.CurrentPrimary.WeaponMag.ProjectileLeft;
-        BulletLeftPrimary_Text.text = (Mathf.Round(PrimaryBulletLeft + 0.45f)).ToString();
+        BulletLeftPrimary_Text.text = Mathf.Ceil(PrimaryBulletLeft).ToString();
+
+        if (weaponManager.CurrentPrimaryIndex == 0)
+            BulletLeftPrimary_Text.alpha = 0f;
+        else
+            BulletLeftPrimary_Text.alpha = 1f;
+        EnergyLeft = weaponManager.EnergyMag.ProjectileLeft;
+        Energy_Text.text = Mathf.Ceil(weaponManager.EnergyMag.ProjectileLeft).ToString();
+        
+        (Mathf.Round(PrimaryBulletLeft + 0.45f)).ToString();
     }
 
     private void UpdateSecondaryBulletCount()
     {
         SecondaryBulletLeft = weaponManager.CurrentSecondary.WeaponMag.ProjectileLeft;
-        BulletLeftSecondary_Text.text = (Mathf.Round(SecondaryBulletLeft + +0.45f)).ToString();
+        BulletLeftSecondary_Text.text = Mathf.Ceil(SecondaryBulletLeft).ToString();
         MultipleShootingPoints.UpdateHud(SecondaryBulletLeft);
     }
 

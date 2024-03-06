@@ -37,6 +37,7 @@ public class WeaponManager : MonoBehaviour
 
     //public using weapon
     [HideInInspector] public Weapon CurrentPrimary{ get; private set; }
+    [HideInInspector] public int CurrentPrimaryIndex{ get; private set; }
     [HideInInspector] public Weapon CurrentSecondary{ get; private set; }
     [HideInInspector] public Mag EnergyMag{ get; private set; }
     [HideInInspector] public Mag BombsMag { get; private set; }
@@ -94,6 +95,7 @@ public class WeaponManager : MonoBehaviour
                 CanChange = false;
                 ChangeWeapon(ref PrimaryIndex, PrimaryWeaponList);
                 CurrentPrimary = PrimaryWeaponList[PrimaryIndex];
+                CurrentPrimaryIndex = PrimaryIndex;
                 //call OnWeaponChanged event
                 OnWeaponChanged();
             }
