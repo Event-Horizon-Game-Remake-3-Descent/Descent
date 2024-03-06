@@ -30,7 +30,7 @@ public class WeaponTest_UI : MonoBehaviour
     private void UpdatePrimaryBulletCount()
     {
         PrimaryBulletLeft = weaponManager.CurrentPrimary.WeaponMag.ProjectileLeft;
-        BulletLeftPrimary_Text.SetText("Bullet Left Primary: " + Mathf.Round(PrimaryBulletLeft + 0.45f));
+        BulletLeftPrimary_Text.text = (Mathf.Round(PrimaryBulletLeft + 0.45f)).ToString();
     }
 
     private void UpdateSecondaryBulletCount()
