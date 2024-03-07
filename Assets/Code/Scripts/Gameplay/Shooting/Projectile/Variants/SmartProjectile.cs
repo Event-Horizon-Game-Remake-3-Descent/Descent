@@ -7,18 +7,19 @@ using UnityEngine;
 public class SmartProjectile : Projectile
 {
     [Header("Smart Projectile Settings")]
+    [SerializeField] float StartAfterSec = 1.5f;
     [SerializeField] float TriggerSize = 2.5f;
     [SerializeField] LayerMask Target;
     [SerializeField] float SteeringSpeed = 1f;
 
+    private float StartingTime;
     private bool Triggered = false;
     private Transform TargetTransform;
-
-    private Coroutine LookAtTargetCoroutine;
 
     new private void Awake()
     {
         base.Awake();
+        StartingTime = Time.time;
     }
 
     new private void Start()
@@ -29,7 +30,7 @@ public class SmartProjectile : Projectile
 
     private void FixedUpdate()
     {
-        if(!Triggered)
+        if(!Triggered && StartingTime > Time.time - StartAfterSec)
         {
             Collider[] ArrayOfColliders;
             ArrayOfColliders = Physics.OverlapSphere(transform.position, TriggerSize, Target);
@@ -40,8 +41,7 @@ public class SmartProjectile : Projectile
                 TargetTransform = ArrayOfColliders[0].transform;
                 //reset velocity
                 base.RigidBody.velocity = Vector3.zero;
-                LookAtTargetCoroutine = StartCoroutine(LookAtTarget());
-
+                StartCoroutine(LookAtTarget());
             }
         }
         else
@@ -63,9 +63,11 @@ public class SmartProjectile : Projectile
         }
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, TriggerSize);
     }
+#endif
 }

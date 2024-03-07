@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: Damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: ExplosionRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: ExplosionLayerMask.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
     - target: {fileID: 1589802051729350560, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -71,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 8804242499904749954, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880242215993171923, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_Pitch
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

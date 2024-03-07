@@ -9,7 +9,7 @@ public class HitScanProjectile : Projectile
 
     private RaycastHit RaycastHit;
 
-    private void Awake()
+    new private void Awake()
     {
 
     }
@@ -22,12 +22,16 @@ public class HitScanProjectile : Projectile
             transform.position = RaycastHit.point;
             transform.rotation = Quaternion.Euler(RaycastHit.normal);
             base.ParticlesOnDestroy.Play();
+
+            if (RaycastHit.collider.gameObject.TryGetComponent<IDamageable>(out IDamageable Damageable))
+                Damageable.TakeDamage(Damage);
+
         }
     }
 
     new private void OnCollisionEnter(Collision collision)
     {
-
+        
     }
 
     new protected virtual IEnumerator OnCollisionCoroutine()
