@@ -28,31 +28,20 @@ public class UI_Manager : MonoBehaviour
     
     private void Menu()
     {
-        
-        
-            if(!OnPause)
-            {
-                SettingsPanel.gameObject.SetActive(true);
-                
-                
-            }
-            else
-            {
-                SettingsPanel.gameObject.SetActive(false);
-                
-                
-            }
-                
-            OnPause = !OnPause;
+        if(!OnPause)
+        {
+            SettingsPanel.gameObject.SetActive(true);
+        }
+        else
+        {
+            SettingsPanel.gameObject.SetActive(false);
+        }
+        OnPause = !OnPause;
     }
-                
+
     public void QuitGame()
     {
         Application.Quit();
     }
-                
-            
-        
     
-
 }

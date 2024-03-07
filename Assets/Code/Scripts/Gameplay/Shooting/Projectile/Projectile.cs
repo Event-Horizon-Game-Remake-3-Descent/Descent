@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
 
     protected bool Hit = false;
 
-    private void Awake()
+    protected void Awake()
     {
         RigidBody = GetComponent<Rigidbody>();
         BoxCollider = GetComponent<BoxCollider>();
@@ -41,7 +41,6 @@ public class Projectile : MonoBehaviour
         BoxCollider.enabled = false;
         StartCoroutine(OnCollisionCoroutine());
     }
-
 
     protected virtual IEnumerator OnCollisionCoroutine()
     {
