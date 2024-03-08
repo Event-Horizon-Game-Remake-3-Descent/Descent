@@ -34,6 +34,7 @@ public class InputManager : MonoBehaviour
     private void OnEnable()
     {
         InputMap.Enable();
+        InputMap.Menu.Navigation.Disable();
         InputMap.Overworld.ShootPrimary.performed += TriggerPrimary;
         InputMap.Overworld.ShootSecondary.performed += TriggerSecondary;
         InputMap.Menu.Pause.performed += Paused;
@@ -107,7 +108,7 @@ public class InputManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
             InputMap.Overworld.Disable();
-            
+            InputMap.Menu.Navigation.Enable();
             
         }
         else
@@ -115,7 +116,8 @@ public class InputManager : MonoBehaviour
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
             InputMap.Overworld.Enable();
-            
+            InputMap.Menu.Navigation.Disable();
+
 
         }
         AlreadyOnMenu =! AlreadyOnMenu;
