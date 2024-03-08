@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    
     public float AutoBankingSpeed = 10f;
     private float AutoBankingValue = 0f; 
     private float AutobankingVelocity = 0f;
     public float SmoothTime = 0.3f;
     public float AutoBankingTreshold = 2f;
 
+    private void OnEnable()
+    {
+        PlayerController.OnKeyBoard += () => AutoBankingTreshold = 10;
+        PlayerController.OnGamePad += () => AutoBankingTreshold = 0.5f;
+    }
     void Update()
     {
         float mouseX = InputManager.InputMap.Overworld.MouseX.ReadValue<float>();

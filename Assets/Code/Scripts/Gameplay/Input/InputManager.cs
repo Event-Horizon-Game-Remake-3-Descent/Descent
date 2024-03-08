@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     public static event OnShoot OnSecondaryCalled = () => { };
     public delegate void OnPause();
     public static event OnPause OnPauseMenu = () => { };
+    
     public static InputMap InputMap;
 
     bool AlreadyOnMenu;

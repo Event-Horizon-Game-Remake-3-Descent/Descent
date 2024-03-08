@@ -8,8 +8,13 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     //public InputManager inputManager;
+    public delegate void GamePad();
+    public static event GamePad OnGamePad;
+    public static event GamePad OnKeyBoard;
 
     public float mouseSensitivity = 25f;
+    public float BaseMouseSensitivity = 250f;
+    public float GamepadSensMultiplier = 10f;
     public Transform mesh;
     public float XSpeed;
     public float YSpeed;
@@ -20,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public float BankingSpeed;
     public float PitchingSpeed;
     public float PlayerMaxSpeed;
+    public bool UsingGamepad;
     Coroutine Coroutine;
     
     
@@ -34,9 +40,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-      
-        
+        mouseSensitivity = BaseMouseSensitivity; 
     }
+        
 
     private void OnEnable()
     {
@@ -44,6 +50,10 @@ public class PlayerController : MonoBehaviour
         InputManager.InputMap.Overworld.Movement.started += StopSlowDownCycle;
         InputManager.InputMap.Overworld.VerticalMovement.canceled += Decelerate;
         InputManager.InputMap.Overworld.VerticalMovement.started += StopSlowDownCycle;
+        InputManager.InputMap.Overworld.MouseX.started += CheckTypeOfDevice;
+        InputManager.InputMap.Overworld.MouseY.started += CheckTypeOfDevice;
+
+
 
     }
 
@@ -53,10 +63,12 @@ public class PlayerController : MonoBehaviour
         InputManager.InputMap.Overworld.Movement.started -= StopSlowDownCycle;
         InputManager.InputMap.Overworld.VerticalMovement.canceled -= Decelerate;
         InputManager.InputMap.Overworld.VerticalMovement.started -= StopSlowDownCycle;
+        InputManager.InputMap.Overworld.MouseX.started -= CheckTypeOfDevice;
+        InputManager.InputMap.Overworld.MouseY.started -= CheckTypeOfDevice;
     }
     private void FixedUpdate()
     {
-       
+        
         float mouseX = InputManager.InputMap.Overworld.MouseX.ReadValue<float>() * mouseSensitivity *Time.fixedDeltaTime ;
         float mouseY = InputManager.InputMap.Overworld.MouseY.ReadValue<float>() * mouseSensitivity * Time.fixedDeltaTime ;
         Rb.velocity = Vector3.ClampMagnitude(Rb.velocity, PlayerMaxSpeed);
@@ -98,11 +110,29 @@ public class PlayerController : MonoBehaviour
             Rb.MoveRotation(Rb.rotation * pitchRotation);
         }
 
+    }
 
-
-
+    void CheckTypeOfDevice(InputAction.CallbackContext used)
+    {
+        var usedDevice = used.control;
+        if (usedDevice.device is Gamepad && UsingGamepad ==false) 
+        {
+            mouseSensitivity *= GamepadSensMultiplier; 
+            UsingGamepad = true;
+            OnGamePad();
+        }
+        else if (usedDevice.device is Mouse || usedDevice.device is Keyboard)
+        {
+            mouseSensitivity = BaseMouseSensitivity;
+            UsingGamepad = false;
+            OnKeyBoard();
+        }
+        
 
     }
+
+        
+
     void Decelerate(InputAction.CallbackContext obj )
     {
         Coroutine = StartCoroutine(SlowDown());
