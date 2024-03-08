@@ -26,6 +26,8 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         InputMap = new InputMap();
+        Application.targetFrameRate = 60;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void OnEnable()

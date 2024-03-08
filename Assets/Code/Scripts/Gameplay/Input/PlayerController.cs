@@ -34,9 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Application.targetFrameRate = 60;
-        
-        Cursor.lockState = CursorLockMode.Locked; //TODO: da spostare
+      
         
     }
 
@@ -92,18 +90,18 @@ public class PlayerController : MonoBehaviour
             Rb.AddForce(verticaldirection.y * Rb.transform.up * PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
         }
 
-        if (InputManager.IsPitching( out Vector2 pitching))
+        if (InputManager.IsPitching(out Vector2 pitching))
         {
-            
+
             Quaternion pitchRotation = Quaternion.Euler(pitching.x * PitchingSpeed * Time.fixedDeltaTime, 0, 0);
             Quaternion smoothRot = Quaternion.Slerp(Rb.rotation, pitchRotation, 0);
             Rb.MoveRotation(Rb.rotation * pitchRotation);
         }
-           
 
-        
 
-        
+
+
+
     }
     void Decelerate(InputAction.CallbackContext obj )
     {
