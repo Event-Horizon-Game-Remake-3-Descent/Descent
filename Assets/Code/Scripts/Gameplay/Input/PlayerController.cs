@@ -18,8 +18,10 @@ public class PlayerController : MonoBehaviour
     public AnimationCurve DecelerationCurve;
     public float DecelerationSpeed;
     public float BankingSpeed;
+    public float PitchingSpeed;
     public float PlayerMaxSpeed;
-    Coroutine coroutine;
+    Coroutine Coroutine;
+    
     
     Rigidbody Rb;
     float X = 0; // up and down mov
@@ -71,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
         if (InputManager.IsMoving(out Vector2 direction)) 
         {
-            if (coroutine != null) { StopCoroutine(coroutine); }
+            if (Coroutine != null) { StopCoroutine(Coroutine); }
              
             
             Rb.AddForce(direction.y * Rb.transform.forward* PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
@@ -80,14 +82,22 @@ public class PlayerController : MonoBehaviour
 
         if (InputManager.IsBanking(out Vector3 banking))
         {
-            Quaternion deltaRotation = Quaternion.Euler(0,0, banking.z);
+            Quaternion deltaRotation = Quaternion.Euler(0,0, banking.z * BankingSpeed * Time.deltaTime);
             Rb.MoveRotation(Rb.rotation*deltaRotation);
         }
 
         if (InputManager.IsMovingVertically(out Vector2 verticaldirection))
         {
-            if (coroutine != null) { StopCoroutine(coroutine); }
+            if (Coroutine != null) { StopCoroutine(Coroutine); }
             Rb.AddForce(verticaldirection.y * Rb.transform.up * PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        }
+
+        if (InputManager.IsPitching( out Vector2 pitching))
+        {
+            
+            Quaternion pitchRotation = Quaternion.Euler(pitching.x * PitchingSpeed * Time.fixedDeltaTime, 0, 0);
+            Quaternion smoothRot = Quaternion.Slerp(Rb.rotation, pitchRotation, 0);
+            Rb.MoveRotation(Rb.rotation * pitchRotation);
         }
            
 
@@ -97,7 +107,7 @@ public class PlayerController : MonoBehaviour
     }
     void Decelerate(InputAction.CallbackContext obj )
     {
-        coroutine = StartCoroutine(SlowDown());
+        Coroutine = StartCoroutine(SlowDown());
     }
         
 

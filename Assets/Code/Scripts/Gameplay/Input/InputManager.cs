@@ -17,6 +17,8 @@ public class InputManager : MonoBehaviour
     public static Vector2 MovementInput => InputMap.Overworld.Movement.ReadValue<Vector2>();
     public static Vector3 BankingInput => InputMap.Overworld.Banking.ReadValue<Vector3>();
     public static Vector2 VerticalMovement => InputMap.Overworld.VerticalMovement.ReadValue<Vector2>();
+    public static Vector2 PitchingInput => InputMap.Overworld.Pitching.ReadValue<Vector2>();
+
 
    
 
@@ -86,6 +88,12 @@ public class InputManager : MonoBehaviour
     public static bool IsMovingVertically ( out Vector2 direction)
     {
         direction = VerticalMovement;
+        return direction != Vector2.zero;
+    }
+
+    public static bool IsPitching ( out Vector2 direction)
+    {
+        direction = PitchingInput;
         return direction != Vector2.zero;
     }
 

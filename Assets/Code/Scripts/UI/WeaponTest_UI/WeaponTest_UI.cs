@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
+
 public class WeaponTest_UI : MonoBehaviour
 {
     [Header("Primay Weapon")]
@@ -20,6 +22,8 @@ public class WeaponTest_UI : MonoBehaviour
     [SerializeField] RectTransform SingleShootingPoint;
     [SerializeField] MultipleShootingPoints_HUD MultipleShootingPoints;
     [SerializeField] Texture DefaultWeaponImage;
+    [SerializeField] Image EnergyBarLeft;
+    [SerializeField] Image EnergyBarRight;
 
     private WeaponManager weaponManager;
 
@@ -118,6 +122,7 @@ public class WeaponTest_UI : MonoBehaviour
             //update UI
             UpdateInfo();
             MultipleShootingPoints.UpdateHud(0);
+            weaponManager.OnPrimaryFire += HandleVisualMag;
         };
 
         Collectible.OnUpdateUI += UpdateInfo;
@@ -129,4 +134,15 @@ public class WeaponTest_UI : MonoBehaviour
         //weaponManager.OnPrimaryFire -= UpdateBulletCount;
         //weaponManager.OnWeaponChanged -= UpdateInfo;
     }
+
+    void HandleVisualMag()
+    {
+        float diff = 100 - PrimaryBulletLeft;
+        if ((diff == Mathf.Floor(diff)) && EnergyLeft <= 100)
+        {
+            EnergyBarLeft.fillAmount -= 0.01f;
+            EnergyBarRight.fillAmount -= 0.01f;
+        }
+    }
+
 }

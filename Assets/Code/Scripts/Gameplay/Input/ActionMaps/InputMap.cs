@@ -89,6 +89,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pitching"",
+                    ""type"": ""Value"",
+                    ""id"": ""0ca8dbcf-7e13-422b-9adc-eab538940fee"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -278,6 +287,39 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""ShootPrimary"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""1b39648b-c769-4994-9478-578e52a7897e"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitching"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""4537b5ab-3be0-431d-b6ea-00fe534afb4e"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitching"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""dfd4dddf-8533-4513-a7fd-c299708768e0"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitching"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -321,6 +363,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_Overworld_VerticalMovement = m_Overworld.FindAction("VerticalMovement", throwIfNotFound: true);
         m_Overworld_ShootPrimary = m_Overworld.FindAction("ShootPrimary", throwIfNotFound: true);
         m_Overworld_ShootSecondary = m_Overworld.FindAction("ShootSecondary", throwIfNotFound: true);
+        m_Overworld_Pitching = m_Overworld.FindAction("Pitching", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
@@ -392,6 +435,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Overworld_VerticalMovement;
     private readonly InputAction m_Overworld_ShootPrimary;
     private readonly InputAction m_Overworld_ShootSecondary;
+    private readonly InputAction m_Overworld_Pitching;
     public struct OverworldActions
     {
         private @InputMap m_Wrapper;
@@ -403,6 +447,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         public InputAction @VerticalMovement => m_Wrapper.m_Overworld_VerticalMovement;
         public InputAction @ShootPrimary => m_Wrapper.m_Overworld_ShootPrimary;
         public InputAction @ShootSecondary => m_Wrapper.m_Overworld_ShootSecondary;
+        public InputAction @Pitching => m_Wrapper.m_Overworld_Pitching;
         public InputActionMap Get() { return m_Wrapper.m_Overworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -433,6 +478,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @ShootSecondary.started += instance.OnShootSecondary;
             @ShootSecondary.performed += instance.OnShootSecondary;
             @ShootSecondary.canceled += instance.OnShootSecondary;
+            @Pitching.started += instance.OnPitching;
+            @Pitching.performed += instance.OnPitching;
+            @Pitching.canceled += instance.OnPitching;
         }
 
         private void UnregisterCallbacks(IOverworldActions instance)
@@ -458,6 +506,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @ShootSecondary.started -= instance.OnShootSecondary;
             @ShootSecondary.performed -= instance.OnShootSecondary;
             @ShootSecondary.canceled -= instance.OnShootSecondary;
+            @Pitching.started -= instance.OnPitching;
+            @Pitching.performed -= instance.OnPitching;
+            @Pitching.canceled -= instance.OnPitching;
         }
 
         public void RemoveCallbacks(IOverworldActions instance)
@@ -530,6 +581,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         void OnVerticalMovement(InputAction.CallbackContext context);
         void OnShootPrimary(InputAction.CallbackContext context);
         void OnShootSecondary(InputAction.CallbackContext context);
+        void OnPitching(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
