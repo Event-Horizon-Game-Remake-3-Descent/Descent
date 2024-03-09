@@ -20,8 +20,9 @@ public class WeaponManager : MonoBehaviour
     public event WeaponShoot OnSecondaryFire = () => { };
 
     [Header("Weapons")]
-    [Tooltip("")]
+    [Tooltip("List Of Primary weapons usable by the player")]
     [SerializeField] private List<Weapon> PrimaryWeaponList;
+    [Tooltip("List Of Secondary weapons usable by the player")]
     [SerializeField] private List<Weapon> SecondaryWeaponList;
     [SerializeField] private Weapon FlareWeapon;
     [SerializeField] private Weapon BombWeapon;
@@ -33,6 +34,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private float ChangeWeaponCooldown;
     [Space]
     [Header("SFX")]
+    [Tooltip("Sound reproduced when player can swich weapon again -- NOT ACTIVE")]
     [SerializeField] private AudioClip WeaponReadyAudoClip;
 
     //public using weapon
@@ -52,13 +54,6 @@ public class WeaponManager : MonoBehaviour
 
     private void Awake()
     {
-        ////Disable primary weapons except for the first one
-        //for (int i = 1; i < PrimaryWeaponList.Count; i++)
-        //    PrimaryWeaponList[i].gameObject.SetActive(false);
-        ////Disable secondary weapons except for the first one
-        //for (int i = 1; i < SecondaryWeaponList.Count; i++)
-        //    SecondaryWeaponList[i].gameObject.SetActive(false);
-
         CurrentPrimary = PrimaryWeaponList[PrimaryIndex];
         CurrentSecondary = SecondaryWeaponList[SecondaryIndex];
 
@@ -160,11 +155,7 @@ public class WeaponManager : MonoBehaviour
     //subscribe to events
     private void OnEnable()
     {
-        OnWeaponChanged += () =>
-        {
-            //StopCoroutine(StartCooldown());
-            StartCoroutine(StartCooldown());
-        };
+        OnWeaponChanged += () => StartCoroutine(StartCooldown());
 
         InputManager.OnPrimaryCalled += ShootPrimary;
         InputManager.OnSecondaryCalled += ShootSecondary;
@@ -186,5 +177,4 @@ public class WeaponManager : MonoBehaviour
     {
 
     }
-
 }

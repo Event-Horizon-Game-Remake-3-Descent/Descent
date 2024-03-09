@@ -52,9 +52,6 @@ public class PlayerController : MonoBehaviour
         InputManager.InputMap.Overworld.VerticalMovement.started += StopSlowDownCycle;
         InputManager.InputMap.Overworld.MouseX.started += CheckTypeOfDevice;
         InputManager.InputMap.Overworld.MouseY.started += CheckTypeOfDevice;
-
-
-
     }
 
     private void OnDisable()
@@ -66,6 +63,7 @@ public class PlayerController : MonoBehaviour
         InputManager.InputMap.Overworld.MouseX.started -= CheckTypeOfDevice;
         InputManager.InputMap.Overworld.MouseY.started -= CheckTypeOfDevice;
     }
+
     private void FixedUpdate()
     {
         

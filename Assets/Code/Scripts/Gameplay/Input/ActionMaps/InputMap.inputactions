@@ -367,6 +367,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f90d0b52-735e-49e1-a936-de9d2cea2a51",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootSecondary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "87cbcdb4-78e4-4667-89b7-f4aebeadb206",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",

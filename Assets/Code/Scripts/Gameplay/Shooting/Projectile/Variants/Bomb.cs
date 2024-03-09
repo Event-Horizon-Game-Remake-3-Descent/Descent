@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Bomb : Projectile
+public class Bomb : Projectile, IDamageable
 {
     [Header("Bomb Settings")]
     [SerializeField] private float LifeTime = 30.0f;
@@ -71,4 +71,11 @@ public class Bomb : Projectile
         }
     }
 
+    public void TakeDamage(float Damage)
+    {
+        if (CanExplode)
+        {
+            Explode();
+        }
+    }
 }

@@ -19,16 +19,23 @@ public abstract class Weapon : MonoBehaviour
     }
 
     [Header("Weapon Settings")]
+    [Tooltip("Name showed in UI")]
     [SerializeField] protected string Name = "No Name";
     public string WeaponName { get; protected set; } = null;
     [SerializeField] protected WeaponType Type = WeaponType.DEFAULT;
     public WeaponType WType {  get; private set; }
+    [Tooltip("Prefab of the projectile to shoot")]
     [SerializeField] protected Projectile ProjectileToShoot;
+    [Tooltip("Delay between shots")]
     [SerializeField] protected float ShootDelay = 1f;
+    [Tooltip("Mag to get the bullet count from")]
     [SerializeField] protected Mag Mag;
+    [Tooltip("Mag bullet cost per projectile")]
     [SerializeField] protected float ProjectileCost = 1;
     [SerializeField] protected List<Transform> ShootingPoints = new List<Transform>();
+    [Tooltip("If true it will shoot one bullet for each shooting point in the same frame")]
     [SerializeField] protected bool SynchronousShooting = false;
+    [Tooltip("Rappresent the default state of the weapon")]
     [SerializeField] protected bool IsUnlocked = false;
     [SerializeField] protected int ScoreIfAlreadyUnlocked = 0;
     public bool Unlocked { get; private set; }
@@ -40,6 +47,7 @@ public abstract class Weapon : MonoBehaviour
     [Space]
 
     [Header("SFX")]
+    [Tooltip("List of sounds played when shooting")]
     [SerializeField] protected List<AudioClip> ShootSounds;
     [Space]
 
@@ -84,13 +92,9 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void OnUnlock()
     {
         if (Unlocked)
-        {
             Collectible.OnIncreaseScore?.Invoke(ScoreIfAlreadyUnlocked);
-        }
         else
-        {
             Unlocked = true;
-        }
     }
 
     protected void OnEnable()
@@ -109,8 +113,6 @@ public abstract class Weapon : MonoBehaviour
             Gizmos.DrawRay(ShootingPoints[i].position, ShootingPoints[i].forward * ShootDirectionLenght_Gizsmo);
 
             //draw gun position
-            //Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale);
-            //Gizmos.matrix = rotationMatrix;
             Gizmos.color = Weapon_GizsmoColor;
             Gizmos.DrawWireSphere(ShootingPoints[i].position, WeaponGismoSize);
         }
