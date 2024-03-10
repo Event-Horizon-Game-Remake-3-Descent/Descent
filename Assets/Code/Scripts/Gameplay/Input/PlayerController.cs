@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public AnimationCurve DecelerationCurve;
     public float DecelerationSpeed;
     public float BankingSpeed;
+    public bool IsBanking;
     public float PitchingSpeed;
     public float PlayerMaxSpeed;
     public bool UsingGamepad;
@@ -104,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
         if (InputManager.IsBanking(out Vector3 banking))
         {
+            
             Quaternion deltaRotation = Quaternion.Euler(0, 0, banking.z * BankingSpeed * Time.fixedDeltaTime);
             Quaternion newRotation = Rb.rotation * deltaRotation;
             float currentZAngle = NormalizeAngle(newRotation.eulerAngles.z);
@@ -147,7 +149,7 @@ public class PlayerController : MonoBehaviour
     void CheckTypeOfDevice(InputAction.CallbackContext used)
     {
         var usedDevice = used.control;
-        if (usedDevice.device is Gamepad && UsingGamepad ==false) 
+        if (usedDevice.device is Gamepad && UsingGamepad == false) 
         {
             mouseSensitivity *= GamepadSensMultiplier; 
             UsingGamepad = true;
