@@ -27,8 +27,10 @@ public class PlayerController : MonoBehaviour
     public float PlayerMaxSpeed;
     public bool UsingGamepad;
     Coroutine Coroutine;
-    
-    
+    IEnumerator currentSnapCoroutine;
+    public float SnapSpeed = 10;
+    int targetZAngle = 0; 
+
     Rigidbody Rb;
     float X = 0; // up and down mov
     float Y = 0; // left and right mov
@@ -40,18 +42,22 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        mouseSensitivity = BaseMouseSensitivity; 
-    }
-        
-
-    private void OnEnable()
-    {
+        mouseSensitivity = BaseMouseSensitivity;
         InputManager.InputMap.Overworld.Movement.canceled += Decelerate;
         InputManager.InputMap.Overworld.Movement.started += StopSlowDownCycle;
         InputManager.InputMap.Overworld.VerticalMovement.canceled += Decelerate;
         InputManager.InputMap.Overworld.VerticalMovement.started += StopSlowDownCycle;
         InputManager.InputMap.Overworld.MouseX.started += CheckTypeOfDevice;
         InputManager.InputMap.Overworld.MouseY.started += CheckTypeOfDevice;
+    }
+        
+
+    private void OnEnable()
+    {
+        
+
+
+
     }
 
     private void OnDisable()
@@ -63,7 +69,6 @@ public class PlayerController : MonoBehaviour
         InputManager.InputMap.Overworld.MouseX.started -= CheckTypeOfDevice;
         InputManager.InputMap.Overworld.MouseY.started -= CheckTypeOfDevice;
     }
-
     private void FixedUpdate()
     {
         
@@ -90,8 +95,28 @@ public class PlayerController : MonoBehaviour
 
         if (InputManager.IsBanking(out Vector3 banking))
         {
-            Quaternion deltaRotation = Quaternion.Euler(0,0, banking.z * BankingSpeed * Time.deltaTime);
-            Rb.MoveRotation(Rb.rotation*deltaRotation);
+            Quaternion deltaRotation = Quaternion.Euler(0, 0, banking.z * BankingSpeed * Time.fixedDeltaTime);
+            Quaternion newRotation = Rb.rotation * deltaRotation;
+            float currentZAngle = NormalizeAngle(newRotation.eulerAngles.z);
+            targetZAngle = DetermineSnapTargetAngle(currentZAngle);
+
+            Rb.MoveRotation(Quaternion.Euler(Rb.rotation.eulerAngles.x, Rb.rotation.eulerAngles.y, currentZAngle));
+
+            if (currentSnapCoroutine != null)
+            {
+                StopCoroutine(currentSnapCoroutine);
+            }
+            currentSnapCoroutine = SnapToAngle(targetZAngle);
+            StartCoroutine(currentSnapCoroutine);
+        }
+        else if (currentSnapCoroutine == null) // Se non si sta eseguendo banking, assicura lo snap all'angolo più vicino
+        {
+            float currentZAngle = NormalizeAngle(Rb.rotation.eulerAngles.z);
+            if (Mathf.Abs(currentZAngle - targetZAngle) > 0.01f)
+            {
+                currentSnapCoroutine = SnapToAngle(targetZAngle);
+                StartCoroutine(currentSnapCoroutine);
+            }
         }
 
         if (InputManager.IsMovingVertically(out Vector2 verticaldirection))
@@ -154,42 +179,71 @@ public class PlayerController : MonoBehaviour
     {
         StopAllCoroutines();
     }
-        
-
-        
-           
-
-
-        
 
 
 
 
+    float NormalizeAngle(float angle)
+    {
+        angle %= 360;
+        if (angle > 180)
+            return angle - 360;
+        return angle;
+    }
+
+    int DetermineSnapTargetAngle(float currentZAngle)
+    {
+        int baseAngle = Mathf.FloorToInt(currentZAngle / 90) * 90;
+        int nextAngle = baseAngle + 90;
+        int prevAngle = baseAngle - 90;
+
+        if (currentZAngle - baseAngle >= 31) return nextAngle;
+        if (baseAngle - currentZAngle >= 31) return prevAngle;
+
+        return baseAngle;
+    }
+
+    IEnumerator SnapToAngle(int targetAngle)
+    {
+        while (Mathf.Abs(NormalizeAngle(Rb.rotation.eulerAngles.z) - targetAngle) > 0.01f)
+        {
+            float angle = Mathf.MoveTowardsAngle(Rb.rotation.eulerAngles.z, targetAngle, SnapSpeed * Time.fixedDeltaTime);
+            Rb.MoveRotation(Quaternion.Euler(Rb.rotation.eulerAngles.x, Rb.rotation.eulerAngles.y, angle));
+            yield return new WaitForFixedUpdate();
+        }
+        currentSnapCoroutine = null; 
+    }
 
 
 
-   
-        
-        
 
 
 
-            
 
 
-       
 
 
-            
-
-        
-
-            
-               
-    
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
