@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public delegate void GamePad();
     public static event GamePad OnGamePad;
     public static event GamePad OnKeyBoard;
+    public delegate void PlayerState();
+    public static event PlayerState OnPlayerDead;
 
     public float mouseSensitivity = 25f;
     public float BaseMouseSensitivity = 250f;
@@ -29,7 +31,8 @@ public class PlayerController : MonoBehaviour
     Coroutine Coroutine;
     IEnumerator currentSnapCoroutine;
     public float SnapSpeed = 10;
-    int targetZAngle = 0; 
+    int targetZAngle = 0;
+    float PlayerHp;
 
     Rigidbody Rb;
     float X = 0; // up and down mov
@@ -42,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        PlayerHp = 100f;
         mouseSensitivity = BaseMouseSensitivity;
         InputManager.InputMap.Overworld.Movement.canceled += Decelerate;
         InputManager.InputMap.Overworld.Movement.started += StopSlowDownCycle;
@@ -68,6 +72,11 @@ public class PlayerController : MonoBehaviour
         InputManager.InputMap.Overworld.VerticalMovement.started -= StopSlowDownCycle;
         InputManager.InputMap.Overworld.MouseX.started -= CheckTypeOfDevice;
         InputManager.InputMap.Overworld.MouseY.started -= CheckTypeOfDevice;
+    }
+
+    private void Update()
+    {
+        if (PlayerHp <= 0) { OnPlayerDead(); }
     }
     private void FixedUpdate()
     {

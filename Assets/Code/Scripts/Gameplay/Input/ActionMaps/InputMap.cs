@@ -98,6 +98,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwitchCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""9058ef3f-c8e6-44e5-96a1-dcd6785c0b23"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -452,6 +461,28 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""Pitching"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b9d30bbd-0cc2-4e8f-9ff4-1de79dde7447"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1fa56ce-1807-45dd-9623-d94720f5cd51"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -571,6 +602,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_Overworld_ShootPrimary = m_Overworld.FindAction("ShootPrimary", throwIfNotFound: true);
         m_Overworld_ShootSecondary = m_Overworld.FindAction("ShootSecondary", throwIfNotFound: true);
         m_Overworld_Pitching = m_Overworld.FindAction("Pitching", throwIfNotFound: true);
+        m_Overworld_SwitchCamera = m_Overworld.FindAction("SwitchCamera", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
@@ -644,6 +676,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Overworld_ShootPrimary;
     private readonly InputAction m_Overworld_ShootSecondary;
     private readonly InputAction m_Overworld_Pitching;
+    private readonly InputAction m_Overworld_SwitchCamera;
     public struct OverworldActions
     {
         private @InputMap m_Wrapper;
@@ -656,6 +689,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         public InputAction @ShootPrimary => m_Wrapper.m_Overworld_ShootPrimary;
         public InputAction @ShootSecondary => m_Wrapper.m_Overworld_ShootSecondary;
         public InputAction @Pitching => m_Wrapper.m_Overworld_Pitching;
+        public InputAction @SwitchCamera => m_Wrapper.m_Overworld_SwitchCamera;
         public InputActionMap Get() { return m_Wrapper.m_Overworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -689,6 +723,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Pitching.started += instance.OnPitching;
             @Pitching.performed += instance.OnPitching;
             @Pitching.canceled += instance.OnPitching;
+            @SwitchCamera.started += instance.OnSwitchCamera;
+            @SwitchCamera.performed += instance.OnSwitchCamera;
+            @SwitchCamera.canceled += instance.OnSwitchCamera;
         }
 
         private void UnregisterCallbacks(IOverworldActions instance)
@@ -717,6 +754,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Pitching.started -= instance.OnPitching;
             @Pitching.performed -= instance.OnPitching;
             @Pitching.canceled -= instance.OnPitching;
+            @SwitchCamera.started -= instance.OnSwitchCamera;
+            @SwitchCamera.performed -= instance.OnSwitchCamera;
+            @SwitchCamera.canceled -= instance.OnSwitchCamera;
         }
 
         public void RemoveCallbacks(IOverworldActions instance)
@@ -798,6 +838,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         void OnShootPrimary(InputAction.CallbackContext context);
         void OnShootSecondary(InputAction.CallbackContext context);
         void OnPitching(InputAction.CallbackContext context);
+        void OnSwitchCamera(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
