@@ -10,12 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2395391811114472090, guid: c0e89f26cfaec0841992b2187235b9c2, type: 3}
       propertyPath: m_Name
-      value: VulkanCollectible
+      value: SpreadFireCollectible
       objectReference: {fileID: 0}
     - target: {fileID: 7913113818317379708, guid: c0e89f26cfaec0841992b2187235b9c2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bc6da4580f5514e458fe5def87e138be, type: 2}
+      objectReference: {fileID: 2100000, guid: a32645fa20ea1b54faeca775e36a97b0, type: 2}
     - target: {fileID: 8414462237770119486, guid: c0e89f26cfaec0841992b2187235b9c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8742940802507182877, guid: c0e89f26cfaec0841992b2187235b9c2, type: 3}
       propertyPath: WeaponType
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

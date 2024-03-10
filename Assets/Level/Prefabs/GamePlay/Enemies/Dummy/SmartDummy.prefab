@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8687460004581076469}
-  - component: {fileID: 1554666858150230806}
+  - component: {fileID: -9045417706623436151}
   - component: {fileID: 4036310499438203315}
   - component: {fileID: 2118727921522554400}
   - component: {fileID: 3335971742359814493}
   - component: {fileID: 1755164581681385305}
   m_Layer: 7
-  m_Name: Dummy
+  m_Name: SmartDummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +36,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1554666858150230806
+--- !u!114 &-9045417706623436151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1581523010215951242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec81e5a8ee7d6df478569c111f777834, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e5d432e5584dcf409f42245d41bd40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &4036310499438203315

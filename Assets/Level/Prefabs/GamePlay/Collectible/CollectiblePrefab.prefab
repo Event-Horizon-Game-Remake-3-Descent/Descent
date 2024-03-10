@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 444545989499583621}
   - component: {fileID: 1043880164907770779}
   - component: {fileID: 7913113818317379708}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8742940802507182877}
   - component: {fileID: 1535306644721457515}
   - component: {fileID: 7571862473825983868}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CollectiblePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
