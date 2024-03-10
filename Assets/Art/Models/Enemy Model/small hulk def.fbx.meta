@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4db30a50be9950740be60e161748f8f9
+guid: 0a9df9dcc9a7634458c3e8ac95a8f517
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: navicella serpente_lambert1_BaseColor
-    second: {fileID: 2800000, guid: 8de946f7e136cc54e9753fbc8aabfbc6, type: 3}
+    second: {fileID: 2800000, guid: e8ec725488b0e14489e79e7a279b3e5a, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
