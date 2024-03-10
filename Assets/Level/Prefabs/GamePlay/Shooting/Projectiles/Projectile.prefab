@@ -295,7 +295,7 @@ MonoBehaviour:
   ExplosionLayerMask:
     serializedVersion: 2
     m_Bits: 192
-  Speed: 25
+  Speed: 35
   MeshToHide: {fileID: 4792943495868850121}
   ParticlesOnDestroy: {fileID: 0}
   ExplosionSFX: {fileID: 8300000, guid: 63a8f76af126f724b8bad651fac81759, type: 3}
@@ -431,7 +431,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &6205572645371665523
 CapsuleCollider:
   m_ObjectHideFlags: 0

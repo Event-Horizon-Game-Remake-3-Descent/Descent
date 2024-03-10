@@ -130,8 +130,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e021c4f37562247458813dd010f7fa57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
+  Damage: 1
   ExplosionRadius: 0
+  ExplosionLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   Speed: 15
+  MeshToHide: {fileID: 0}
   ParticlesOnDestroy: {fileID: 0}
+  ExplosionSFX: {fileID: 0}
+  ExplosionGizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   LifeTimeOnCollision: 10
