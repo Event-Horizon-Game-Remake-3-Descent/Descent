@@ -5,27 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class Dummy : MonoBehaviour, IDamageable
 {
+    [SerializeField] private float HealthPoints = 0.1f;
+    public float HP { get; set; }
+
+    private void Awake()
+    {
+        HP = HealthPoints;
+    }
+
     public void TakeDamage(float Damage)
     {
         Debug.Log("Damage: "+Damage);
         Destroy(this.gameObject);
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(collision.gameObject.CompareTag("Projectile"))
-    //    {
-    //        Debug.Log("Hitted By: " + collision.gameObject.name + "\nDamage: "+collision.gameObject.GetComponent<Projectile>().Damage);
-    //        Destroy(this.gameObject);
-    //    }
-    //}
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Projectile"))
-    //    {
-    //        Debug.Log("Hitted By: " + other.gameObject.name + "\nDamage: "+ other.GetComponent<Projectile>().Damage);
-    //        Destroy(this.gameObject);
-    //    }
-    //}
 }

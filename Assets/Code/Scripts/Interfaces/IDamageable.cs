@@ -1,6 +1,13 @@
+using UnityEditor;
+
 public interface IDamageable
 {
-    public void TakeDamage(float Damage);
+    float HP { set; get; }
+    
+    public void TakeDamage(float Damage)
+    {
+        HP -= Damage;
+    }
 
     //TODO: Add damage event, add HP value
 }

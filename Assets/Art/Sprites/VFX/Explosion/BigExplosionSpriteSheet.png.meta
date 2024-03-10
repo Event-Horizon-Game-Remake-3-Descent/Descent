@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: de85477b811e5254cad644640103de45
+guid: 30547d29c67467f40b86d622da6e8639
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Vulkan_Hit_Particles_0
+      name: BigExplosionSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 32
-        height: 32
+        y: 341.3333
+        width: 170.66667
+        height: 170.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b20e4f97e6b94148bb0f6849a2d2761
-      internalID: -1394433589
+      spriteID: acfa94860d3f06a4a9c985583900a582
+      internalID: 18266531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vulkan_Hit_Particles_1
+      name: BigExplosionSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
+        x: 170
+        y: 341.3333
+        width: 170.66667
+        height: 170.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e15ded93f09c001469cad11bae5ec1d2
-      internalID: 523953133
+      spriteID: 5fa1d1c559197a941908a825bae9ec80
+      internalID: 1611266026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vulkan_Hit_Particles_2
+      name: BigExplosionSpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
+        x: 340
+        y: 341.3333
+        width: 170.66667
+        height: 170.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 376d1c2e17052704faa2fe87a428452c
-      internalID: -2103871865
+      spriteID: 8b9ef07f6b66fdc4cb9c61034a1a1b32
+      internalID: -1388236282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vulkan_Hit_Particles_3
+      name: BigExplosionSpriteSheet_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 32
-        height: 32
+        y: 171.33333
+        width: 170.66667
+        height: 170.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5192d16dd9bfeb642820b4027d1c95f5
-      internalID: -1997377199
+      spriteID: aab8a3b95552afd4d8609b1924f94813
+      internalID: -1212481396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vulkan_Hit_Particles_4
+      name: BigExplosionSpriteSheet_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
+        x: 170
+        y: 171.33333
+        width: 170.66667
+        height: 170.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,8 +195,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a266ceaf9fba6b4286da9c6bc45a9d2
-      internalID: 504621151
+      spriteID: 8bbc1393019c99f49b8880ddab6bf1c3
+      internalID: 142681319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigExplosionSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 171.33333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e31337d39e370444a00f8a52743721a
+      internalID: -1695179123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigExplosionSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.3333282
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f60a5105e3724874a9f9091fad9e250b
+      internalID: 831857757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigExplosionSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1.3333282
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69b76678a93e29343938427ff8bed901
+      internalID: 1795607668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigExplosionSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1.3333282
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 441011035a3179240bccf527b4442ab2
+      internalID: -818453246
       vertices: []
       indices: 
       edges: []
@@ -212,11 +296,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Vulkan_Hit_Particles_0: -1394433589
-      Vulkan_Hit_Particles_1: 523953133
-      Vulkan_Hit_Particles_2: -2103871865
-      Vulkan_Hit_Particles_3: -1997377199
-      Vulkan_Hit_Particles_4: 504621151
+      BigExplosionSpriteSheet_0: 18266531
+      BigExplosionSpriteSheet_1: 1611266026
+      BigExplosionSpriteSheet_2: -1388236282
+      BigExplosionSpriteSheet_3: -1212481396
+      BigExplosionSpriteSheet_4: 142681319
+      BigExplosionSpriteSheet_5: -1695179123
+      BigExplosionSpriteSheet_6: 831857757
+      BigExplosionSpriteSheet_7: 1795607668
+      BigExplosionSpriteSheet_8: -818453246
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

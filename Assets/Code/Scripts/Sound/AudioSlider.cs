@@ -14,28 +14,31 @@ public class AudioSlider : MonoBehaviour
     [SerializeField] private Slider Slider;
     [SerializeField] private AudioMixerGroup SubMixer;
     [SerializeField] private AudioType Type;
+    [SerializeField][Range(0, 1f)] private float DefaultVolume = 1.0f;
 
     private float Volume = 0f;
-    private float DefaultVolume = 0f;
+
+    //Volume is saved in DB
 
     private void Awake()
     {
         if (!PlayerPrefs.HasKey(Type.ToString()+"Volume"))
         {
-            Volume = DefaultVolume;
+            Volume = 20 * Mathf.Log10(DefaultVolume);
+            Debug.Log(Volume);
             PlayerPrefs.SetFloat(Type.ToString()+"Volume", Volume);
         }
         else
         {
             Volume = PlayerPrefs.GetFloat(Type.ToString()+"Volume");
         }
-        Slider.maxValue = 0f;
-        Slider.minValue = -80f;
+        Slider.maxValue = 1f;
+        Slider.minValue = 0.0001f;
     }
 
     private void Start()
     {
-        Slider.value = Volume;
+        Slider.value = Mathf.Pow(10f, Volume / 20f);
     }
 
     private void OnEnable()
@@ -52,6 +55,12 @@ public class AudioSlider : MonoBehaviour
     {
         if (Slider.value != Volume)
             Volume = Slider.value;
+
+        //from linear to Logarithmic
+        value = 20 * Mathf.Log10(value);
+        Volume = value;
+
+        Debug.Log(Volume);
 
         SubMixer.audioMixer.SetFloat(Type.ToString()+"Volume", value);
         PlayerPrefs.SetFloat(Type.ToString()+"Volume", value);

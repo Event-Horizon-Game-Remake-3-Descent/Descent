@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: de85477b811e5254cad644640103de45
+guid: e7c285ec28b6fe14fbc0110d76981aa6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Vulkan_Hit_Particles_0
+      name: GenericHitParticles_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 32
-        height: 32
+        y: 90
+        width: 102.4
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b20e4f97e6b94148bb0f6849a2d2761
-      internalID: -1394433589
+      spriteID: f561d9ed279d27f4db22a2df6a9e1309
+      internalID: -1215885834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vulkan_Hit_Particles_1
+      name: GenericHitParticles_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
+        x: 102
+        y: 90
+        width: 102.4
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e15ded93f09c001469cad11bae5ec1d2
-      internalID: 523953133
+      spriteID: c7249a4f22f0c6b4696a042e8e669c90
+      internalID: 129572840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vulkan_Hit_Particles_2
+      name: GenericHitParticles_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
+        x: 204
+        y: 90
+        width: 102.4
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 376d1c2e17052704faa2fe87a428452c
-      internalID: -2103871865
+      spriteID: 52db422cb43417e4b93713e3e0ea0727
+      internalID: 1878460907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vulkan_Hit_Particles_3
+      name: GenericHitParticles_3
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 90
+        width: 102.4
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebfe169e0d8f08b4d9793f825929efd1
+      internalID: -1342832878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GenericHitParticles_4
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 90
+        width: 102.4
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee69a82b67401fb49b87e2f4a2034b98
+      internalID: 966531375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GenericHitParticles_5
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 102.4
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5192d16dd9bfeb642820b4027d1c95f5
-      internalID: -1997377199
+      spriteID: d6c5279482148484aa54bf8a4ec78570
+      internalID: 1297409983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vulkan_Hit_Particles_4
+      name: GenericHitParticles_6
       rect:
         serializedVersion: 2
-        x: 32
+        x: 102
         y: 0
-        width: 32
-        height: 32
+        width: 102.4
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,8 +237,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a266ceaf9fba6b4286da9c6bc45a9d2
-      internalID: 504621151
+      spriteID: 82f74c5f94a38e547be43ac7b5346f54
+      internalID: -662825623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GenericHitParticles_7
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 0
+        width: 102.4
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97a0fdcc8518eb441a628034efd83c04
+      internalID: -294746266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GenericHitParticles_8
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 0
+        width: 102.4
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a700555c205365a4aa5c8d337d496519
+      internalID: 749259205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GenericHitParticles_9
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 0
+        width: 102.4
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f712a630370d534488e601bb8810b00
+      internalID: -1180185928
       vertices: []
       indices: 
       edges: []
@@ -212,11 +317,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Vulkan_Hit_Particles_0: -1394433589
-      Vulkan_Hit_Particles_1: 523953133
-      Vulkan_Hit_Particles_2: -2103871865
-      Vulkan_Hit_Particles_3: -1997377199
-      Vulkan_Hit_Particles_4: 504621151
+      GenericHitParticles_0: -1215885834
+      GenericHitParticles_1: 129572840
+      GenericHitParticles_2: 1878460907
+      GenericHitParticles_3: -1342832878
+      GenericHitParticles_4: 966531375
+      GenericHitParticles_5: 1297409983
+      GenericHitParticles_6: -662825623
+      GenericHitParticles_7: -294746266
+      GenericHitParticles_8: 749259205
+      GenericHitParticles_9: -1180185928
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

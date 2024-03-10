@@ -11,6 +11,9 @@ public class Bomb : Projectile, IDamageable
 
     private bool CanExplode = false;
 
+    public float HP { get; set; } = 0.1f;
+
+
     //prevent moving
     new private void Awake()
     {
@@ -22,7 +25,7 @@ public class Bomb : Projectile, IDamageable
     new private void Start()
     {
         StartCoroutine(CoroutineOnActive());
-        StartCoroutine(ExplodeAfterTineCoroutine());
+        StartCoroutine(ExplodeAfterTimeCoroutine());
     }
 
     private IEnumerator CoroutineOnActive()
@@ -32,14 +35,17 @@ public class Bomb : Projectile, IDamageable
         base.CapsuleCollider.enabled = true;
     }
 
-    private IEnumerator ExplodeAfterTineCoroutine()
+    private IEnumerator ExplodeAfterTimeCoroutine()
     {
         yield return new WaitForSeconds(LifeTime);
-        Explode();
+        if(CanExplode)
+            Explode();
     }
 
     private void Explode()
     {
+        CanExplode = false;
+
         base.AudioSource.Play();
         base.ParticlesOnDestroy.Play();
 
@@ -73,7 +79,8 @@ public class Bomb : Projectile, IDamageable
 
     public void TakeDamage(float Damage)
     {
-        if (CanExplode)
+        HP -= Damage;
+        if (CanExplode && HP<=0f)
         {
             Explode();
         }

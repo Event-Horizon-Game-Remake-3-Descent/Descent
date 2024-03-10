@@ -535,6 +535,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6994938973494098557, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
+      propertyPath: Mag
+      value: 
+      objectReference: {fileID: 300269040194405995}
+    - target: {fileID: 6994938973494098557, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
       propertyPath: IsUnlocked
       value: 0
       objectReference: {fileID: 0}

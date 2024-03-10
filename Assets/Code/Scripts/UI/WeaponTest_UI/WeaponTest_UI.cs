@@ -43,10 +43,10 @@ public class WeaponTest_UI : MonoBehaviour
             BulletLeftPrimary_Text.alpha = 0f;
         else
             BulletLeftPrimary_Text.alpha = 1f;
+
         EnergyLeft = weaponManager.EnergyMag.ProjectileLeft;
+
         Energy_Text.text = Mathf.Ceil(weaponManager.EnergyMag.ProjectileLeft).ToString();
-        
-        (Mathf.Round(PrimaryBulletLeft + 0.45f)).ToString();
     }
 
     private void UpdateSecondaryBulletCount()
@@ -137,11 +137,15 @@ public class WeaponTest_UI : MonoBehaviour
 
     void HandleVisualMag()
     {
-        float diff = 100 - PrimaryBulletLeft;
-        if ((diff == Mathf.Floor(diff)) && EnergyLeft <= 100)
+        if (EnergyLeft <= 100)
         {
-            EnergyBarLeft.fillAmount -= 0.01f;
-            EnergyBarRight.fillAmount -= 0.01f;
+            EnergyBarLeft.fillAmount = EnergyLeft / 100;
+            EnergyBarRight.fillAmount = EnergyLeft / 100;
+        }
+        else if(EnergyLeft > 100)
+        {
+            EnergyBarLeft.fillAmount = 1f;
+            EnergyBarRight.fillAmount = 1f;
         }
     }
 

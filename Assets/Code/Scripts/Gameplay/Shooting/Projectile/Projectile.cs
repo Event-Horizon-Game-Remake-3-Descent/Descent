@@ -78,8 +78,10 @@ public class Projectile : MonoBehaviour
         if (ExplosionSFX != null && AudioSource!=null) //play explosion sound if present
         {
             this.AudioSource.Play();
-            Destroy(this.gameObject, ExplosionSFX.length);
         }
+        
+        if(ParticlesOnDestroy != null)
+            ParticlesOnDestroy.Play();
         else
             Destroy(this.gameObject);
 
