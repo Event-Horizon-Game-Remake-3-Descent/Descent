@@ -36,6 +36,7 @@ public class Projectile : MonoBehaviour
         RigidBody = GetComponent<Rigidbody>();
         RigidBody.freezeRotation = true;
         RigidBody.useGravity = false;
+        ParticlesOnDestroy = GetComponent<ParticleSystem>();
     }
 
     protected void Start()
