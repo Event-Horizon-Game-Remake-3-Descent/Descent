@@ -139,6 +139,9 @@ public class WeaponManager : MonoBehaviour
     {
         if (SecondaryWeaponList[SecondaryIndex].Shoot())
             OnSecondaryFire();
+    }private void ShootBomb()
+    {
+        BombWeapon.Shoot();
     }
 
     private IEnumerator StartCooldown()
@@ -159,6 +162,7 @@ public class WeaponManager : MonoBehaviour
 
         InputManager.OnPrimaryCalled += ShootPrimary;
         InputManager.OnSecondaryCalled += ShootSecondary;
+        InputManager.OnLaunchingBomb += ShootBomb;
     }
 
     //Disable all connected events
@@ -171,6 +175,7 @@ public class WeaponManager : MonoBehaviour
 
         InputManager.OnPrimaryCalled -= ShootPrimary;
         InputManager.OnSecondaryCalled -= ShootSecondary;
+        InputManager.OnLaunchingBomb += ShootBomb;
     }
 
     private void OnDeath()

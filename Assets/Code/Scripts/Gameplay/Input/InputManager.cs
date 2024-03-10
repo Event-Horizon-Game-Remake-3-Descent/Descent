@@ -7,9 +7,13 @@ public class InputManager : MonoBehaviour
     public delegate void OnShoot();
     public static event OnShoot OnPrimaryCalled = ()=> { };
     public static event OnShoot OnSecondaryCalled = () => { };
+    public static event OnShoot OnLaunchingBomb = () => { };
     public delegate void OnPause();
     public static event OnPause OnPauseMenu = () => { };
-    
+    public delegate void CameraSelection();
+    public static event CameraSelection OnRearCamera;
+    public static event CameraSelection OnPlayerCamera;
+
     public static InputMap InputMap;
 
     bool AlreadyOnMenu;
@@ -19,6 +23,8 @@ public class InputManager : MonoBehaviour
     public static Vector3 BankingInput => InputMap.Overworld.Banking.ReadValue<Vector3>();
     public static Vector2 VerticalMovement => InputMap.Overworld.VerticalMovement.ReadValue<Vector2>();
     public static Vector2 PitchingInput => InputMap.Overworld.Pitching.ReadValue<Vector2>();
+
+    
 
 
    
@@ -37,7 +43,10 @@ public class InputManager : MonoBehaviour
         InputMap.Menu.Navigation.Disable();
         InputMap.Overworld.ShootPrimary.performed += TriggerPrimary;
         InputMap.Overworld.ShootSecondary.performed += TriggerSecondary;
+        InputMap.Overworld.LaunchingBomb.performed += LaunchBomb;
         InputMap.Menu.Pause.performed += Paused;
+        PlayerController.OnPlayerDead += () => InputMap.Overworld.Disable();
+        
     }
 
     private void TriggerPrimary(InputAction.CallbackContext f)
@@ -66,6 +75,15 @@ public class InputManager : MonoBehaviour
             OnSecondaryCalled();
             yield return null;
         }
+    }
+
+    private void LaunchBomb(InputAction.CallbackContext bomb)
+    {
+        if (InputMap.Overworld.LaunchingBomb.IsPressed())
+        {
+            OnLaunchingBomb();
+        }
+
     }
 
     private void OnDisable()

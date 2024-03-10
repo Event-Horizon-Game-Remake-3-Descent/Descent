@@ -5,12 +5,14 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour , IDamageable
 {
     //public InputManager inputManager;
     public delegate void GamePad();
     public static event GamePad OnGamePad;
     public static event GamePad OnKeyBoard;
+    public delegate void PlayerState();
+    public static event PlayerState OnPlayerDead;
 
     public float mouseSensitivity = 25f;
     public float BaseMouseSensitivity = 250f;
@@ -23,25 +25,32 @@ public class PlayerController : MonoBehaviour
     public AnimationCurve DecelerationCurve;
     public float DecelerationSpeed;
     public float BankingSpeed;
+    public bool IsBanking;
     public float PitchingSpeed;
     public float PlayerMaxSpeed;
     public bool UsingGamepad;
     Coroutine Coroutine;
     IEnumerator currentSnapCoroutine;
     public float SnapSpeed = 10;
-    int targetZAngle = 0; 
+    public float hp = 100f;
+    
+    
 
     Rigidbody Rb;
     float X = 0; // up and down mov
     float Y = 0; // left and right mov
 
+    public float HP { get ; set ; }
+
     private void Awake()
     {
         Rb = GetComponent<Rigidbody>();
+        HP = hp;
     }
 
     private void Start()
     {
+        
         mouseSensitivity = BaseMouseSensitivity;
         InputManager.InputMap.Overworld.Movement.canceled += Decelerate;
         InputManager.InputMap.Overworld.Movement.started += StopSlowDownCycle;
@@ -69,6 +78,11 @@ public class PlayerController : MonoBehaviour
         InputManager.InputMap.Overworld.MouseX.started -= CheckTypeOfDevice;
         InputManager.InputMap.Overworld.MouseY.started -= CheckTypeOfDevice;
     }
+
+    private void Update()
+    {
+       
+    }
     private void FixedUpdate()
     {
         
@@ -89,19 +103,25 @@ public class PlayerController : MonoBehaviour
             if (Coroutine != null) { StopCoroutine(Coroutine); }
              
             
-            Rb.AddForce(direction.y * Rb.transform.forward* PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
-            Rb.AddForce(direction.x * Rb.transform.right * PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+            Rb.AddForce(direction.y * Rb.transform.forward* PlayerSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
+            Rb.AddForce(direction.x * Rb.transform.right * PlayerSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
         }
 
         if (InputManager.IsBanking(out Vector3 banking))
         {
-            Quaternion deltaRotation = Quaternion.Euler(0, 0, banking.z * BankingSpeed * Time.fixedDeltaTime);
+            IsBanking = true;  
+
+           
+            float zRotation = banking.z * BankingSpeed * Time.fixedDeltaTime;
+            Quaternion deltaRotation = Quaternion.Euler(0, 0, zRotation);
             Quaternion newRotation = Rb.rotation * deltaRotation;
+            Rb.MoveRotation(newRotation);
+
+            
             float currentZAngle = NormalizeAngle(newRotation.eulerAngles.z);
-            targetZAngle = DetermineSnapTargetAngle(currentZAngle);
+            int targetZAngle = DetermineSnapTargetAngle(currentZAngle);
 
-            Rb.MoveRotation(Quaternion.Euler(Rb.rotation.eulerAngles.x, Rb.rotation.eulerAngles.y, currentZAngle));
-
+            
             if (currentSnapCoroutine != null)
             {
                 StopCoroutine(currentSnapCoroutine);
@@ -109,20 +129,15 @@ public class PlayerController : MonoBehaviour
             currentSnapCoroutine = SnapToAngle(targetZAngle);
             StartCoroutine(currentSnapCoroutine);
         }
-        else if (currentSnapCoroutine == null) // Se non si sta eseguendo banking, assicura lo snap all'angolo più vicino
+        else
         {
-            float currentZAngle = NormalizeAngle(Rb.rotation.eulerAngles.z);
-            if (Mathf.Abs(currentZAngle - targetZAngle) > 0.01f)
-            {
-                currentSnapCoroutine = SnapToAngle(targetZAngle);
-                StartCoroutine(currentSnapCoroutine);
-            }
+            IsBanking = false;  
         }
 
         if (InputManager.IsMovingVertically(out Vector2 verticaldirection))
         {
             if (Coroutine != null) { StopCoroutine(Coroutine); }
-            Rb.AddForce(verticaldirection.y * Rb.transform.up * PlayerSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+            Rb.AddForce(verticaldirection.y * Rb.transform.up * PlayerSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
         }
 
         if (InputManager.IsPitching(out Vector2 pitching))
@@ -138,7 +153,7 @@ public class PlayerController : MonoBehaviour
     void CheckTypeOfDevice(InputAction.CallbackContext used)
     {
         var usedDevice = used.control;
-        if (usedDevice.device is Gamepad && UsingGamepad ==false) 
+        if (usedDevice.device is Gamepad && UsingGamepad == false) 
         {
             mouseSensitivity *= GamepadSensMultiplier; 
             UsingGamepad = true;
@@ -207,12 +222,40 @@ public class PlayerController : MonoBehaviour
     {
         while (Mathf.Abs(NormalizeAngle(Rb.rotation.eulerAngles.z) - targetAngle) > 0.01f)
         {
-            float angle = Mathf.MoveTowardsAngle(Rb.rotation.eulerAngles.z, targetAngle, SnapSpeed * Time.fixedDeltaTime);
-            Rb.MoveRotation(Quaternion.Euler(Rb.rotation.eulerAngles.x, Rb.rotation.eulerAngles.y, angle));
+            float currentZAngle = NormalizeAngle(Rb.rotation.eulerAngles.z);
+            float newZAngle = Mathf.MoveTowardsAngle(currentZAngle, targetAngle, SnapSpeed * Time.fixedDeltaTime);
+            Rb.MoveRotation(Quaternion.Euler(Rb.rotation.eulerAngles.x, Rb.rotation.eulerAngles.y, newZAngle));
             yield return new WaitForFixedUpdate();
         }
-        currentSnapCoroutine = null; 
+        currentSnapCoroutine = null;  
     }
+
+    public void TakeDamage(float Damage)
+    {
+        HP -= Damage;
+        if (HP <= 0) { OnPlayerDead(); }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable))
+        {
+            this.TakeDamage(50);
+        }
+    }
+
+    //void StartSnapCoroutine(int targetZAngle, float currentZAngle)
+    //{
+    //    if (Mathf.Abs(currentZAngle - targetZAngle) > 0.01f && (currentSnapCoroutine == null || !IsBanking))
+    //    {
+    //        if (currentSnapCoroutine != null)
+    //        {
+    //            StopCoroutine(currentSnapCoroutine);
+    //        }
+    //        currentSnapCoroutine = SnapToAngle(targetZAngle);
+    //        StartCoroutine(currentSnapCoroutine);
+    //    }
+    //}
 
 
 
