@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -9,9 +10,10 @@ public class UI_Manager : MonoBehaviour
 {
     [SerializeField] private RectTransform SettingsPanel;
     [SerializeField] private RectTransform HUD;
-    
+    [SerializeField] private RectTransform FullHUD;
 
-    float EnergyLeft;
+
+
 
     bool OnPause = false;
 
@@ -23,8 +25,9 @@ public class UI_Manager : MonoBehaviour
 
     private void Start()
     {
-       
-        
+        InputManager.InputMap.Overworld.SwitchCamera.started +=(InputAction.CallbackContext hud)=> FullHUD.gameObject.SetActive(false);
+        InputManager.InputMap.Overworld.SwitchCamera.canceled += (InputAction.CallbackContext hud) => FullHUD.gameObject.SetActive(true);
+
     }
 
     

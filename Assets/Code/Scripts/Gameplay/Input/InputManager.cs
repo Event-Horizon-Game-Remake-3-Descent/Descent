@@ -45,6 +45,7 @@ public class InputManager : MonoBehaviour
         InputMap.Overworld.ShootSecondary.performed += TriggerSecondary;
         InputMap.Overworld.LaunchingBomb.performed += LaunchBomb;
         InputMap.Menu.Pause.performed += Paused;
+        PlayerController.OnPlayerDead += () => InputMap.Overworld.Disable();
         
     }
 

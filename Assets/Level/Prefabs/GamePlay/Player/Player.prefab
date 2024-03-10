@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3016989416434264630}
   - component: {fileID: 6763670398067572999}
-  - component: {fileID: 7232711007388432944}
   m_Layer: 0
   m_Name: RearCamera
   m_TagString: Untagged
@@ -167,14 +166,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &7232711007388432944
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2256140052588376762}
-  m_Enabled: 1
 --- !u!1 &2841391485969067427
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +176,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6611907646351656069}
   - component: {fileID: 5112212488747236132}
-  - component: {fileID: 767784710280256285}
   m_Layer: 0
   m_Name: DeathCamera
   m_TagString: Untagged
@@ -259,14 +249,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &767784710280256285
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2841391485969067427}
-  m_Enabled: 1
 --- !u!1 &3894564846771702259
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +318,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3894564846771702259}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -400,11 +382,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   DecelerationSpeed: 1
-  BankingSpeed: 50
+  BankingSpeed: 250
+  IsBanking: 0
   PitchingSpeed: 650
   PlayerMaxSpeed: 10
   UsingGamepad: 0
-  SnapSpeed: 10
+  SnapSpeed: 100
+  hp: 150
 --- !u!114 &7379117804286787626
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -612,6 +612,7 @@ MonoBehaviour:
   Slider: {fileID: 1465754150763448775}
   SubMixer: {fileID: 966690048114526199, guid: e27f0e6e823297443b8df56e5d7f4942, type: 2}
   Type: 2
+  DefaultVolume: 1
 --- !u!114 &1465754150763448775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,10 +657,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1601152660101094674}
   m_HandleRect: {fileID: 116761863965475173}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1333,6 +1334,7 @@ MonoBehaviour:
   Slider: {fileID: 179019778428557751}
   SubMixer: {fileID: -7224938324595087135, guid: e27f0e6e823297443b8df56e5d7f4942, type: 2}
   Type: 1
+  DefaultVolume: 1
 --- !u!114 &179019778428557751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1377,10 +1379,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1437346281242719149}
   m_HandleRect: {fileID: 5316585592729015512}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1728,6 +1730,7 @@ MonoBehaviour:
   Slider: {fileID: 9191514324886567604}
   SubMixer: {fileID: 24300002, guid: e27f0e6e823297443b8df56e5d7f4942, type: 2}
   Type: 0
+  DefaultVolume: 1
 --- !u!114 &9191514324886567604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1772,10 +1775,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 5271574586007046733}
   m_HandleRect: {fileID: 7977842230253387021}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
