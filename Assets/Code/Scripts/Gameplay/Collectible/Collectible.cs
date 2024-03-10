@@ -88,22 +88,4 @@ public class Collectible : MonoBehaviour
 
         Destroy(this.gameObject);
     }
-
-    //private void OnDisable()
-    //{
-    //    OnUpdateUI -= OnUpdateUI;
-    //    OnShieldTaken -= OnShieldTaken;
-    //    OnIncreaseScore -= OnIncreaseScore;
-    //    OnWeaponTaken -= OnWeaponTaken;
-    //    OnMagTaken -= OnMagTaken;
-    //}
-
-    //private void OnDestroy()
-    //{
-    //    OnUpdateUI -= OnUpdateUI;
-    //    OnShieldTaken -= OnShieldTaken;
-    //    OnIncreaseScore -= OnIncreaseScore;
-    //    OnWeaponTaken -= OnWeaponTaken;
-    //    OnMagTaken -= OnMagTaken;
-    //}
 }

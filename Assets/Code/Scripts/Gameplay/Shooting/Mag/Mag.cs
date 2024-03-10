@@ -6,13 +6,12 @@ public class Mag : MonoBehaviour
     {
         Energy,
         Vulkan,
-        Spread,
-        Concussion_Rocket,
-        HeatSeeking_Rocket,
+        ConcussionMissile,
+        HomingMissile,
         PlasmaCannon,
         Bomb,
     };
-
+    
     [Header("Mag Settings")]
     [SerializeField] public float InitialMagSize = 0f;
     [SerializeField] public MagType MagMagType;

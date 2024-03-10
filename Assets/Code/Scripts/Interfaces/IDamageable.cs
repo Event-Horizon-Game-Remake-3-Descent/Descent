@@ -8,6 +8,4 @@ public interface IDamageable
     {
         HP -= Damage;
     }
-
-    //TODO: Add damage event, add HP value
 }
