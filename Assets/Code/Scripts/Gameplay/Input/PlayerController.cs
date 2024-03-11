@@ -13,34 +13,42 @@ public class PlayerController : MonoBehaviour , IDamageable
     public static event GamePad OnKeyBoard;
     public delegate void PlayerState();
     public static event PlayerState OnPlayerDead;
+    public delegate void PlayerReady(PlayerController Player);
+    public static event PlayerReady OnPlayerReady;
+    public delegate void PlayerCollecting();
+    public static event PlayerCollecting OnUpdatingUiCollect;
 
-    public float mouseSensitivity = 25f;
-    public float BaseMouseSensitivity = 250f;
-    public float GamepadSensMultiplier = 10f;
-    public Transform mesh;
-    public float XSpeed;
-    public float YSpeed;
-    public float CamSpeed;
-    public float PlayerSpeed;
-    public AnimationCurve DecelerationCurve;
-    public float DecelerationSpeed;
-    public float BankingSpeed;
-    public bool IsBanking;
-    public float PitchingSpeed;
-    public float PlayerMaxSpeed;
+    private float mouseSensitivity = 25f;
+    private float XSpeed;
+    private float YSpeed;
+    [Header("Sensibility")]
+    [SerializeField] float BaseMouseSensitivity = 250f;
+    [SerializeField] float GamepadSensMultiplier = 10f;
+    [SerializeField] float CamSpeedSmoother;
+    [Space]
+    [Header("Player Parameters")]
+    [SerializeField] float PlayerSpeed;
+    [SerializeField] AnimationCurve DecelerationCurve;
+    [SerializeField] float DecelerationSpeed;
+    [SerializeField] float BankingSpeed;
+    [SerializeField] float SnapSpeed = 10;
+    [SerializeField] float PitchingSpeed;
+    [SerializeField] float PlayerMaxSpeed;
+    [SerializeField] float hp = 100f;
+    [Space]
+    [Header("Don't Touch, it's just for debug")]
     public bool UsingGamepad;
+    public bool IsBanking;
     Coroutine Coroutine;
     IEnumerator currentSnapCoroutine;
-    public float SnapSpeed = 10;
-    public float hp = 100f;
-    
-    
-
     Rigidbody Rb;
     float X = 0; // up and down mov
     float Y = 0; // left and right mov
-
     public float HP { get ; set ; }
+    
+    
+
+
 
     private void Awake()
     {
@@ -50,7 +58,7 @@ public class PlayerController : MonoBehaviour , IDamageable
 
     private void Start()
     {
-        
+        OnPlayerReady(this);
         mouseSensitivity = BaseMouseSensitivity;
         InputManager.InputMap.Overworld.Movement.canceled += Decelerate;
         InputManager.InputMap.Overworld.Movement.started += StopSlowDownCycle;
@@ -63,11 +71,11 @@ public class PlayerController : MonoBehaviour , IDamageable
 
     private void OnEnable()
     {
-        
-
-
-
+        Collectible.OnShieldTaken += Healing;
     }
+
+
+
 
     private void OnDisable()
     {
@@ -77,20 +85,18 @@ public class PlayerController : MonoBehaviour , IDamageable
         InputManager.InputMap.Overworld.VerticalMovement.started -= StopSlowDownCycle;
         InputManager.InputMap.Overworld.MouseX.started -= CheckTypeOfDevice;
         InputManager.InputMap.Overworld.MouseY.started -= CheckTypeOfDevice;
+        Collectible.OnShieldTaken -= Healing;
     }
 
-    private void Update()
-    {
-       
-    }
+    
     private void FixedUpdate()
     {
         
         float mouseX = InputManager.InputMap.Overworld.MouseX.ReadValue<float>() * mouseSensitivity *Time.fixedDeltaTime ;
         float mouseY = InputManager.InputMap.Overworld.MouseY.ReadValue<float>() * mouseSensitivity * Time.fixedDeltaTime ;
         Rb.velocity = Vector3.ClampMagnitude(Rb.velocity, PlayerMaxSpeed);
-        X = Mathf.SmoothDamp(X, mouseY, ref XSpeed, CamSpeed); 
-        Y = Mathf.SmoothDamp(Y, mouseX, ref YSpeed, CamSpeed);
+        X = Mathf.SmoothDamp(X, mouseY, ref XSpeed, CamSpeedSmoother); 
+        Y = Mathf.SmoothDamp(Y, mouseX, ref YSpeed, CamSpeedSmoother);
 
 
         Quaternion rotation = Quaternion.Euler(-X * Time.fixedDeltaTime, Y * Time.fixedDeltaTime, 0); // asse y invertito con (-x)
@@ -231,9 +237,16 @@ public class PlayerController : MonoBehaviour , IDamageable
     }
 
     public void TakeDamage(float Damage)
-    {
+    {   
         HP -= Damage;
         if (HP <= 0) { OnPlayerDead(); }
+        OnUpdatingUiCollect();
+    }
+
+    void Healing(float value)
+    {
+        HP += value;
+        OnUpdatingUiCollect();
     }
 
     private void OnCollisionEnter(Collision collision)

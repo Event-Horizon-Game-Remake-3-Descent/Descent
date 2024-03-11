@@ -349,13 +349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694b5c7d6214a1544bb86fa87ec7e8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 250
   BaseMouseSensitivity: 250
   GamepadSensMultiplier: 10
-  mesh: {fileID: 4719864517390830799}
-  XSpeed: 0
-  YSpeed: 0
-  CamSpeed: 0.5
+  CamSpeedSmoother: 1
   PlayerSpeed: 5
   DecelerationCurve:
     serializedVersion: 2
@@ -383,12 +379,12 @@ MonoBehaviour:
     m_RotationOrder: 4
   DecelerationSpeed: 1
   BankingSpeed: 250
-  IsBanking: 0
+  SnapSpeed: 100
   PitchingSpeed: 650
   PlayerMaxSpeed: 10
-  UsingGamepad: 0
-  SnapSpeed: 100
   hp: 150
+  UsingGamepad: 0
+  IsBanking: 0
 --- !u!114 &7379117804286787626
 MonoBehaviour:
   m_ObjectHideFlags: 0

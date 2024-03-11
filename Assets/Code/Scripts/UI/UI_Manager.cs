@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour
@@ -11,9 +13,10 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private RectTransform SettingsPanel;
     [SerializeField] private RectTransform HUD;
     [SerializeField] private RectTransform FullHUD;
+    [SerializeField] private TMP_Text Shield_text;
+    [SerializeField] private Image OuterShield;
 
-
-
+    PlayerController Player;
 
     bool OnPause = false;
 
@@ -21,13 +24,14 @@ public class UI_Manager : MonoBehaviour
     {
         HUD.gameObject.SetActive(true);
         SettingsPanel.gameObject.SetActive(false);
+        
     }
 
     private void Start()
     {
         InputManager.InputMap.Overworld.SwitchCamera.started +=(InputAction.CallbackContext hud)=> FullHUD.gameObject.SetActive(false);
         InputManager.InputMap.Overworld.SwitchCamera.canceled += (InputAction.CallbackContext hud) => FullHUD.gameObject.SetActive(true);
-
+        
     }
 
     
@@ -35,14 +39,22 @@ public class UI_Manager : MonoBehaviour
     private void OnEnable()
     {
         InputManager.OnPauseMenu += Menu;
-        
+        PlayerController.OnPlayerReady += (PlayerController playerController) => { Player = playerController; UpdateCollectibles(); HandleVisualShield(); };
+        PlayerController.OnUpdatingUiCollect += UpdateCollectibles;
+        PlayerController.OnUpdatingUiCollect += HandleVisualShield;
     }
+       
+        
 
     private void OnDisable()
     {
         InputManager.OnPauseMenu -= Menu;
     }
 
+    void UpdateCollectibles()
+    {
+        Shield_text.text = Player.HP.ToString();
+    }
    
 
     
@@ -58,6 +70,18 @@ public class UI_Manager : MonoBehaviour
             SettingsPanel.gameObject.SetActive(false);
         }
         OnPause = !OnPause;
+    }
+
+    void HandleVisualShield()
+    {
+        if (Player.HP <= 100)
+        {
+            OuterShield.fillAmount = Player.HP / 100;
+        }
+        else if (Player.HP >= 100) 
+        {
+            OuterShield.fillAmount = 1;
+        }
     }
 
     public void QuitGame()
