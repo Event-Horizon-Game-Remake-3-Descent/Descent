@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1795602742209358368}
   - component: {fileID: 2412121825768448341}
   - component: {fileID: 132267075982956548}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1980215430589747858}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2802289739851038239}
   - component: {fileID: 3759234287113581821}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4792943495868850121}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ProjectileHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,8 +255,8 @@ GameObject:
   - component: {fileID: 8880242215993171923}
   - component: {fileID: 7493283928935276559}
   - component: {fileID: 6205572645371665523}
-  m_Layer: 8
-  m_Name: Projectile
+  m_Layer: 9
+  m_Name: PlayerProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,7 +464,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6375875317820382975}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
