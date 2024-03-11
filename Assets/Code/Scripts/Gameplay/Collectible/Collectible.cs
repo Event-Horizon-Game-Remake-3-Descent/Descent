@@ -59,11 +59,16 @@ public class Collectible : MonoBehaviour
             case CollectibleType.IncreaseBullet:
             {
                 OnMagTaken(ProjectileType, Value);
+                if(ProjectileType == MagType.Energy)
+                    UI_Manager.Notify(Value+" "+ ProjectileType+" Taken");
+                else
+                    UI_Manager.Notify(Value + " " + ProjectileType + " Ammo Taken");
                 break;
             }
             case CollectibleType.IncreaseShield:
             {
                 OnShieldTaken(Value);
+                UI_Manager.Notify(Value + " Shield Obtained");
                 break;
             }
             //increase score
@@ -76,6 +81,10 @@ public class Collectible : MonoBehaviour
             case CollectibleType.UnlockWeapon:
             {
                 OnWeaponTaken(WeaponType);
+                if(WeaponType == WeaponType.LaserCannon)
+                    UI_Manager.Notify(WeaponType + " Upgraded");
+                else
+                    UI_Manager.Notify(WeaponType + " Unlocked");
                 break;
             }
             default:

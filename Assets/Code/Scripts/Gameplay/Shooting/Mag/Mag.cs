@@ -29,7 +29,6 @@ public class Mag : MonoBehaviour
     {
         if (type != MagMagType)
             return;
-        Debug.Log("Ammo Taken: " + type + "\nThis Mag Type: " + MagMagType);
         
         ProjectileLeft += amount;
         if(IsCapped && ProjectileLeft>MaxValue)

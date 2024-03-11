@@ -75,7 +75,7 @@ public class UI_Manager : MonoBehaviour
     IEnumerator NotificationTimer()
     {
         yield return new WaitForSecondsRealtime(1);
-        Notification_text = null;
+        Notification_text.text = " ";
         yield return null;
     }
 
