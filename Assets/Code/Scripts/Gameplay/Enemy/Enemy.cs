@@ -214,6 +214,10 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
     public void TakeDamage(float Damage)
     {
         if (IsDead) return;
+
+        if (CurrentEnemyState != EnemyState.Attacking)
+            ChangeState(EnemyState.Attacking);
+
         HP -= Damage;
 
         if (HP < 0)
