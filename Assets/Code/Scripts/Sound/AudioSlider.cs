@@ -60,8 +60,6 @@ public class AudioSlider : MonoBehaviour
         value = 20 * Mathf.Log10(value);
         Volume = value;
 
-        Debug.Log(Volume);
-
         SubMixer.audioMixer.SetFloat(Type.ToString()+"Volume", value);
         PlayerPrefs.SetFloat(Type.ToString()+"Volume", value);
     }

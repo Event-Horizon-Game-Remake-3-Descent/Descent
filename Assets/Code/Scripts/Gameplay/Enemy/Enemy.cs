@@ -5,18 +5,29 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable, IPatrollable
 {
+    private enum EnemyState
+    {
+        Idling,
+        Patrolling,
+        Attacking,
+    }
+
     //Enemy generic setting
     [Header("Enemy Settings")]
     [SerializeField] private float RotationSpeed = 1f;
-    [SerializeField] private Weapon EnemyWeapon;
+    [SerializeField] private EnemyWeapon EnemyWeapon;
     [SerializeField] ParticleSystem ParticlesOnDestroy;
+    [SerializeField] private SphereCollider SphereColliderToRemove;
+    [SerializeField] private float ScoreOnDefeat = 1000f;
+    [SerializeField] private EnemyState StartingState = EnemyState.Idling;
 
-    private delegate void EnemyState();
-    private EnemyState EnemyBehaviour = () => { };
+    private delegate void EnemyDelegate();
+    private EnemyDelegate EnemyBehaviour = () => { };
 
     private Rigidbody RigidBody;
-    [SerializeField] private SphereCollider SphereColliderToRemove;
     private Coroutine TurnRoutine = null;
+
+    private EnemyState CurrentEnemyState = EnemyState.Patrolling;
 
     //IDamageable
     public float HP { get; set ; }
@@ -41,6 +52,11 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
     //Current Index
     public int PatrollingIndex { get; set; }
 
+    [Tooltip("Distance of Triggering")]
+    [SerializeField] private float TriggerDistance = 20f;
+    [Tooltip("Distance kept from player")]
+    [SerializeField] private float DistanceOnceTriggered = 5f;
+
     private Transform TargetTransform;
 
     [Header("Patrolling Gizmo Setting")]
@@ -51,6 +67,9 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
     [SerializeField] private Color PointDecelerationDistanceColor = Color.green;
     [SerializeField] private float PointsSize = 0.02f;
 
+    private PlayerController PlayerRef;
+    private float DistanceFromPlayer = float.MaxValue;
+
     private void Awake()
     {
         //set up IPatrollable
@@ -60,48 +79,75 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
         PatrollingThreshold = PathThreshold;
         PatrollingDecelerationDistance = DecelerationDistance;
 
-        TargetTransform = PatrollingData.PatrollingPositions[PatrollingIndex];
+        if(PatrollingData.PatrollingPositions.Count > 0)
+            TargetTransform = PatrollingData.PatrollingPositions[0];
 
         //Set up IDamageable
         HP = EnemyHP;
 
         //Other
         RigidBody = GetComponent<Rigidbody>();
-
     }
+
 
     private void Start()
     {
-        TurnRoutine = StartCoroutine(TurnCoroutine());
-        EnemyBehaviour += Patrol;
+        CurrentEnemyState = StartingState;
+        ChangeState(CurrentEnemyState);
     }
 
     private void FixedUpdate()
     {
         if(EnemyBehaviour != null)
             EnemyBehaviour();
-    }
 
-    public void TakeDamage(float Damage)
-    {
-        if (IsDead) return;
-        HP -= Damage;
-
-        if (HP < 0)
+        if(PlayerRef != null && !IsDead)
         {
-            IsDead = true;
-            if (!ParticlesOnDestroy)
-                Destroy(RigidBody);
-            else
-            {
-                SphereColliderToRemove.enabled = false;
-                RigidBody.velocity = Vector3.zero;
-                ParticlesOnDestroy.Play();
-            }
-            EnemyBehaviour -= EnemyBehaviour;
+            DistanceFromPlayer = (PlayerRef.transform.position - transform.position).magnitude;
+            if (DistanceFromPlayer < TriggerDistance)
+                ChangeState(EnemyState.Attacking);
         }
     }
 
+    private void ChangeState(EnemyState newState)
+    {
+        //empty enemy behaviour
+        EnemyBehaviour -= EnemyBehaviour;
+
+        switch (newState)
+        {
+            //Idling behaviour
+            case EnemyState.Idling:
+            {
+                
+                break; 
+            }
+            //Patrolling behaviour
+            case EnemyState.Patrolling:
+            {
+                TargetTransform = PatrollingData.PatrollingPositions[PatrollingIndex];
+                EnemyBehaviour += Patrol;
+                break;
+            }
+            //Attacking behaviour
+            case EnemyState.Attacking:
+            {
+                //Set player as target
+                TargetTransform = PlayerRef.transform;
+                //rotate towards the player
+                TurnRoutine = StartCoroutine(TurnCoroutine());
+                //Attack player
+                EnemyBehaviour += Attack;
+                break;
+            }
+            
+            default: { break; }
+        }
+        //update new state
+        CurrentEnemyState = newState;
+    }
+
+    #region PATROLLING
     public void Patrol()
     {
         float targetDist = (TargetTransform.position - transform.position).magnitude;
@@ -122,14 +168,14 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
         {
             if(TurnRoutine == null)
             {
-                MoveToTarget();
+                MoveToTarget(0f);
             }
         }
     }
 
-    private void MoveToTarget()
+    private void MoveToTarget(float KeepDistance)
     {
-        float targetDist = (TargetTransform.position - transform.position).magnitude;
+        float targetDist = (TargetTransform.position - transform.position).magnitude - KeepDistance;
         //move forward
         transform.LookAt(TargetTransform);
         float decelerationActuator = 1f;
@@ -140,10 +186,15 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
         RigidBody.velocity = transform.forward * PatrollingSpeed * decelerationActuator;
     }
 
+    #endregion
+
     private void Attack()
     {
         if (TurnRoutine == null)
-            MoveToTarget();
+        {
+            MoveToTarget(DistanceOnceTriggered);
+            EnemyWeapon.Shoot();
+        }
     }
 
     private IEnumerator TurnCoroutine()
@@ -160,25 +211,37 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
         TurnRoutine = null;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void TakeDamage(float Damage)
     {
-        //attak player
-        EnemyBehaviour -= Patrol;
-        TurnRoutine = StartCoroutine(TurnCoroutine());
-        TargetTransform = other.transform;
-        EnemyBehaviour += Attack;
+        if (IsDead) return;
+        HP -= Damage;
+
+        if (HP < 0)
+        {
+            IsDead = true;
+            if (!ParticlesOnDestroy)
+            {
+                Destroy(RigidBody);
+            }
+            else
+            {
+                SphereColliderToRemove.enabled = false;
+                RigidBody.velocity = Vector3.zero;
+                ParticlesOnDestroy.Play();
+            }
+            EnemyBehaviour -= EnemyBehaviour;
+            Collectible.OnIncreaseScore?.Invoke(ScoreOnDefeat);
+        }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnEnable()
     {
-        //back to patrolling
-        EnemyBehaviour -= Attack;
-        TargetTransform = PatrollingData.PatrollingPositions[PatrollingIndex];
-        EnemyBehaviour += Patrol;
+        PlayerController.OnPlayerReady += (PlayerController Player) => PlayerRef = Player;
     }
 
     private void OnDisable()
     {
+        PlayerRef = null;
         EnemyBehaviour -= EnemyBehaviour;
     }
 
@@ -187,6 +250,9 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
     {
         if(!DrawGizmo)
             return;
+
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, TriggerDistance);
 
         if(!Application.isPlaying) //Draw All Gizmos
         {
@@ -217,7 +283,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
             }
 
             //Lines
-            if (PatrollingData.PatrollingPositions.Count >= 2)
+            if (PatrollingData.PatrollingPositions.Count >= 1)
             {
                 Handles.color = PathColor;
                 //Draw Lines
@@ -233,19 +299,27 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
         {
             //Point
             Gizmos.color = PointColor;
-            Gizmos.DrawSphere(TargetTransform.position, PointsSize);
+            if(TargetTransform != null)
+                Gizmos.DrawSphere(TargetTransform.position, PointsSize);
 
             //Threshold
             Gizmos.color = PointThresholdColor;
-            Gizmos.DrawWireSphere(TargetTransform.position, PathThreshold);
+            if (TargetTransform != null)
+                Gizmos.DrawWireSphere(TargetTransform.position, PathThreshold);
 
-            //Deceleraion
+            //Deceleration
             Gizmos.color = PointDecelerationDistanceColor;
-            Gizmos.DrawWireSphere(TargetTransform.position, PatrollingDecelerationDistance);
+            if (TargetTransform != null)
+                Gizmos.DrawWireSphere(TargetTransform.position, PatrollingDecelerationDistance);
 
             //Line
             Handles.color = Color.cyan;
-            Handles.DrawDottedLine(transform.position, TargetTransform.position, 10f);
+            if (TargetTransform != null)
+                Handles.DrawDottedLine(transform.position, TargetTransform.position, 10f);
+
+            //Draw Player line
+            Handles.color = Color.magenta;
+            Handles.DrawDottedLine(transform.position, PlayerRef.transform.position, 10f);
         }
     }
 #endif
