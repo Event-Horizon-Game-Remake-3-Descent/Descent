@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     [SerializeField] float PlayerMaxSpeed;
     [SerializeField] float hp = 100f;
     [Space]
-    [Header("Don't Touch, it's just for debug")]
+    [Header("Don't Touch This, it's just for debug")]
     public bool UsingGamepad;
     public bool IsBanking;
     Coroutine Coroutine;

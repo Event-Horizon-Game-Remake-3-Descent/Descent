@@ -10,11 +10,15 @@ using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour
 {
+    public static Action<string> Notify;
+    public static Action UpdateUI;
     [SerializeField] private RectTransform SettingsPanel;
     [SerializeField] private RectTransform HUD;
     [SerializeField] private RectTransform FullHUD;
     [SerializeField] private TMP_Text Shield_text;
     [SerializeField] private Image OuterShield;
+    [SerializeField] private TMP_Text Score_text;
+    [SerializeField] private TMP_Text Notification_text;
 
     PlayerController Player;
 
@@ -42,6 +46,9 @@ public class UI_Manager : MonoBehaviour
         PlayerController.OnPlayerReady += (PlayerController playerController) => { Player = playerController; UpdateCollectibles(); HandleVisualShield(); };
         PlayerController.OnUpdatingUiCollect += UpdateCollectibles;
         PlayerController.OnUpdatingUiCollect += HandleVisualShield;
+        Notify += Notifications;
+        UpdateUI += UpdateCollectibles;
+        //Collectible.OnIncreaseScore += (float value) => { UpdateCollectibles(); };
     }
        
         
@@ -54,10 +61,26 @@ public class UI_Manager : MonoBehaviour
     void UpdateCollectibles()
     {
         Shield_text.text = Player.HP.ToString();
+        Score_text.text = "Score:" + MathF.Round( GameManager.Score).ToString();
     }
-   
 
-    
+
+    void Notifications(string text)
+    {
+        Notification_text.text = text;
+        StartCoroutine(NotificationTimer());
+        
+    }
+
+    IEnumerator NotificationTimer()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        Notification_text = null;
+        yield return null;
+    }
+
+
+
     private void Menu()
     {
         if(!OnPause)

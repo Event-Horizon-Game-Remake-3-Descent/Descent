@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Camera PlayerCamera;
     [SerializeField] Camera RearCamera;
     [SerializeField] Camera DeathCamera;
+    public static float Score {  get; private set; }
     public bool RearCamActive;
 
 
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerController.OnPlayerDead += DeathCam;
+        Collectible.OnIncreaseScore += (float value) => { Score += value; UI_Manager.UpdateUI?.Invoke(); };
+        
     }
 
 

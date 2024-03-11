@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
     public static InputMap InputMap;
 
     bool AlreadyOnMenu;
+    bool PlayerIsAlive;
     
 
     public static Vector2 MovementInput => InputMap.Overworld.Movement.ReadValue<Vector2>();
@@ -35,6 +36,7 @@ public class InputManager : MonoBehaviour
         InputMap = new InputMap();
         Application.targetFrameRate = 60;
         Cursor.lockState = CursorLockMode.Locked;
+        PlayerIsAlive = true;
     }
 
     private void OnEnable()
@@ -45,7 +47,7 @@ public class InputManager : MonoBehaviour
         InputMap.Overworld.ShootSecondary.performed += TriggerSecondary;
         InputMap.Overworld.LaunchingBomb.performed += LaunchBomb;
         InputMap.Menu.Pause.performed += Paused;
-        PlayerController.OnPlayerDead += () => InputMap.Overworld.Disable();
+        PlayerController.OnPlayerDead += PlayerIsDead; 
         
     }
 
@@ -133,13 +135,20 @@ public class InputManager : MonoBehaviour
         {
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
-            InputMap.Overworld.Enable();
             InputMap.Menu.Navigation.Disable();
+            if (PlayerIsAlive) { InputMap.Overworld.Enable(); } 
+            
 
 
         }
         AlreadyOnMenu =! AlreadyOnMenu;
         OnPauseMenu();
+    }
+
+    void PlayerIsDead()
+    {   
+        PlayerIsAlive = false;
+        InputMap.Overworld.Disable();
     }
 
 
