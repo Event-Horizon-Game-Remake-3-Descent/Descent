@@ -191,7 +191,7 @@ MonoBehaviour:
   ActiveAfterSec: 3
   LightSource: {fileID: 8677034529825013655}
   StartFrequency: 0.5
-  EndFrequency: 1600
+  EndFrequency: 5
 --- !u!82 &5391491703923861381
 AudioSource:
   m_ObjectHideFlags: 0
