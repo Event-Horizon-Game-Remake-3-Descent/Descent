@@ -9,6 +9,11 @@ public class Bomb : Projectile, IDamageable
     [SerializeField] private float LifeTime = 30.0f;
     [SerializeField] private float ActiveAfterSec = 2.0f;
 
+    [Header("Bomb Blinking Light")]
+    [SerializeField] private Light LightSource;
+    [SerializeField] private float Frequency;
+
+    private bool LightState = false;
     private bool CanExplode = false;
 
     public float HP { get; set; } = 0.1f;
@@ -25,7 +30,13 @@ public class Bomb : Projectile, IDamageable
     new private void Start()
     {
         StartCoroutine(CoroutineOnActive());
-        StartCoroutine(ExplodeAfterTimeCoroutine());
+        InvokeRepeating("BlinkLight", ActiveAfterSec, 1 / Frequency);
+    }
+
+    private void BlinkLight()
+    {
+        LightState = !LightState;
+        LightSource.enabled = LightState;
     }
 
     private IEnumerator CoroutineOnActive()
@@ -48,6 +59,7 @@ public class Bomb : Projectile, IDamageable
 
         base.AudioSource.Play();
         base.ParticlesOnDestroy.Play();
+        LightSource.intensity = 0f;
 
         //Stop collision detection
         CapsuleCollider.enabled = false;
