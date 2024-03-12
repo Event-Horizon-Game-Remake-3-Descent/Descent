@@ -1995,6 +1995,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmartDummy
       objectReference: {fileID: 0}
+    - target: {fileID: 1581523010215951242, guid: 90a9a07bc47eb9c4095d74c797d6e1f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8687460004581076469, guid: 90a9a07bc47eb9c4095d74c797d6e1f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.92
@@ -37483,6 +37487,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmartDummy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1581523010215951242, guid: 90a9a07bc47eb9c4095d74c797d6e1f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8687460004581076469, guid: 90a9a07bc47eb9c4095d74c797d6e1f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 91
@@ -38014,6 +38022,10 @@ PrefabInstance:
     - target: {fileID: 1581523010215951242, guid: 90a9a07bc47eb9c4095d74c797d6e1f6, type: 3}
       propertyPath: m_Name
       value: SmartDummy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581523010215951242, guid: 90a9a07bc47eb9c4095d74c797d6e1f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5928622362966370038, guid: 90a9a07bc47eb9c4095d74c797d6e1f6, type: 3}
       propertyPath: ShootingPoints.Array.size
@@ -51281,10 +51293,6 @@ PrefabInstance:
     - target: {fileID: 3894564846771702259, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6516268597193615340, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
-      propertyPath: m_Radius
-      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8236186568755696781, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
       propertyPath: m_LocalPosition.x

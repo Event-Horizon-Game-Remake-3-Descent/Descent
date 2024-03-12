@@ -105,7 +105,8 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
         {
             DistanceFromPlayer = (PlayerRef.transform.position - transform.position).magnitude;
             if (DistanceFromPlayer < TriggerDistance)
-                ChangeState(EnemyState.Attacking);
+                if(CanAttack())
+                    ChangeState(EnemyState.Attacking);
         }
     }
 
@@ -236,6 +237,16 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
             EnemyBehaviour -= EnemyBehaviour;
             Collectible.OnIncreaseScore?.Invoke(ScoreOnDefeat);
         }
+    }
+
+    private bool CanAttack()
+    {
+        Ray ray = new Ray(transform.position, (PlayerRef.transform.position - transform.position).normalized);
+        Debug.DrawRay(transform.position, (PlayerRef.transform.position - transform.position).normalized * 50f, Color.magenta);
+        
+        if(Physics.SphereCast(ray, 1f, out RaycastHit hitInfo, TriggerDistance))
+            return hitInfo.collider.CompareTag("Player");
+        return false;
     }
 
     private void OnEnable()

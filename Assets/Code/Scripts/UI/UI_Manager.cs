@@ -79,8 +79,6 @@ public class UI_Manager : MonoBehaviour
         yield return null;
     }
 
-
-
     private void Menu()
     {
         if(!OnPause)
