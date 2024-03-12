@@ -17,13 +17,13 @@ public class HitScanProjectile : Projectile
     new void Start()
     {
         Ray ray = new Ray(transform.position, transform.forward);
-        if(Physics.SphereCast(ray, RayThichness, out RaycastHit, HitscanRayDistance, ~(1<<8 | 1<<9)))
+        if(Physics.SphereCast(ray, RayThichness, out RaycastHit, HitscanRayDistance, ~(1<<8 | 1<<9), QueryTriggerInteraction.Ignore))
         {
             transform.position = RaycastHit.point;
             transform.rotation = Quaternion.Euler(RaycastHit.normal);
             base.ParticlesOnDestroy.Play();
 
-            if (RaycastHit.collider.gameObject.TryGetComponent<IDamageable>(out IDamageable Damageable))
+            if (RaycastHit.collider.transform.gameObject.TryGetComponent<IDamageable>(out IDamageable Damageable))
                 Damageable.TakeDamage(Damage);
 
         }

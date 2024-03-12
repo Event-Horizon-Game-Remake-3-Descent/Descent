@@ -52,7 +52,7 @@ MonoBehaviour:
   ExplosionRadius: 0
   ExplosionLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 129
   Speed: 0
   MeshToHide: {fileID: 0}
   ParticlesOnDestroy: {fileID: 1516541598163146827}

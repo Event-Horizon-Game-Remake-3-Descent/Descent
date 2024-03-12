@@ -244,7 +244,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
         Ray ray = new Ray(transform.position, (PlayerRef.transform.position - transform.position).normalized);
         Debug.DrawRay(transform.position, (PlayerRef.transform.position - transform.position).normalized * 50f, Color.magenta);
         
-        if(Physics.SphereCast(ray, 1f, out RaycastHit hitInfo, TriggerDistance))
+        if(Physics.SphereCast(ray, 1f, out RaycastHit hitInfo, TriggerDistance, ~(1<<8 | 1<<9), QueryTriggerInteraction.Ignore))
             return hitInfo.collider.CompareTag("Player");
         return false;
     }

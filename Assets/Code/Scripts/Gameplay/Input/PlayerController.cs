@@ -253,7 +253,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     {
         if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable))
         {
-            this.TakeDamage(50);
+            damageable.TakeDamage(50);
         }
     }
 

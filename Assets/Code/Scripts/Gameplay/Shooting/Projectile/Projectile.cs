@@ -59,7 +59,7 @@ public class Projectile : MonoBehaviour
         {
             //Get Colliders
             Collider[] ArrayOfCollider;
-            ArrayOfCollider = Physics.OverlapSphere(transform.position, ExplosionRadius, ExplosionLayerMask);
+            ArrayOfCollider = Physics.OverlapSphere(transform.position, ExplosionRadius, ExplosionLayerMask, QueryTriggerInteraction.Ignore);
             //Apply Damage
             for (int i = 0; i < ArrayOfCollider.Length; i++)
                 if (ArrayOfCollider[i].gameObject.TryGetComponent<IDamageable>(out IDamageable Damageable))
