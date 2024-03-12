@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f645f80467682f34e970ad25cf4f8b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
+  Damage: 100
   ExplosionRadius: 4
   ExplosionLayerMask:
     serializedVersion: 2
@@ -190,7 +190,8 @@ MonoBehaviour:
   LifeTime: 15
   ActiveAfterSec: 3
   LightSource: {fileID: 8677034529825013655}
-  Frequency: 0.5
+  StartFrequency: 0.5
+  EndFrequency: 1600
 --- !u!82 &5391491703923861381
 AudioSource:
   m_ObjectHideFlags: 0

@@ -11,10 +11,12 @@ public class Bomb : Projectile, IDamageable
 
     [Header("Bomb Blinking Light")]
     [SerializeField] private Light LightSource;
-    [SerializeField] private float Frequency;
+    [SerializeField] private float StartFrequency = 0.5f;
+    [SerializeField] private float EndFrequency = 4f;
 
     private bool LightState = false;
     private bool CanExplode = false;
+    private float BlinkingFrequency;
 
     public float HP { get; set; } = 0.1f;
 
@@ -30,13 +32,32 @@ public class Bomb : Projectile, IDamageable
     new private void Start()
     {
         StartCoroutine(CoroutineOnActive());
-        InvokeRepeating("BlinkLight", ActiveAfterSec, 1 / Frequency);
+        StartCoroutine(BlinkCoroutine());
     }
 
-    private void BlinkLight()
+    private IEnumerator BlinkCoroutine()
     {
-        LightState = !LightState;
-        LightSource.enabled = LightState;
+        BlinkingFrequency = StartFrequency;
+        yield return new WaitForSeconds(ActiveAfterSec);
+        StartCoroutine(IncreaseFrequency());
+
+        while(true)
+        {
+            LightState = !LightState;
+            LightSource.enabled = LightState;
+            yield return new WaitForSeconds(1/BlinkingFrequency);
+        }
+    }
+
+    private IEnumerator IncreaseFrequency()
+    {
+        float progress = 0f;
+        while (progress < 1)
+        {
+            progress += Time.fixedDeltaTime / LifeTime;
+            BlinkingFrequency = Mathf.Lerp(StartFrequency, EndFrequency, progress);
+            yield return null;
+        }
     }
 
     private IEnumerator CoroutineOnActive()
@@ -44,6 +65,7 @@ public class Bomb : Projectile, IDamageable
         yield return new WaitForSeconds(ActiveAfterSec);
         CanExplode = true;
         base.CapsuleCollider.enabled = true;
+        StartCoroutine(ExplodeAfterTimeCoroutine());
     }
 
     private IEnumerator ExplodeAfterTimeCoroutine()
