@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    public static Action IsPaused;
+    public static Action Resume = () => { };
     public delegate void OnShoot();
     public static event OnShoot OnPrimaryCalled = ()=> { };
     public static event OnShoot OnSecondaryCalled = () => { };
@@ -37,6 +40,7 @@ public class InputManager : MonoBehaviour
         Application.targetFrameRate = 60;
         Cursor.lockState = CursorLockMode.Locked;
         PlayerIsAlive = true;
+
     }
 
     private void OnEnable()
@@ -47,7 +51,9 @@ public class InputManager : MonoBehaviour
         InputMap.Overworld.ShootSecondary.performed += TriggerSecondary;
         InputMap.Overworld.LaunchingBomb.performed += LaunchBomb;
         InputMap.Menu.Pause.performed += Paused;
-        PlayerController.OnPlayerDead += PlayerIsDead; 
+        PlayerController.OnPlayerDead += PlayerIsDead;
+        //IsPaused += () => AlreadyOnMenu = true;
+        Resume += () => AlreadyOnMenu = false;
         
     }
 
@@ -123,26 +129,30 @@ public class InputManager : MonoBehaviour
 
     private void Paused(InputAction.CallbackContext context )
     {
-        if (!AlreadyOnMenu)
+        
+        if (AlreadyOnMenu == false)
         {
+            //UI_Manager.PausedByInput?.Invoke();
+            AlreadyOnMenu = true;
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
             InputMap.Overworld.Disable();
             InputMap.Menu.Navigation.Enable();
-            
+
         }
         else
         {
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
+            InputMap.Overworld.Enable();
             InputMap.Menu.Navigation.Disable();
-            if (PlayerIsAlive) { InputMap.Overworld.Enable(); } 
-            
-
+            AlreadyOnMenu = !AlreadyOnMenu;
+            //UI_Manager.UnPausedByInput?.Invoke();
 
         }
-        AlreadyOnMenu =! AlreadyOnMenu;
+        
         OnPauseMenu();
+        Debug.Log(AlreadyOnMenu);
     }
 
     void PlayerIsDead()

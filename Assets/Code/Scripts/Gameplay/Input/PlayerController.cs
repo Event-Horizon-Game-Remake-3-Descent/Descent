@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     [SerializeField] float PitchingSpeed;
     [SerializeField] float PlayerMaxSpeed;
     [SerializeField] float hp = 100f;
+    [SerializeField] private float DamageOnCollion;
     [Space]
     [Header("Don't Touch This, it's just for debug")]
     public bool UsingGamepad;
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     {
         Rb = GetComponent<Rigidbody>();
         HP = hp;
+        BaseMouseSensitivity = GameManager.MouseSens;
     }
 
     private void Start()
@@ -253,8 +255,14 @@ public class PlayerController : MonoBehaviour , IDamageable
     {
         if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable))
         {
-            damageable.TakeDamage(50);
+            damageable.TakeDamage(DamageOnCollion);
+            
         }
+    }
+
+    public void ChangePlayerSensitivity()
+    {
+        BaseMouseSensitivity = GameManager.MouseSens;
     }
 
     //void StartSnapCoroutine(int targetZAngle, float currentZAngle)
