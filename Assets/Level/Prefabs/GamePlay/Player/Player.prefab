@@ -383,6 +383,7 @@ MonoBehaviour:
   PitchingSpeed: 650
   PlayerMaxSpeed: 10
   hp: 150
+  DamageOnCollion: 5
   UsingGamepad: 0
   IsBanking: 0
 --- !u!114 &7379117804286787626
