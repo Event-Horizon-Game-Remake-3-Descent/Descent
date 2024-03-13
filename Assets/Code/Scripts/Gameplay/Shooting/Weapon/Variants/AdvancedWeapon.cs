@@ -79,4 +79,11 @@ public class AdvancedWeapon : Weapon
         WeaponLevel++;
         base.WeaponName = base.Name+ " LV "+ (WeaponLevel+1);
     }
+
+    new public void ResetWeapon()
+    {
+        base.ResetWeapon();
+        WeaponLevel = 0;
+        base.WeaponName = base.Name + " LV " + (WeaponLevel);
+    }
 }

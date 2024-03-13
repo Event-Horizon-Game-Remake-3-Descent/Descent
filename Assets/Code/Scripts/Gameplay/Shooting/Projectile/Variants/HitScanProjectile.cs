@@ -23,9 +23,10 @@ public class HitScanProjectile : Projectile
             transform.rotation = Quaternion.Euler(RaycastHit.normal);
             base.ParticlesOnDestroy.Play();
 
-            if (RaycastHit.collider.transform.gameObject.TryGetComponent<IDamageable>(out IDamageable Damageable))
+            if (RaycastHit.collider.TryGetComponent<IDamageable>(out IDamageable Damageable))
+            {
                 Damageable.TakeDamage(Damage);
-
+            }
         }
     }
 

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2395391811114472090, guid: c0e89f26cfaec0841992b2187235b9c2, type: 3}
       propertyPath: m_Name
-      value: EnergyCollectible
+      value: EnergyCollectible 2
       objectReference: {fileID: 0}
     - target: {fileID: 7913113818317379708, guid: c0e89f26cfaec0841992b2187235b9c2, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -63,5 +63,27 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2395391811114472090, guid: c0e89f26cfaec0841992b2187235b9c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1513323045548880809}
   m_SourcePrefab: {fileID: 100100000, guid: c0e89f26cfaec0841992b2187235b9c2, type: 3}
+--- !u!1 &3960279063501551106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2395391811114472090, guid: c0e89f26cfaec0841992b2187235b9c2, type: 3}
+  m_PrefabInstance: {fileID: 1714632283865392280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-1513323045548880809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960279063501551106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceca33a72567beb4caba9d4532962ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectileType: 2
+  IncreaseAmmoValue: 5

@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerController.OnPlayerDead += DeathCam;
-        Collectible.OnIncreaseScore += (float value) => { Score += value; UI_Manager.UpdateUI?.Invoke(); };
+        ScoreCollectible.OnIncreaseScore += (float value) => { Score += value; UI_Manager.UpdateUI?.Invoke(); };
         
     }
 

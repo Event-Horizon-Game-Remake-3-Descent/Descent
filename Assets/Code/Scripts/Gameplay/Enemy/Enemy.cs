@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
     [SerializeField] private SphereCollider SphereColliderToRemove;
     [SerializeField] private float ScoreOnDefeat = 1000f;
     [SerializeField] private EnemyState StartingState = EnemyState.Idling;
+    [SerializeField] private float DamageOnCollision = 5f;
 
     private delegate void EnemyDelegate();
     private EnemyDelegate EnemyBehaviour = () => { };
@@ -235,7 +236,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
                 ParticlesOnDestroy.Play();
             }
             EnemyBehaviour -= EnemyBehaviour;
-            Collectible.OnIncreaseScore?.Invoke(ScoreOnDefeat);
+            ScoreCollectible.OnIncreaseScore?.Invoke(ScoreOnDefeat);
         }
     }
 
@@ -258,6 +259,14 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
     {
         PlayerRef = null;
         EnemyBehaviour -= EnemyBehaviour;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable component))
+        {
+            component.TakeDamage(DamageOnCollision);
+        }
     }
 
 #if UNITY_EDITOR
