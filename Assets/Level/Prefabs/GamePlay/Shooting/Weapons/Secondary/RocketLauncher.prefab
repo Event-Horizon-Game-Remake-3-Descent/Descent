@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Rocket
-  Type: 5
+  Type: 4
   ProjectileToShoot: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
   ShootDelay: 1
   Mag: {fileID: 2551871188997558165}
@@ -59,6 +59,7 @@ MonoBehaviour:
   - {fileID: 1508964369715740256}
   SynchronousShooting: 0
   IsUnlocked: 1
+  ScoreIfAlreadyUnlocked: 0
   _WeaponSprite: {fileID: 2800000, guid: 5aa3b6bac4c61994da4e6a394b7029e2, type: 3}
   ShootSounds:
   - {fileID: 8300000, guid: 8c7358b2d0e73624389e292ec621b5b5, type: 3}
@@ -176,6 +177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialMagSize: 10
   MagMagType: 0
+  IsCapped: 0
+  MaxValue: 200
   ProjectileLeft: 0
 --- !u!1 &2639318256043357261
 GameObject:

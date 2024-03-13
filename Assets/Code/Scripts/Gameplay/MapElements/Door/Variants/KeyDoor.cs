@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class LockedDoor : Door
 {
-    [Header("Proximity Door Setting")]
+    [Header("Key Door Setting")]
     [Tooltip("Seconds to wait after the player has exit the trigger zone")]
     [SerializeField] private float CloseAfter = 5f;
+    [SerializeField] KeyCollectible KeyReference;
 
     private Coroutine CheckForStay = null;
+
+    private bool IsLocked = true;
 
     private bool IsOpening = false;
     private bool IsOpen = false;
@@ -20,7 +23,6 @@ public class LockedDoor : Door
 
         for (int i = 0; i < ListOfPanels.Count; i++)
         {
-            ListOfPanels[i].OnPanelTrigger += (float damage) => OpenDoor();
             ListOfPanels[i].OnPanelOpen += () =>
             {
                 IsOpening = false;
@@ -29,6 +31,11 @@ public class LockedDoor : Door
                 StartCoroutine(CloseCoroutine());
             };
         }
+    }
+
+    private void Start()
+    {
+        KeyReference.OnKeyObtained += () => IsLocked = false;
     }
 
     private void OpenDoor()
@@ -73,6 +80,15 @@ public class LockedDoor : Door
 
     private void OnTriggerEnter(Collider other)
     {
+        if (IsLocked)
+        {
+            if(other.CompareTag("Player"))
+            {
+                UI_Manager.Notify("Door Locked");
+            }
+            return;
+        }
+
         if (!IsOpen)
             if (other.CompareTag("Player"))
             {
@@ -83,6 +99,9 @@ public class LockedDoor : Door
 
     private void OnTriggerExit(Collider other)
     {
+        if (IsLocked)
+            return;
+
         if (other.CompareTag("Player"))
         {
             CloseDoor();

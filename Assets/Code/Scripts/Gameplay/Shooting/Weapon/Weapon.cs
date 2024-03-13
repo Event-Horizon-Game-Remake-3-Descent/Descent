@@ -36,9 +36,8 @@ public abstract class Weapon : MonoBehaviour
     [Tooltip("If true it will shoot one bullet for each shooting point in the same frame")]
     [SerializeField] protected bool SynchronousShooting = false;
     [Tooltip("Rappresent the default state of the weapon")]
-    [SerializeField] protected bool IsUnlocked = false;
+    [SerializeField] public bool IsUnlocked = false;
     [SerializeField] protected int ScoreIfAlreadyUnlocked = 0;
-    public bool Unlocked { get; private set; }
     [Space]
 
     [Header("UI Settings")]
@@ -67,7 +66,6 @@ public abstract class Weapon : MonoBehaviour
     protected void Awake()
     {
         WeaponName = Name;
-        Unlocked = IsUnlocked;
         WType = Type;
 
         if (Mag == null)
@@ -91,15 +89,20 @@ public abstract class Weapon : MonoBehaviour
 
     protected virtual void OnUnlock()
     {
-        if (Unlocked)
-            Collectible.OnIncreaseScore?.Invoke(ScoreIfAlreadyUnlocked);
+        if (IsUnlocked)
+            ScoreCollectible.OnIncreaseScore?.Invoke(ScoreIfAlreadyUnlocked);
         else
-            Unlocked = true;
+            IsUnlocked = true;
     }
 
     protected void OnEnable()
     {
-        Collectible.OnWeaponTaken += UnlockWeapon;
+        WeaponCollectible.OnWeaponTaken += UnlockWeapon;
+    }
+
+    public void ResetWeapon()
+    {
+        Mag.ResetMag();
     }
 
 #if UNITY_EDITOR

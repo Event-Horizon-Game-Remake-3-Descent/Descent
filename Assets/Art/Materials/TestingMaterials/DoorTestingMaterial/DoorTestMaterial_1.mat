@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BulletMaterial_1
+  m_Name: DoorTestMaterial_1
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: 184c47c2fee3f8d4f95e3d7db31d4cc0, type: 2}
+  m_Parent: {fileID: 2100000, guid: 19bc00076cf2ce54da6f49505c961968, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -26,5 +26,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 0, g: 0.7313299, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.3726415, b: 0.3726415, a: 1}
   m_BuildTextureStacks: []

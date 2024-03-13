@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorPanel : MonoBehaviour, IDamageable
 {
     public delegate void PanelDamaged(float damageTaken);
-    public event PanelDamaged OnPanelTrigger;
+    public event PanelDamaged OnPanelTrigger = (float damage) => { };
 
     public delegate void PanelOpen();
     public event PanelOpen OnPanelOpen = () => { };

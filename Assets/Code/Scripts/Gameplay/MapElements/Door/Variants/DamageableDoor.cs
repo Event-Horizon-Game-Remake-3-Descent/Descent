@@ -14,9 +14,7 @@ public class DamageableDoor : Door
         base.Awake();
 
         for (int i = 0; i < ListOfPanels.Count; i++)
-        {
             ListOfPanels[i].OnPanelTrigger += DamageDoor;
-        }
 
         StartingHP = DoorHealthPoints;
     }
@@ -24,10 +22,8 @@ public class DamageableDoor : Door
     private void DamageDoor(float damageTaken)
     {
         DoorHealthPoints -= damageTaken;
+
         for (int i = 0; i < ListOfPanels.Count; i++)
-        {
             ListOfPanels[i].MovePanel(1, (StartingHP-DoorHealthPoints)/StartingHP);
-            Debug.Log((StartingHP - DoorHealthPoints) / StartingHP);
-        }
     }
 }

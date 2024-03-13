@@ -90,6 +90,7 @@ MonoBehaviour:
   - {fileID: 4348471946261568809}
   SynchronousShooting: 0
   IsUnlocked: 1
+  ScoreIfAlreadyUnlocked: 0
   _WeaponSprite: {fileID: 0}
   ShootSounds:
   - {fileID: 8300000, guid: 8b16cbddd0d5b0d45bcb8f112c0e390b, type: 3}
@@ -111,6 +112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialMagSize: 5
   MagMagType: 6
+  IsCapped: 0
+  MaxValue: 200
   ProjectileLeft: 0
 --- !u!82 &1977487332676030785
 AudioSource:
@@ -266,12 +269,12 @@ MonoBehaviour:
   - {fileID: 208460977447748659}
   FlareWeapon: {fileID: 2608951845128012758}
   BombWeapon: {fileID: 208460977447748659}
+  _EnergyMag: {fileID: 137728713501850004}
+  _BombsMag: {fileID: 8498288890113876601}
   ChangeWeaponCooldown: 1
   WeaponReadyAudoClip: {fileID: 8300000, guid: 8b16cbddd0d5b0d45bcb8f112c0e390b, type: 3}
   CHANGE_PRIMARY: 273
   CHANGE_SECONDARY: 274
-  PRIMARY_SHOOTKEY: 0
-  SECONDARY_SHOOTKEY: 0
   FLARE_SHOOTKEY: 102
 --- !u!82 &3533646101876932059
 AudioSource:
@@ -448,6 +451,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialMagSize: 150
   MagMagType: 0
+  IsCapped: 0
+  MaxValue: 200
   ProjectileLeft: 0
 --- !u!1 &8213836444996124118
 GameObject:

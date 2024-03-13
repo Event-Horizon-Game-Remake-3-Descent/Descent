@@ -37,12 +37,16 @@ public class Mag : MonoBehaviour
 
     private void OnEnable()
     {
-        Collectible.OnMagTaken += OnAmmoTaken;
+        AmmoCollectible.OnMagTaken += OnAmmoTaken;
     }
 
     private void OnDisable()
     {
-        Collectible.OnMagTaken -= OnAmmoTaken;
+        AmmoCollectible.OnMagTaken -= OnAmmoTaken;
     }
 
+    public void ResetMag()
+    {
+        ProjectileLeft = InitialMagSize;
+    }
 }

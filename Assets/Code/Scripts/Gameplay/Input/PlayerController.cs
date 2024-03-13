@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour , IDamageable
 
     private void OnEnable()
     {
-        Collectible.OnShieldTaken += Healing;
+        ShieldCollectible.OnShieldTaken += Healing;
     }
 
 
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour , IDamageable
         InputManager.InputMap.Overworld.VerticalMovement.started -= StopSlowDownCycle;
         InputManager.InputMap.Overworld.MouseX.started -= CheckTypeOfDevice;
         InputManager.InputMap.Overworld.MouseY.started -= CheckTypeOfDevice;
-        Collectible.OnShieldTaken -= Healing;
+        ShieldCollectible.OnShieldTaken -= Healing;
     }
 
     

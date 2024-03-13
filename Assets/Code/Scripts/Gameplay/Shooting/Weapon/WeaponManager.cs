@@ -109,8 +109,7 @@ public class WeaponManager : MonoBehaviour
 
         if (Input.GetKey(FLARE_SHOOTKEY))
         {
-            if (FlareWeapon.Shoot())
-                OnPrimaryFire();
+            ShootFlare();
         }
     }
     /////////////////////////////////////////
@@ -125,7 +124,7 @@ public class WeaponManager : MonoBehaviour
             if (Index > WeaponList.Count - 1)
                 Index = 0;
 
-        } while (!WeaponList[Index].Unlocked);
+        } while (!WeaponList[Index].IsUnlocked);
     }
 
     //shoot functions
@@ -139,9 +138,17 @@ public class WeaponManager : MonoBehaviour
     {
         if (SecondaryWeaponList[SecondaryIndex].Shoot())
             OnSecondaryFire();
-    }private void ShootBomb()
+    }
+    
+    private void ShootBomb()
     {
         BombWeapon.Shoot();
+    }
+
+    private void ShootFlare()
+    {
+        if (FlareWeapon.Shoot())
+            OnPrimaryFire();
     }
 
     private IEnumerator StartCooldown()
@@ -163,6 +170,7 @@ public class WeaponManager : MonoBehaviour
         InputManager.OnPrimaryCalled += ShootPrimary;
         InputManager.OnSecondaryCalled += ShootSecondary;
         InputManager.OnLaunchingBomb += ShootBomb;
+        PlayerController.OnPlayerDead += OnDeath;
     }
 
     //Disable all connected events
@@ -175,11 +183,28 @@ public class WeaponManager : MonoBehaviour
 
         InputManager.OnPrimaryCalled -= ShootPrimary;
         InputManager.OnSecondaryCalled -= ShootSecondary;
-        InputManager.OnLaunchingBomb += ShootBomb;
+        InputManager.OnLaunchingBomb -= ShootBomb;
+
+        PlayerController.OnPlayerDead -= OnDeath;
+    }
+
+    private void ResetManager()
+    {
+        for(int i = 1; i< PrimaryWeaponList.Count; i++)
+        {
+            PrimaryWeaponList[i].ResetWeapon();
+            PrimaryWeaponList[i].IsUnlocked = false;
+        }
+
+        for (int i = 0; i < SecondaryWeaponList.Count; i++)
+        {
+            SecondaryWeaponList[i].ResetWeapon();
+        }
     }
 
     private void OnDeath()
     {
-
+        ResetManager();
+        //DOTO: DROP COLLECTIBLES
     }
 }
