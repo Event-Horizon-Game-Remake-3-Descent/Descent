@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using static Collectible;
 using static Mag;
 using static Weapon;
 

@@ -131,10 +131,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 1
-  ExplosionRadius: 0
+  ExplosionRadius: 0.5
   ExplosionLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1217
   Speed: 15
   MeshToHide: {fileID: 0}
   ParticlesOnDestroy: {fileID: 0}
