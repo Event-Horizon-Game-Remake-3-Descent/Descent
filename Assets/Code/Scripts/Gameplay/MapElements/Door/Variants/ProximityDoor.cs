@@ -27,6 +27,10 @@ public class ProximityDoor : Door
 
                 StartCoroutine(CloseCoroutine());
             };
+            ListOfPanels[i].OnPanelClose += () => 
+            {
+                IsOpen = false;
+            };
         }
     }
 
@@ -51,10 +55,13 @@ public class ProximityDoor : Door
 
     private void CloseDoor()
     {
+        if(!IsOpen)
+            return;
+        
         SFX_Source.clip = CloseSFX;
         SFX_Source.Play();
 
-        IsOpen = false;
+        IsOpening = false;
 
         for (int i = 0; i < ListOfPanels.Count; i++)
         {

@@ -4939,7 +4939,7 @@ GameObject:
   - component: {fileID: 1621404589056078907}
   - component: {fileID: 2915517389527720799}
   m_Layer: 7
-  m_Name: SmartDummy
+  m_Name: SmallHulk_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

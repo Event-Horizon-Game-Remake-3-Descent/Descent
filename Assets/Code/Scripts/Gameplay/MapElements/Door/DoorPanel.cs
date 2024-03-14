@@ -9,6 +9,9 @@ public class DoorPanel : MonoBehaviour, IDamageable
 
     public delegate void PanelOpen();
     public event PanelOpen OnPanelOpen = () => { };
+    
+    public delegate void PanelClose();
+    public event PanelClose OnPanelClose = () => { };
 
     [Header("Panel Settings")]
     [SerializeField] Vector3 Direction = Vector3.forward;
@@ -79,6 +82,14 @@ public class DoorPanel : MonoBehaviour, IDamageable
         }
         PercentageOpen = percentage;
         MovingCoroutine = null;
+        OnPanelClose();
+    }
+
+    private void OnDisable()
+    {
+        OnPanelOpen -= OnPanelOpen; 
+        OnPanelClose -= OnPanelClose;
+        OnPanelTrigger -= OnPanelTrigger;
     }
 
 #if UNITY_EDITOR
