@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 356433244111561691}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.715, y: 1.3, z: 0.7}
+  m_LocalPosition: {x: 0.715, y: 0, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4984,10 +4984,7 @@ MonoBehaviour:
   DamageOnCollision: 5
   EnemyHP: 15
   PatrollingData:
-    PatrollingPositions:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    PatrollingPositions: []
   PathSpeed: 9
   PathThreshold: 0.25
   DecelerationDistance: 6
@@ -5012,7 +5009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileToShoot: {fileID: 4982554394825947373, guid: b9e07d6460976954bb53cdfd7bcfb76f, type: 3}
-  ShootDelay: 1
+  ShootDelay: 0.5
   ShootingPoints:
   - {fileID: 2514822682926178879}
   - {fileID: 1554138235232291306}
@@ -5042,8 +5039,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
-  m_Center: {x: 0, y: 0.57, z: 0}
+  m_Radius: 1.62
+  m_Center: {x: 0, y: -0.72, z: 0}
 --- !u!54 &2118727921522554400
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10079,7 +10076,7 @@ Transform:
   m_GameObject: {fileID: 7421115667600463966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.715, y: 1.3, z: 0.7}
+  m_LocalPosition: {x: -0.715, y: 0, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14999,7 +14996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a3df3ca82349754e934ce57fc753a76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.321
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a3df3ca82349754e934ce57fc753a76, type: 3}
       propertyPath: m_LocalPosition.z

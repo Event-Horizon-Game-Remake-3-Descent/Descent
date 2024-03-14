@@ -35,7 +35,10 @@ public class LockedDoor : Door
 
     private void Start()
     {
-        KeyReference.OnKeyObtained += () => IsLocked = false;
+        if (KeyReference != null)
+            KeyReference.OnKeyObtained += () => IsLocked = false;
+        else
+            Debug.LogError("KEY REQUESTED FOR THIS DOOR");
     }
 
     private void OpenDoor()

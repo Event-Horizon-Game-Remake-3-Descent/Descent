@@ -4986,10 +4986,7 @@ MonoBehaviour:
   DamageOnCollision: 5
   EnemyHP: 15
   PatrollingData:
-    PatrollingPositions:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    PatrollingPositions: []
   PathSpeed: 5
   PathThreshold: 0.25
   DecelerationDistance: 4.2
