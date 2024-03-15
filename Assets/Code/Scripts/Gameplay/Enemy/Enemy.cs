@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using static Enemy;
-
-public class Enemy : MonoBehaviour, IDamageable, IPatrollable
+public class Enemy : MonoBehaviour, IDamageable, IPatrollable, ISpawnable
 {
     public delegate void EnemyDead();
     public EnemyDead OnEnemyDead = () => { };
@@ -20,9 +18,6 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
     [Header("Enemy Settings")]
     [SerializeField] private float RotationSpeed = 1f;
     [SerializeField] private EnemyWeapon EnemyWeapon;
-    [SerializeField] ParticleSystem ParticlesOnDestroy;
-    [SerializeField] private SphereCollider SphereColliderToRemove;
-    [SerializeField] private float ScoreOnDefeat = 1000f;
     [SerializeField] private EnemyState StartingState = EnemyState.Idling;
     [SerializeField] private float DamageOnCollision = 5f;
 
@@ -36,8 +31,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
 
     //IDamageable
     public float HP { get; set ; }
-    [SerializeField] float EnemyHP = 10f;
-
+    [SerializeField] private float EnemyHP = 10f;
     private bool IsDead = false;
 
     //IPatrollable variables
@@ -54,8 +48,9 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
 
     [SerializeField] private float DecelerationDistance = 1f;
     public float PatrollingDecelerationDistance { get; set; }
-    //Current Index
+    //Current patrolling Index
     public int PatrollingIndex { get; set; }
+
 
     [Tooltip("Distance of Triggering")]
     [SerializeField] private float TriggerDistance = 20f;
@@ -63,6 +58,14 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
     [SerializeField] private float DistanceOnceTriggered = 5f;
 
     private Transform TargetTransform;
+
+    //Spawnable
+    [Header("On Death Settings")]
+    [SerializeField] ParticleSystem ParticlesOnDestroy;
+    [SerializeField] private Collider ColliderToDisable;
+    [SerializeField] private float ScoreOnDefeat = 1000f;
+    [SerializeField] private List<RandomData> SpawnOnDeath;
+    public List<RandomData> ObjectsToSpawn { get; set; }
 
     [Header("Patrolling Gizmo Setting")]
     [SerializeField] private bool DrawGizmo = true;
@@ -90,10 +93,12 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
         //Set up IDamageable
         HP = EnemyHP;
 
+        //Set up ISpawnable
+        ObjectsToSpawn = SpawnOnDeath;
+
         //Other
         RigidBody = GetComponent<Rigidbody>();
     }
-
 
     private void Start()
     {
@@ -192,8 +197,23 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
         RigidBody.velocity = transform.forward * PatrollingSpeed * decelerationActuator;
     }
 
+    private IEnumerator TurnCoroutine()
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(TargetTransform.position - transform.position);
+        float time = 0f;
+
+        while (time < 1f)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, time);
+            time += Time.deltaTime * RotationSpeed;
+            yield return null;
+        }
+        TurnRoutine = null;
+    }
+
     #endregion
 
+    #region ATTACK
     private void Attack()
     {
         if (TurnRoutine == null)
@@ -202,20 +222,60 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
             EnemyWeapon.Shoot();
         }
     }
-
-    private IEnumerator TurnCoroutine()
+    private bool CanAttack()
     {
-        Quaternion targetRotation = Quaternion.LookRotation(TargetTransform.position - transform.position);
-        float time = 0f;
-        
-        while (time < 1f)
-        { 
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, time);
-            time += Time.deltaTime * RotationSpeed;
-            yield return null;
-        }
-        TurnRoutine = null;
+        Ray ray = new Ray(transform.position, (PlayerRef.transform.position - transform.position).normalized);
+        Debug.DrawRay(transform.position, (PlayerRef.transform.position - transform.position).normalized * 50f, Color.magenta);
+
+        if (Physics.SphereCast(ray, 1f, out RaycastHit hitInfo, TriggerDistance, ~(1 << 8 | 1 << 9), QueryTriggerInteraction.Ignore))
+            return hitInfo.collider.CompareTag("Player");
+        return false;
     }
+    #endregion
+
+    #region DEATH
+    private void Die()
+    {
+        SpawnObject();
+
+        IsDead = true;
+        if (!ParticlesOnDestroy)
+        {
+            Destroy(RigidBody);
+        }
+        else
+        {
+            ColliderToDisable.enabled = false;
+            RigidBody.velocity = Vector3.zero;
+            ParticlesOnDestroy.Play();
+        }
+        EnemyBehaviour -= EnemyBehaviour;
+        OnEnemyDead();
+        ScoreCollectible.OnIncreaseScore?.Invoke(ScoreOnDefeat);
+    }
+
+    public void SpawnObject()
+    {
+        float randomValue = UnityEngine.Random.value;
+        float[] probabilityArray = new float[SpawnOnDeath.Count];
+        probabilityArray[0] = SpawnOnDeath[0].Probability;
+
+        for (int i = 1; i < probabilityArray.Length; i++)
+        {
+            probabilityArray[i] = probabilityArray[i-1] + SpawnOnDeath[i].Probability;
+        }
+
+        for(int i = 0; i < probabilityArray.Length; i++)
+        {
+            if (randomValue < probabilityArray[i])
+            {
+                Instantiate(SpawnOnDeath[i].ObjectToGenerate, transform.position, Quaternion.identity);
+                return;
+            }
+        }
+
+    }
+    #endregion
 
     public void TakeDamage(float Damage)
     {
@@ -228,31 +288,8 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
 
         if (HP < 0)
         {
-            IsDead = true;
-            if (!ParticlesOnDestroy)
-            {
-                Destroy(RigidBody);
-            }
-            else
-            {
-                SphereColliderToRemove.enabled = false;
-                RigidBody.velocity = Vector3.zero;
-                ParticlesOnDestroy.Play();
-            }
-            EnemyBehaviour -= EnemyBehaviour;
-            OnEnemyDead();
-            ScoreCollectible.OnIncreaseScore?.Invoke(ScoreOnDefeat);
+            Die();
         }
-    }
-
-    private bool CanAttack()
-    {
-        Ray ray = new Ray(transform.position, (PlayerRef.transform.position - transform.position).normalized);
-        Debug.DrawRay(transform.position, (PlayerRef.transform.position - transform.position).normalized * 50f, Color.magenta);
-        
-        if(Physics.SphereCast(ray, 1f, out RaycastHit hitInfo, TriggerDistance, ~(1<<8 | 1<<9), QueryTriggerInteraction.Ignore))
-            return hitInfo.collider.CompareTag("Player");
-        return false;
     }
 
     private void OnEnable()

@@ -20,7 +20,8 @@ public class AmmoCollectible : Collectible
             UI_Manager.Notify(IncreaseAmmoValue + " " + ProjectileType + " Taken");
         else
             UI_Manager.Notify(IncreaseAmmoValue + " " + ProjectileType + " Ammo Taken");
-
+        
+        base.TriggerUpdateUI();
         Destroy(this.gameObject);
     }
 }

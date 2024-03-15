@@ -4977,9 +4977,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationSpeed: 1
   EnemyWeapon: {fileID: 5928622362966370038}
-  ParticlesOnDestroy: {fileID: 3302734903917584149}
-  SphereColliderToRemove: {fileID: 8578108118191250631}
-  ScoreOnDefeat: 1000
   StartingState: 0
   DamageOnCollision: 5
   EnemyHP: 15
@@ -4990,6 +4987,14 @@ MonoBehaviour:
   DecelerationDistance: 6
   TriggerDistance: 30
   DistanceOnceTriggered: 7
+  ParticlesOnDestroy: {fileID: 3302734903917584149}
+  ColliderToDisable: {fileID: 8578108118191250631}
+  ScoreOnDefeat: 1000
+  SpawnOnDeath:
+  - ObjectToGenerate: {fileID: 7137559070928493990, guid: b6a2f49852d522f49868035cd338b295, type: 3}
+    Probability: 0.01
+  - ObjectToGenerate: {fileID: 7137559070928493990, guid: 86b5d1f5f0f029148a7aa7c1fa95638c, type: 3}
+    Probability: 0.02
   DrawGizmo: 0
   PathColor: {r: 1, g: 1, b: 1, a: 1}
   PointColor: {r: 1, g: 0, b: 0, a: 0}

@@ -7,7 +7,7 @@ public class EnemyDoor : Door
     [Header("Enemy Door Setting")]
     [Tooltip("Seconds to wait after the player has exit the trigger zone")]
     [SerializeField] private float CloseAfter = 5f;
-    [SerializeField] Enemy EnemyReference;
+    [SerializeField] Boss BossReference;
 
     new private void Awake()
     {
@@ -16,8 +16,8 @@ public class EnemyDoor : Door
 
     private void Start()
     {
-        if (EnemyReference != null)
-            EnemyReference.OnEnemyDead += () => OpenDoor();
+        if (BossReference != null)
+            BossReference.OnEnemyDead += () => OpenDoor();
         else
             Debug.LogError("ENEMY REQUESTED FOR THIS DOOR");
     }
