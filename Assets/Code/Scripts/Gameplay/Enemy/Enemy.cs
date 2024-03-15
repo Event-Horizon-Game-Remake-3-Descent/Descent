@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static Enemy;
 
 public class Enemy : MonoBehaviour, IDamageable, IPatrollable
 {
+    public delegate void EnemyDead();
+    public EnemyDead OnEnemyDead = () => { };
+
     private enum EnemyState
     {
         Idling,
@@ -236,6 +240,7 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable
                 ParticlesOnDestroy.Play();
             }
             EnemyBehaviour -= EnemyBehaviour;
+            OnEnemyDead();
             ScoreCollectible.OnIncreaseScore?.Invoke(ScoreOnDefeat);
         }
     }
