@@ -14,6 +14,8 @@ public class UI_Manager : MonoBehaviour
     public static Action UpdateUI;
     public static Action PausedByInput;
     public static Action UnPausedByInput;
+    // All panels and relatives TMPs
+    [Header("References, don't touch it")]
     [SerializeField] private RectTransform SettingsPanel;
     [SerializeField] private RectTransform HUD;
     [SerializeField] private RectTransform FullHUD;
@@ -29,14 +31,32 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private TMP_Text Score_text;
     [SerializeField] private TMP_Text Notification_text;
     [SerializeField] TMP_Text SensValue_text;
-    
+    [SerializeField] TMP_Text Countdown_text;
+    [SerializeField] Image BlueKey;
+    [SerializeField] Image YellowKey;
+    [SerializeField] Image RedKey;
+    [Space]
+    // Flashing Images
+    [SerializeField] private CanvasGroup RedFlash;
+    [SerializeField] private CanvasGroup BlueFlash;
+    [Header("Flashing Screens Parameters")]
+    [SerializeField] float FadeDuration;
+    [SerializeField] float MaxAlpha;
+    [Space]
+    [Header("Time To Escape")]
+    [SerializeField] float TimeForEscape;
+    [SerializeField] float IncreaseTextSizeBy;
+    [SerializeField] float StartingTextSize;
+
+
 
     PlayerController Player;
 
     bool OnPause = false;
+    bool PlayerIsDead;
 
     private void Awake()
-    {
+    { 
         HUD.gameObject.SetActive(true);
         SettingsPanel.gameObject.SetActive(false);
         MainMenu.gameObject.SetActive(false);
@@ -52,15 +72,30 @@ public class UI_Manager : MonoBehaviour
         SensValue_text.text = Mathf.RoundToInt (PlayerPrefs.GetFloat("MouseSensitivity")).ToString();
         InputManager.InputMap.Overworld.SwitchCamera.started +=(InputAction.CallbackContext hud)=> FullHUD.gameObject.SetActive(false);
         InputManager.InputMap.Overworld.SwitchCamera.canceled += (InputAction.CallbackContext hud) => FullHUD.gameObject.SetActive(true);
+        RedFlash.alpha = 0;
+        BlueFlash.alpha = 0;
+        BlueKey.color = Color.black;
+        YellowKey.color = Color.black;
+        RedKey.color = Color.black;
+        StartingTextSize = Countdown_text.fontSize;
+    }
+
+    // update method for testing
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O)) { FlashingRed(); }
+        if (Input.GetKeyDown(KeyCode.P)) { FlashingBlue(); }
+        if (Input.GetKeyDown(KeyCode.L)) { StartCountDown(); }
         
     }
 
-    
+
 
     private void OnEnable()
     {
         InputManager.OnPauseMenu += Menu;
         PlayerController.OnPlayerReady += (PlayerController playerController) => { Player = playerController; UpdateCollectibles(); HandleVisualShield(); };
+        PlayerController.OnPlayerDead += () => PlayerIsDead = true;
         PlayerController.OnUpdatingUiCollect += UpdateCollectibles;
         PlayerController.OnUpdatingUiCollect += HandleVisualShield;
         Notify += Notifications;
@@ -84,11 +119,73 @@ public class UI_Manager : MonoBehaviour
 
     public void ShowSensitivityValue()
     {
-        if(SensitivitySlider.isActiveAndEnabled) { SensValue_text.text = Mathf.RoundToInt( GameManager.MouseSens).ToString(); }
+        if (SensitivitySlider.isActiveAndEnabled) { GameManager.GetMouseSens(SensitivitySlider.value); }
+        if (SensitivitySlider.isActiveAndEnabled) { SensValue_text.text = Mathf.RoundToInt( GameManager.MouseSens).ToString(); }
     }
         
+   void FlashingRed()
+    {
+        StopCoroutine(FlashingScreen(BlueFlash));
+        StartCoroutine(FlashingScreen(RedFlash));
+    }
 
-   
+    void FlashingBlue()
+    {
+        StopCoroutine(FlashingScreen(RedFlash));
+        StartCoroutine(FlashingScreen(BlueFlash));
+    }
+
+    void StartCountDown()
+    {
+        StartCoroutine(Countdown());
+    }
+
+    private IEnumerator Countdown()
+    {
+        float currentTime = TimeForEscape;
+
+        while (currentTime > 0)
+        {
+            Countdown_text.text = "" + currentTime;
+            
+            Countdown_text.fontSize += IncreaseTextSizeBy;
+            yield return new WaitForSeconds(0.5f); 
+
+            
+            Countdown_text.fontSize = StartingTextSize;
+            yield return new WaitForSeconds(0.5f); 
+
+            currentTime--;
+            
+        }
+        Countdown_text.text = "0";
+        
+    }
+
+    IEnumerator FlashingScreen(CanvasGroup image)
+    {
+        float counter = 0f;
+        while (counter < FadeDuration)
+        {
+            counter += Time.deltaTime;
+            float alphaValue = Mathf.Lerp(0f, MaxAlpha, counter / FadeDuration);
+            image.alpha = alphaValue;
+            yield return null;
+        }
+        image.alpha = 1f;
+        counter = 0f;
+        while (counter < FadeDuration) 
+        {
+            counter += Time.deltaTime;
+            float alphaValue = Mathf.Lerp(MaxAlpha, 0f, counter / FadeDuration);
+            image.alpha = alphaValue;
+            yield return null;
+        }
+        image.alpha = 0f;
+    }
+
+
+
 
     void UpdateCollectibles()
     {
@@ -182,12 +279,13 @@ public class UI_Manager : MonoBehaviour
         QuitButton.gameObject.SetActive(false);
         ResumeButton.gameObject.SetActive(false);
         BackButton.gameObject.SetActive(false);
-        InputManager.InputMap.Overworld.Enable();
+        if(!PlayerIsDead) { InputManager.InputMap.Overworld.Enable(); }
         OnPause = false;
         InputManager.Resume?.Invoke();
         Time.timeScale = 1.0f;
-        
     }
+        
+        
     public void QuitGame()
     {
         Application.Quit();

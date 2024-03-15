@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     public static event PlayerReady OnPlayerReady;
     public delegate void PlayerCollecting();
     public static event PlayerCollecting OnUpdatingUiCollect;
+    public static Action UpdatePlayerSens;
 
     private float mouseSensitivity = 25f;
     private float XSpeed;
@@ -74,6 +75,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     private void OnEnable()
     {
         ShieldCollectible.OnShieldTaken += Healing;
+        UpdatePlayerSens += ChangePlayerSensitivity;
     }
 
 

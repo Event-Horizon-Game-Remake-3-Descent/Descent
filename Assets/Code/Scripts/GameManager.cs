@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System;
+
+
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Camera PlayerCamera;
-    [SerializeField] Camera RearCamera;
-    [SerializeField] Camera DeathCamera;
-    [SerializeField] Slider SensitivitySlider;
+    public static Action<float> GetMouseSens;
+    
     public static float Score {  get; private set; }
-    public static float MouseSens = 250;
-    public bool RearCamActive;
+    public static float MouseSens;
+    
 
 
     private void Awake()
@@ -30,23 +28,20 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SensitivitySlider.value = MouseSens;
-        MouseSens = SensitivitySlider.value;
-        RearCamera.enabled = false;
-        DeathCamera.enabled = false;
-        InputManager.InputMap.Overworld.SwitchCamera.started += SwitchCam;
-        InputManager.InputMap.Overworld.SwitchCamera.canceled += SwitchCam;
+        GetMouseSens += ChangeSensitivity;
+        
     }
     private void OnEnable()
     {
-        PlayerController.OnPlayerDead += DeathCam;
-        ScoreCollectible.OnIncreaseScore += (float value) => { Score += value; UI_Manager.UpdateUI?.Invoke(); };
         
+        ScoreCollectible.OnIncreaseScore += (float value) => { Score += value; UI_Manager.UpdateUI?.Invoke(); };
+           
     }
 
-    public void ChaangeSensitivity()
+    public void ChangeSensitivity(float value)
     {
-        MouseSens = SensitivitySlider.value;
+        MouseSens = value;
+        PlayerController.UpdatePlayerSens?.Invoke();
         PlayerPrefs.SetFloat("MouseSensitivity", MouseSens);
     }
 
@@ -54,28 +49,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    void SwitchCam(InputAction.CallbackContext context)
-    {
-        if (!RearCamActive) 
-        {
-            PlayerCamera.enabled = false;
-            RearCamera.enabled = true;
-        }
-        else
-        {
-            PlayerCamera.enabled = true;
-            RearCamera.enabled=false;
-        }
-        RearCamActive = !RearCamActive;
-            
-    }
-
-    void DeathCam()
-    {
-        PlayerCamera.enabled = false;
-        RearCamera.enabled = false;
-        DeathCamera.enabled = true;
-    }
+    
     
 
     

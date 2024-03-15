@@ -53,9 +53,9 @@ public class InputManager : MonoBehaviour
         InputMap.Menu.Pause.performed += Paused;
         PlayerController.OnPlayerDead += PlayerIsDead;
         //IsPaused += () => AlreadyOnMenu = true;
-        Resume += () => AlreadyOnMenu = false;
-        
-    }
+        Resume += () => { AlreadyOnMenu = false; Cursor.lockState = CursorLockMode.Locked; };
+
+        }
 
     private void TriggerPrimary(InputAction.CallbackContext f)
     {
@@ -144,7 +144,7 @@ public class InputManager : MonoBehaviour
         {
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
-            InputMap.Overworld.Enable();
+            if (PlayerIsAlive) { InputMap.Overworld.Enable(); }
             InputMap.Menu.Navigation.Disable();
             AlreadyOnMenu = !AlreadyOnMenu;
             //UI_Manager.UnPausedByInput?.Invoke();
