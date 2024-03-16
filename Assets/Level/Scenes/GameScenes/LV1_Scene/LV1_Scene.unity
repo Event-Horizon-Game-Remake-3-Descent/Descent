@@ -1171,7 +1171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &766854753
 Transform:
   m_ObjectHideFlags: 0
@@ -1441,6 +1441,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 60546519}
     m_Modifications:
+    - target: {fileID: 3967073844639729, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 384139207837173548, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1843,7 +1847,6 @@ MonoBehaviour:
   PlayerCamera: {fileID: 1436145467}
   RearCamera: {fileID: 1436145468}
   DeathCamera: {fileID: 1436145469}
-  EscapeCamera: {fileID: 619239537}
   MapCamera: {fileID: 859619614}
   RearCamActive: 0
 --- !u!4 &1157946910

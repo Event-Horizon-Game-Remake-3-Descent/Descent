@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         GetMouseSens += ChangeSensitivity;
+        Score = 0f;
         
     }
     private void OnEnable()
