@@ -2569,10 +2569,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4764294921919231826}
+  - component: {fileID: 5178888174354793418}
   - component: {fileID: 124165995205190664}
   - component: {fileID: 968139132186123967}
   - component: {fileID: 281699468429339517}
-  - component: {fileID: 5178888174354793418}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -2603,6 +2603,44 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &5178888174354793418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3664953397163569565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c2d63e90ae0da4b8597a7193a58048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SettingsPanel: {fileID: 3280643550504522356}
+  HUD: {fileID: 6442293490207585815}
+  FullHUD: {fileID: 6442293490207585815}
+  MainMenu: {fileID: 8234915251066787443}
+  ControlsMenu: {fileID: 1507758389918843618}
+  AudioMenu: {fileID: 4335628352310782134}
+  QuitButton: {fileID: 6964605308968661905}
+  ResumeButton: {fileID: 3790519829673371274}
+  BackButton: {fileID: 6043161156650310719}
+  SensitivitySlider: {fileID: 7958013476445205656}
+  Shield_text: {fileID: 528046060911193370}
+  OuterShield: {fileID: 5716653386317921676}
+  Score_text: {fileID: 8181761872313488584}
+  Notification_text: {fileID: 2860512084138419208}
+  SensValue_text: {fileID: 3414865904175882368}
+  Countdown_text: {fileID: 6170686781561001219}
+  BlueKey: {fileID: 1269450485996175584}
+  YellowKey: {fileID: 5493068834784680978}
+  RedKey: {fileID: 6663574489516940276}
+  RedFlash: {fileID: 3228597734921513525}
+  BlueFlash: {fileID: 2521370093065476127}
+  FadeDuration: 0.2
+  MaxAlpha: 0.5
+  TimeForEscape: 45
+  IncreaseTextSizeBy: 10
+  StartingTextSize: 36
 --- !u!223 &124165995205190664
 Canvas:
   m_ObjectHideFlags: 0
@@ -2666,44 +2704,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5178888174354793418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3664953397163569565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c2d63e90ae0da4b8597a7193a58048, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SettingsPanel: {fileID: 3280643550504522356}
-  HUD: {fileID: 6442293490207585815}
-  FullHUD: {fileID: 6442293490207585815}
-  MainMenu: {fileID: 8234915251066787443}
-  ControlsMenu: {fileID: 1507758389918843618}
-  AudioMenu: {fileID: 4335628352310782134}
-  QuitButton: {fileID: 6964605308968661905}
-  ResumeButton: {fileID: 3790519829673371274}
-  BackButton: {fileID: 6043161156650310719}
-  SensitivitySlider: {fileID: 7958013476445205656}
-  Shield_text: {fileID: 528046060911193370}
-  OuterShield: {fileID: 5716653386317921676}
-  Score_text: {fileID: 8181761872313488584}
-  Notification_text: {fileID: 2860512084138419208}
-  SensValue_text: {fileID: 3414865904175882368}
-  Countdown_text: {fileID: 6170686781561001219}
-  BlueKey: {fileID: 1269450485996175584}
-  YellowKey: {fileID: 5493068834784680978}
-  RedKey: {fileID: 6663574489516940276}
-  RedFlash: {fileID: 3228597734921513525}
-  BlueFlash: {fileID: 2521370093065476127}
-  FadeDuration: 0.2
-  MaxAlpha: 0.5
-  TimeForEscape: 45
-  IncreaseTextSizeBy: 10
-  StartingTextSize: 36
 --- !u!1 &3721649309960666022
 GameObject:
   m_ObjectHideFlags: 0

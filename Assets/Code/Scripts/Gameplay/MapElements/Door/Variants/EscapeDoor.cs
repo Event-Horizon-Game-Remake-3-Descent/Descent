@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDoor : Door
+public class EscapeDoor : Door
 {
-    [Header("Enemy Door Setting")]
-    [Tooltip("Seconds to wait after the player has exit the trigger zone")]
-    [SerializeField] private float CloseAfter = 5f;
+    [Header("Escape Door Setting")]
     [SerializeField] Boss BossReference;
 
     new private void Awake()

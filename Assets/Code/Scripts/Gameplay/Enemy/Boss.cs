@@ -40,8 +40,6 @@ public class Boss : MonoBehaviour, IDamageable
 
     [Tooltip("Distance of Triggering")]
     [SerializeField] private float TriggerDistance = 20f;
-    [Tooltip("Distance kept from player")]
-    [SerializeField] private float DistanceOnceTriggered = 5f;
 
     private Transform TargetTransform;
 

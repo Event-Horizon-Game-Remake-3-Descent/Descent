@@ -205,6 +205,6 @@ public class WeaponManager : MonoBehaviour
     private void OnDeath()
     {
         ResetManager();
-        //DOTO: DROP COLLECTIBLES
+        //TODO: DROP COLLECTIBLES
     }
 }

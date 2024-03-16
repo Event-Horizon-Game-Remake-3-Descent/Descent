@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    
     public float AutoBankingSpeed = 10f;
     private float AutoBankingValue = 0f; 
     private float AutobankingVelocity = 0f;

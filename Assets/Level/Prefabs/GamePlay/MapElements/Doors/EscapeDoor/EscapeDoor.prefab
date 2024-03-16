@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 8059478525174839271}
   - component: {fileID: 3730253135410547997}
   m_Layer: 0
-  m_Name: EnemyDoor_2Sliders
+  m_Name: EscapeDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
