@@ -195,7 +195,7 @@ public class InputManager : MonoBehaviour
         }
         
         OnPauseMenu();
-        Debug.Log(AlreadyOnMenu);
+        
     }
 
     void MinimapOpen(InputAction.CallbackContext map)
@@ -211,7 +211,7 @@ public class InputManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         InputMap.Overworld.Enable();
-        InputMap.Menu.Disable();
+        InputMap.Menu.Enable();
         InputMap.MiniMap.Disable();
         OnMinimapClosed();
     }
