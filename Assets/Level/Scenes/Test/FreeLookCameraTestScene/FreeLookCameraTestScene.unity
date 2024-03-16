@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 1560006272}
   - component: {fileID: 1560006271}
   - component: {fileID: 1560006270}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,6 +367,14 @@ PrefabInstance:
     - target: {fileID: 6684950054760879833, guid: 9315c4091e9a80c42b3598ec854fd0ca, type: 3}
       propertyPath: m_Name
       value: FreeLookCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934219975485398723, guid: 9315c4091e9a80c42b3598ec854fd0ca, type: 3}
+      propertyPath: MaxDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934219975485398723, guid: 9315c4091e9a80c42b3598ec854fd0ca, type: 3}
+      propertyPath: CamSmootingTime
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

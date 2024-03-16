@@ -105,9 +105,6 @@ public class FreeLookCamera : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-
-        if (Application.isPlaying)
-            return;
         if(!DrawGizmos)
             return;
         //draw min distance
