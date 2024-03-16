@@ -10,9 +10,7 @@ public class GameManager : MonoBehaviour
     public static Action<float> GetMouseSens;
     
     public static float Score {  get; private set; }
-    public static float MouseSens;
-    
-
+    public static float MouseSens = 250f;
 
     private void Awake()
     {

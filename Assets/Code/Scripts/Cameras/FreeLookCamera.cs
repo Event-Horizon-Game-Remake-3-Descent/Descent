@@ -27,7 +27,7 @@ public class FreeLookCamera : MonoBehaviour
     private void Awake()
     {
         currentDist = MaxDistance;
-        CameraTransform.position = CameraTransform.forward * MaxDistance;
+        CameraTransform.localPosition = Vector3.back*MaxDistance;
     }
 
     private void Start()
@@ -51,8 +51,6 @@ public class FreeLookCamera : MonoBehaviour
             //update camera rotation
             CameraTransform.rotation = GetNewCameraRotation();
             transform.rotation *= GetFreeLookRotation();
-            //update camera position
-            CameraTransform.position = transform.forward * currentDist;
             //wait one frame
             yield return null;
         }
@@ -81,18 +79,21 @@ public class FreeLookCamera : MonoBehaviour
     {
         currentDist += ZoomSpeed;
         currentDist = Mathf.Clamp(currentDist, MinDistance, MaxDistance);
+
+        CameraTransform.localPosition = Vector3.back*currentDist;
     }
 
     private void ZoomOut()
     {
         currentDist -= ZoomSpeed;
         currentDist = Mathf.Clamp(currentDist, MinDistance, MaxDistance);
+
+        CameraTransform.localPosition = Vector3.back*currentDist;
     }
 
     private void OnEnable()
     {
         Camera.enabled = true;
-        //UpdateCoroutine = StartCoroutine(FreeLook());
     }
 
     private void OnDisable()

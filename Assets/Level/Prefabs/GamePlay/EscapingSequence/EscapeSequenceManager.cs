@@ -18,11 +18,22 @@ public class EscapeSequenceManager : MonoBehaviour
     {
         OnEscapeSequenceTriggered += PlayEscapeSequence;
         DollyCart.m_Speed = 0f;
+        
     }
 
     private void PlayEscapeSequence()
     {
         DollyCart.m_Speed = DollySpeed;
+        StartCoroutine(LoadNextScene());
+    }
+
+    private IEnumerator LoadNextScene()
+    {
+        while(DollyCart.m_Position < 1f)
+        {
+            yield return null;
+        }
+        SceneManager.LoadScene(SceneToLoad, LoadSceneMode.Single);
     }
 
     private void OnTriggerEnter(Collider other)

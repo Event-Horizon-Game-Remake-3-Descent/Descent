@@ -137,6 +137,7 @@ public class Boss : MonoBehaviour, IDamageable
         EnemyBehaviour -= EnemyBehaviour;
         OnEnemyDead();
         ScoreCollectible.OnIncreaseScore?.Invoke(ScoreOnDefeat);
+        UI_Manager.Notify("BOSS DEFEATED, GET OUT\nNOW!");
     }
 
     public void TakeDamage(float Damage)
