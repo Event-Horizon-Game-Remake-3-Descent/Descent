@@ -365,6 +365,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8777421537735327197}
   - {fileID: 1053946313123801683}
   - {fileID: 6611907646351656069}
   - {fileID: 3016989416434264630}
@@ -578,6 +579,55 @@ MonoBehaviour:
   AutoBankingSpeed: 30
   SmoothTime: 0.3
   AutoBankingTreshold: 10
+--- !u!1 &6014138352372289032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8777421537735327197}
+  - component: {fileID: 2852447631851577526}
+  m_Layer: 0
+  m_Name: CameraManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8777421537735327197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6014138352372289032}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1015.79224, y: 564.36365, z: 11.781031}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8236186568755696781}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2852447631851577526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6014138352372289032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9faf04680615c91428999bc354a6d177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCamera: {fileID: 975786081701446648}
+  RearCamera: {fileID: 6763670398067572999}
+  DeathCamera: {fileID: 5112212488747236132}
+  MapCamera: {fileID: 8453189832153176634}
+  RearCamActive: 0
 --- !u!1001 &415327945594503167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -966,6 +1016,10 @@ PrefabInstance:
       value: MinimapCamera
       objectReference: {fileID: 0}
     - target: {fileID: 8934219975485398723, guid: 9315c4091e9a80c42b3598ec854fd0ca, type: 3}
+      propertyPath: MaxSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934219975485398723, guid: 9315c4091e9a80c42b3598ec854fd0ca, type: 3}
       propertyPath: DrawGizmos
       value: 1
       objectReference: {fileID: 0}
@@ -992,6 +1046,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2702446121746769756, guid: 9315c4091e9a80c42b3598ec854fd0ca, type: 3}
   m_PrefabInstance: {fileID: 1059325469858366713}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8453189832153176634 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8934219975485398723, guid: 9315c4091e9a80c42b3598ec854fd0ca, type: 3}
+  m_PrefabInstance: {fileID: 1059325469858366713}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6319f587d74af2d4caf17cbf1f398d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3446135561339296965
 PrefabInstance:
   m_ObjectHideFlags: 0

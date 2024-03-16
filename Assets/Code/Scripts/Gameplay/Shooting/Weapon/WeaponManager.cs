@@ -70,50 +70,7 @@ public class WeaponManager : MonoBehaviour
         OnManagerReady(this);
     }
 
-    #region TO REMOVE
-    //TODO: REMOVE
-    [Space]
-    [Header("TO REMOVE CHANGE KEYS")]
-    public KeyCode CHANGE_PRIMARY;
-    public KeyCode CHANGE_SECONDARY;
-
-    [Space]
-    [Header("SPECIAL TO REMOVE")]
-    public KeyCode FLARE_SHOOTKEY;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(CHANGE_PRIMARY))
-        {
-            if(CanChange)
-            {
-                CanChange = false;
-                ChangeWeapon(ref PrimaryIndex, PrimaryWeaponList);
-                CurrentPrimary = PrimaryWeaponList[PrimaryIndex];
-                CurrentPrimaryIndex = PrimaryIndex;
-                //call OnWeaponChanged event
-                OnWeaponChanged();
-            }
-        }
-        if (Input.GetKeyDown(CHANGE_SECONDARY))
-        {
-            if(CanChange)
-            {
-                CanChange = false;
-                ChangeWeapon(ref SecondaryIndex, SecondaryWeaponList);
-                CurrentSecondary = SecondaryWeaponList[SecondaryIndex];
-                //call OnWeaponChanged event
-                OnWeaponChanged();
-            }
-        }
-
-        if (Input.GetKey(FLARE_SHOOTKEY))
-        {
-            ShootFlare();
-        }
-    }
-    /////////////////////////////////////////
-    #endregion
+    
 
     //Use The next index weapon
     private void ChangeWeapon(ref int Index, List<Weapon> WeaponList)
@@ -125,6 +82,31 @@ public class WeaponManager : MonoBehaviour
                 Index = 0;
 
         } while (!WeaponList[Index].IsUnlocked);
+    }
+
+    void ChangePrimary()
+    {
+        if (CanChange)
+        {
+            CanChange = false;
+            ChangeWeapon(ref PrimaryIndex, PrimaryWeaponList);
+            CurrentPrimary = PrimaryWeaponList[PrimaryIndex];
+            CurrentPrimaryIndex = PrimaryIndex;
+            //call OnWeaponChanged event
+            OnWeaponChanged();
+        }
+    }
+
+    void ChangeSecondary()
+    {
+        if (CanChange)
+        {
+            CanChange = false;
+            ChangeWeapon(ref SecondaryIndex, SecondaryWeaponList);
+            CurrentSecondary = SecondaryWeaponList[SecondaryIndex];
+            //call OnWeaponChanged event
+            OnWeaponChanged();
+        }
     }
 
     //shoot functions
@@ -171,6 +153,9 @@ public class WeaponManager : MonoBehaviour
         InputManager.OnSecondaryCalled += ShootSecondary;
         InputManager.OnLaunchingBomb += ShootBomb;
         PlayerController.OnPlayerDead += OnDeath;
+        InputManager.OnSwitchPrimary += ChangePrimary;
+        InputManager.OnSwitchSecondary += ChangeSecondary;
+        InputManager.OnLaunchingFlare += ShootFlare;
     }
 
     //Disable all connected events

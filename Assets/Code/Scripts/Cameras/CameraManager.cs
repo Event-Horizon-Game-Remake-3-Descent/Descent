@@ -10,7 +10,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] Camera PlayerCamera;
     [SerializeField] Camera RearCamera;
     [SerializeField] Camera DeathCamera;
-    [SerializeField] Camera EscapeCamera;
+    
     [SerializeField] FreeLookCamera MapCamera;
     public bool RearCamActive;
    
@@ -18,8 +18,8 @@ public class CameraManager : MonoBehaviour
     {
         RearCamera.enabled = false;
         DeathCamera.enabled = false;
-        EscapeCamera.enabled = false;
-        MapCamera.enabled = false;
+        
+        MapCamera.gameObject.SetActive(false);
         InputManager.InputMap.Overworld.SwitchCamera.started += SwitchCam;
         InputManager.InputMap.Overworld.SwitchCamera.canceled += SwitchCam;
         EscapeSequenceManager.OnEscapeSequenceTriggered += EscapeCam;
@@ -28,6 +28,8 @@ public class CameraManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerController.OnPlayerDead += DeathCam;
+        InputManager.OnMinimapOpen += MiniMapOpen;
+        InputManager.OnMinimapClosed += MiniMapClosed;
     }
 
     void SwitchCam(InputAction.CallbackContext context)
@@ -58,6 +60,22 @@ public class CameraManager : MonoBehaviour
         PlayerCamera.enabled = false;
         RearCamera.enabled = false;
         DeathCamera.enabled = false;
-        EscapeCamera.enabled = true;
+        
+    }
+
+    void MiniMapOpen()
+    {
+        PlayerCamera.enabled = false;
+        RearCamera.enabled = false;
+        DeathCamera.enabled = false;
+        MapCamera.gameObject.SetActive(true);
+    }
+
+    void MiniMapClosed()
+    {
+        PlayerCamera.enabled = true;
+        RearCamera.enabled = false;
+        DeathCamera.enabled = false;
+        MapCamera.gameObject.SetActive(false);
     }
 }

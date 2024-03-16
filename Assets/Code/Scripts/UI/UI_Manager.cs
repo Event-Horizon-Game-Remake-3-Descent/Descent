@@ -98,6 +98,9 @@ public class UI_Manager : MonoBehaviour
         PlayerController.OnPlayerDead += () => PlayerIsDead = true;
         PlayerController.OnUpdatingUiCollect += UpdateCollectibles;
         PlayerController.OnUpdatingUiCollect += HandleVisualShield;
+        KeyCollectible.OnKeyCollected += EnableKey;
+        InputManager.OnMinimapOpen += () => FullHUD.gameObject.SetActive(false);
+        InputManager.OnMinimapClosed += () => FullHUD.gameObject.SetActive(true);
         Notify += Notifications;
         UpdateUI += UpdateCollectibles;
         PausedByInput +=()=> OnPause = true;
@@ -184,7 +187,27 @@ public class UI_Manager : MonoBehaviour
         image.alpha = 0f;
     }
 
-
+    void EnableKey(int value)
+    {
+        switch (value) 
+        {
+            case 0:
+            {
+                RedKey.color = Color.red;
+                break;
+            }
+            case 1: 
+            {
+                YellowKey.color = Color.yellow; 
+                break;
+            }
+            case 2:
+            {
+                BlueKey.color = Color.blue;
+                break;
+            }
+        }
+    }
 
 
     void UpdateCollectibles()

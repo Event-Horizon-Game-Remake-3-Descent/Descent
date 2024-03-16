@@ -116,6 +116,33 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchPrimary"",
+                    ""type"": ""Button"",
+                    ""id"": ""df60d9ec-f0eb-4d47-8317-e50a231fe490"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchSecondary"",
+                    ""type"": ""Button"",
+                    ""id"": ""359fba56-ec3a-4cac-b7c2-83b065a0e521"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Flare"",
+                    ""type"": ""Button"",
+                    ""id"": ""80b9fdf1-7cac-49d5-96f5-64ea032e963b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -514,6 +541,39 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""LaunchingBomb"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc20e992-5c1e-4e9e-8c4b-ea3f290c2b6d"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchPrimary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e573cd6a-0711-461c-999e-f56a8d44c0dd"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchSecondary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c145b5ed-8d95-4da4-95d5-e77e50acc459"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flare"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -619,6 +679,190 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""MiniMap"",
+            ""id"": ""cc490fdc-e51a-4322-bf75-00ad1bcccfee"",
+            ""actions"": [
+                {
+                    ""name"": ""MouseX"",
+                    ""type"": ""Value"",
+                    ""id"": ""c7932f19-8faf-4fbf-b60e-01e61fd15a94"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MouseY"",
+                    ""type"": ""Value"",
+                    ""id"": ""c77ad557-d955-46fd-9a57-ee7faf04afd6"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ZoomIn"",
+                    ""type"": ""Value"",
+                    ""id"": ""2aa919bc-9c37-4534-b73d-00699d41f7f3"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""91246b48-cf73-4aec-b435-292ccba76f80"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df465bc3-c2f0-4099-98b7-4ffb1227fcd8"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d734b0c-a669-4dd7-8e4c-42d759dec37a"",
+                    ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""829f6050-6313-44dd-b1cc-8410e5038234"",
+                    ""path"": ""<Gamepad>/rightStick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""3D Vector"",
+                    ""id"": ""eb1551f8-ce22-4d36-b327-7e481d7f593a"",
+                    ""path"": ""3DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomIn"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""4acbd1f8-76d4-4a47-926a-e50c84092d1b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomIn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""499badd4-6d67-41d1-ac76-29bb4df8ab34"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomIn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""82441670-c433-4759-8864-f5a19d730764"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomIn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""8ec38ee4-a564-495f-80d5-dbbc2e6f5842"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomIn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""ef634394-f64f-4c05-8a6c-7a06c8796c75"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomIn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""3f27f0b0-5754-4241-b265-6cefd9d468b4"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomIn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""MiniMapToggle"",
+            ""id"": ""39d20f17-8424-4ae8-b859-ed87a1f47abe"",
+            ""actions"": [
+                {
+                    ""name"": ""OpenMinimap"",
+                    ""type"": ""Button"",
+                    ""id"": ""c1fa556f-2ec8-4943-87b2-625a14aeeaa1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6fb47ba0-75c0-4d2f-a74d-a34338a5014b"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenMinimap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -635,10 +879,21 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_Overworld_Pitching = m_Overworld.FindAction("Pitching", throwIfNotFound: true);
         m_Overworld_SwitchCamera = m_Overworld.FindAction("SwitchCamera", throwIfNotFound: true);
         m_Overworld_LaunchingBomb = m_Overworld.FindAction("LaunchingBomb", throwIfNotFound: true);
+        m_Overworld_SwitchPrimary = m_Overworld.FindAction("SwitchPrimary", throwIfNotFound: true);
+        m_Overworld_SwitchSecondary = m_Overworld.FindAction("SwitchSecondary", throwIfNotFound: true);
+        m_Overworld_Flare = m_Overworld.FindAction("Flare", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
         m_Menu_Navigation = m_Menu.FindAction("Navigation", throwIfNotFound: true);
+        // MiniMap
+        m_MiniMap = asset.FindActionMap("MiniMap", throwIfNotFound: true);
+        m_MiniMap_MouseX = m_MiniMap.FindAction("MouseX", throwIfNotFound: true);
+        m_MiniMap_MouseY = m_MiniMap.FindAction("MouseY", throwIfNotFound: true);
+        m_MiniMap_ZoomIn = m_MiniMap.FindAction("ZoomIn", throwIfNotFound: true);
+        // MiniMapToggle
+        m_MiniMapToggle = asset.FindActionMap("MiniMapToggle", throwIfNotFound: true);
+        m_MiniMapToggle_OpenMinimap = m_MiniMapToggle.FindAction("OpenMinimap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -710,6 +965,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Overworld_Pitching;
     private readonly InputAction m_Overworld_SwitchCamera;
     private readonly InputAction m_Overworld_LaunchingBomb;
+    private readonly InputAction m_Overworld_SwitchPrimary;
+    private readonly InputAction m_Overworld_SwitchSecondary;
+    private readonly InputAction m_Overworld_Flare;
     public struct OverworldActions
     {
         private @InputMap m_Wrapper;
@@ -724,6 +982,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         public InputAction @Pitching => m_Wrapper.m_Overworld_Pitching;
         public InputAction @SwitchCamera => m_Wrapper.m_Overworld_SwitchCamera;
         public InputAction @LaunchingBomb => m_Wrapper.m_Overworld_LaunchingBomb;
+        public InputAction @SwitchPrimary => m_Wrapper.m_Overworld_SwitchPrimary;
+        public InputAction @SwitchSecondary => m_Wrapper.m_Overworld_SwitchSecondary;
+        public InputAction @Flare => m_Wrapper.m_Overworld_Flare;
         public InputActionMap Get() { return m_Wrapper.m_Overworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -763,6 +1024,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @LaunchingBomb.started += instance.OnLaunchingBomb;
             @LaunchingBomb.performed += instance.OnLaunchingBomb;
             @LaunchingBomb.canceled += instance.OnLaunchingBomb;
+            @SwitchPrimary.started += instance.OnSwitchPrimary;
+            @SwitchPrimary.performed += instance.OnSwitchPrimary;
+            @SwitchPrimary.canceled += instance.OnSwitchPrimary;
+            @SwitchSecondary.started += instance.OnSwitchSecondary;
+            @SwitchSecondary.performed += instance.OnSwitchSecondary;
+            @SwitchSecondary.canceled += instance.OnSwitchSecondary;
+            @Flare.started += instance.OnFlare;
+            @Flare.performed += instance.OnFlare;
+            @Flare.canceled += instance.OnFlare;
         }
 
         private void UnregisterCallbacks(IOverworldActions instance)
@@ -797,6 +1067,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @LaunchingBomb.started -= instance.OnLaunchingBomb;
             @LaunchingBomb.performed -= instance.OnLaunchingBomb;
             @LaunchingBomb.canceled -= instance.OnLaunchingBomb;
+            @SwitchPrimary.started -= instance.OnSwitchPrimary;
+            @SwitchPrimary.performed -= instance.OnSwitchPrimary;
+            @SwitchPrimary.canceled -= instance.OnSwitchPrimary;
+            @SwitchSecondary.started -= instance.OnSwitchSecondary;
+            @SwitchSecondary.performed -= instance.OnSwitchSecondary;
+            @SwitchSecondary.canceled -= instance.OnSwitchSecondary;
+            @Flare.started -= instance.OnFlare;
+            @Flare.performed -= instance.OnFlare;
+            @Flare.canceled -= instance.OnFlare;
         }
 
         public void RemoveCallbacks(IOverworldActions instance)
@@ -868,6 +1147,114 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         }
     }
     public MenuActions @Menu => new MenuActions(this);
+
+    // MiniMap
+    private readonly InputActionMap m_MiniMap;
+    private List<IMiniMapActions> m_MiniMapActionsCallbackInterfaces = new List<IMiniMapActions>();
+    private readonly InputAction m_MiniMap_MouseX;
+    private readonly InputAction m_MiniMap_MouseY;
+    private readonly InputAction m_MiniMap_ZoomIn;
+    public struct MiniMapActions
+    {
+        private @InputMap m_Wrapper;
+        public MiniMapActions(@InputMap wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MouseX => m_Wrapper.m_MiniMap_MouseX;
+        public InputAction @MouseY => m_Wrapper.m_MiniMap_MouseY;
+        public InputAction @ZoomIn => m_Wrapper.m_MiniMap_ZoomIn;
+        public InputActionMap Get() { return m_Wrapper.m_MiniMap; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MiniMapActions set) { return set.Get(); }
+        public void AddCallbacks(IMiniMapActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MiniMapActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MiniMapActionsCallbackInterfaces.Add(instance);
+            @MouseX.started += instance.OnMouseX;
+            @MouseX.performed += instance.OnMouseX;
+            @MouseX.canceled += instance.OnMouseX;
+            @MouseY.started += instance.OnMouseY;
+            @MouseY.performed += instance.OnMouseY;
+            @MouseY.canceled += instance.OnMouseY;
+            @ZoomIn.started += instance.OnZoomIn;
+            @ZoomIn.performed += instance.OnZoomIn;
+            @ZoomIn.canceled += instance.OnZoomIn;
+        }
+
+        private void UnregisterCallbacks(IMiniMapActions instance)
+        {
+            @MouseX.started -= instance.OnMouseX;
+            @MouseX.performed -= instance.OnMouseX;
+            @MouseX.canceled -= instance.OnMouseX;
+            @MouseY.started -= instance.OnMouseY;
+            @MouseY.performed -= instance.OnMouseY;
+            @MouseY.canceled -= instance.OnMouseY;
+            @ZoomIn.started -= instance.OnZoomIn;
+            @ZoomIn.performed -= instance.OnZoomIn;
+            @ZoomIn.canceled -= instance.OnZoomIn;
+        }
+
+        public void RemoveCallbacks(IMiniMapActions instance)
+        {
+            if (m_Wrapper.m_MiniMapActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMiniMapActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MiniMapActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MiniMapActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MiniMapActions @MiniMap => new MiniMapActions(this);
+
+    // MiniMapToggle
+    private readonly InputActionMap m_MiniMapToggle;
+    private List<IMiniMapToggleActions> m_MiniMapToggleActionsCallbackInterfaces = new List<IMiniMapToggleActions>();
+    private readonly InputAction m_MiniMapToggle_OpenMinimap;
+    public struct MiniMapToggleActions
+    {
+        private @InputMap m_Wrapper;
+        public MiniMapToggleActions(@InputMap wrapper) { m_Wrapper = wrapper; }
+        public InputAction @OpenMinimap => m_Wrapper.m_MiniMapToggle_OpenMinimap;
+        public InputActionMap Get() { return m_Wrapper.m_MiniMapToggle; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MiniMapToggleActions set) { return set.Get(); }
+        public void AddCallbacks(IMiniMapToggleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MiniMapToggleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MiniMapToggleActionsCallbackInterfaces.Add(instance);
+            @OpenMinimap.started += instance.OnOpenMinimap;
+            @OpenMinimap.performed += instance.OnOpenMinimap;
+            @OpenMinimap.canceled += instance.OnOpenMinimap;
+        }
+
+        private void UnregisterCallbacks(IMiniMapToggleActions instance)
+        {
+            @OpenMinimap.started -= instance.OnOpenMinimap;
+            @OpenMinimap.performed -= instance.OnOpenMinimap;
+            @OpenMinimap.canceled -= instance.OnOpenMinimap;
+        }
+
+        public void RemoveCallbacks(IMiniMapToggleActions instance)
+        {
+            if (m_Wrapper.m_MiniMapToggleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMiniMapToggleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MiniMapToggleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MiniMapToggleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MiniMapToggleActions @MiniMapToggle => new MiniMapToggleActions(this);
     public interface IOverworldActions
     {
         void OnMouseX(InputAction.CallbackContext context);
@@ -880,10 +1267,23 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         void OnPitching(InputAction.CallbackContext context);
         void OnSwitchCamera(InputAction.CallbackContext context);
         void OnLaunchingBomb(InputAction.CallbackContext context);
+        void OnSwitchPrimary(InputAction.CallbackContext context);
+        void OnSwitchSecondary(InputAction.CallbackContext context);
+        void OnFlare(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
         void OnPause(InputAction.CallbackContext context);
         void OnNavigation(InputAction.CallbackContext context);
+    }
+    public interface IMiniMapActions
+    {
+        void OnMouseX(InputAction.CallbackContext context);
+        void OnMouseY(InputAction.CallbackContext context);
+        void OnZoomIn(InputAction.CallbackContext context);
+    }
+    public interface IMiniMapToggleActions
+    {
+        void OnOpenMinimap(InputAction.CallbackContext context);
     }
 }

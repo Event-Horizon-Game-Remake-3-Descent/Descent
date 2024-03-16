@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour , IDamageable
         {
 
             Quaternion pitchRotation = Quaternion.Euler(pitching.x * PitchingSpeed * Time.fixedDeltaTime, 0, 0);
-            Quaternion smoothRot = Quaternion.Slerp(Rb.rotation, pitchRotation, 0);
+            //Quaternion smoothRot = Quaternion.Slerp(Rb.rotation, pitchRotation, 0);
             Rb.MoveRotation(Rb.rotation * pitchRotation);
         }
 
