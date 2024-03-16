@@ -8,5 +8,3 @@ public class AudioSettings : MonoBehaviour
     [Header("Audio Groups")]
     [SerializeField] List<AudioSlider> Sliders;
 }
-
-

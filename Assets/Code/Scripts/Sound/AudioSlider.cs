@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class AudioSlider : MonoBehaviour
@@ -12,32 +11,29 @@ public class AudioSlider : MonoBehaviour
     }
 
     [SerializeField] private Slider Slider;
-    [SerializeField] private AudioMixerGroup SubMixer;
-    [SerializeField] private AudioType Type;
-    [SerializeField][Range(0, 1f)] private float DefaultVolume = 1.0f;
+    [SerializeField] private AudioData AudioData;
 
     private float Volume = 0f;
 
     //Volume is saved in DB
-
     private void Awake()
     {
-        if (!PlayerPrefs.HasKey(Type.ToString()+"Volume"))
-        {
-            Volume = 20 * Mathf.Log10(DefaultVolume);
-            Debug.Log(Volume);
-            PlayerPrefs.SetFloat(Type.ToString()+"Volume", Volume);
-        }
-        else
-        {
-            Volume = PlayerPrefs.GetFloat(Type.ToString()+"Volume");
-        }
         Slider.maxValue = 1f;
         Slider.minValue = 0.0001f;
     }
 
     private void Start()
     {
+        if (!PlayerPrefs.HasKey(AudioData.Type.ToString() + "Volume"))
+        {
+            Volume = 20 * Mathf.Log10(AudioData.DefaultVolume);
+            PlayerPrefs.SetFloat(AudioData.Type.ToString() + "Volume", Volume);
+        }
+        else
+        {
+            Volume = PlayerPrefs.GetFloat(AudioData.Type.ToString() + "Volume");
+        }
+
         Slider.value = Mathf.Pow(10f, Volume / 20f);
     }
 
@@ -60,8 +56,8 @@ public class AudioSlider : MonoBehaviour
         value = 20 * Mathf.Log10(value);
         Volume = value;
 
-        SubMixer.audioMixer.SetFloat(Type.ToString()+"Volume", value);
-        PlayerPrefs.SetFloat(Type.ToString()+"Volume", value);
+        AudioData.SubMixer.SetFloat(AudioData.Type.ToString()+"Volume", value);
+        PlayerPrefs.SetFloat(AudioData.Type.ToString()+"Volume", value);
     }
 
 }

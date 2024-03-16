@@ -13,17 +13,22 @@ public class EscapeSequenceManager : MonoBehaviour
     [SerializeField] CinemachineDollyCart DollyCart;
     [SerializeField] float DollySpeed = 0.25f;
     [SerializeField] string SceneToLoad = "none";
+    [SerializeField] Transform ParticlesHolder;
+    [SerializeField] Camera EscapeManagerCamera;
 
     private void Awake()
     {
         OnEscapeSequenceTriggered += PlayEscapeSequence;
         DollyCart.m_Speed = 0f;
-        
+        ParticlesHolder.gameObject.SetActive(false);
+        EscapeManagerCamera.enabled = false;
     }
 
     private void PlayEscapeSequence()
     {
+        EscapeManagerCamera.enabled = true;
         DollyCart.m_Speed = DollySpeed;
+        ParticlesHolder.gameObject.SetActive(true);
         StartCoroutine(LoadNextScene());
     }
 
