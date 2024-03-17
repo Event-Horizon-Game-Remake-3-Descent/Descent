@@ -35,9 +35,22 @@ public class Mag : MonoBehaviour
             ProjectileLeft = MaxValue;
     }
 
+    private void RecoverEnergy(float amount)
+    {
+        if (MagMagType != MagType.Energy)
+            return;
+
+        if(ProjectileLeft < 100)
+        {
+            ProjectileLeft += amount;
+            ProjectileLeft = Mathf.Clamp(ProjectileLeft, 0f, 100f);
+        }
+    }
+
     private void OnEnable()
     {
         AmmoCollectible.OnMagTaken += OnAmmoTaken;
+        EnergyRecoverZone.OnEnergyRecover += RecoverEnergy;
     }
 
     private void OnDisable()
