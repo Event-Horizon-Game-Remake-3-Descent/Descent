@@ -99,6 +99,7 @@ public class UI_Manager : MonoBehaviour
         PlayerController.OnPlayerDead += HideHUD;
         PlayerController.OnPlayerRespawned += ShowHUD;
         EscapeSequenceManager.OnEscapeSequenceTriggered += HideHUD;
+        Boss.OnBossDefeat += StartCountDown;
         KeyCollectible.OnKeyCollected += EnableKey;
         InputManager.OnMinimapOpen += () => FullHUD.gameObject.SetActive(false);
         InputManager.OnMinimapClosed += () => FullHUD.gameObject.SetActive(true);
