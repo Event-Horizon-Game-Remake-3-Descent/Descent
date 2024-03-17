@@ -436,7 +436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseMouseSensitivity: 250
   GamepadSensMultiplier: 10
-  CamSpeedSmoother: 1
+  CamSpeedSmoother: 0.5
   PlayerSpeed: 5
   DecelerationCurve:
     serializedVersion: 2
@@ -468,6 +468,7 @@ MonoBehaviour:
   PitchingSpeed: 650
   PlayerMaxSpeed: 10
   hp: 150
+  Lives: 4
   DamageOnCollion: 5
   UsingGamepad: 0
   IsBanking: 0
@@ -1014,6 +1015,10 @@ PrefabInstance:
     - target: {fileID: 6684950054760879833, guid: 9315c4091e9a80c42b3598ec854fd0ca, type: 3}
       propertyPath: m_Name
       value: MinimapCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6684950054760879833, guid: 9315c4091e9a80c42b3598ec854fd0ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8934219975485398723, guid: 9315c4091e9a80c42b3598ec854fd0ca, type: 3}
       propertyPath: MaxSpeed

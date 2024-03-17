@@ -2173,7 +2173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5199862117014546243}
-  - component: {fileID: 2416292081318529502}
+  - component: {fileID: 2385848349498678956}
   m_Layer: 0
   m_Name: MultipleShootingPoints
   m_TagString: Untagged
@@ -2202,7 +2202,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2416292081318529502
+--- !u!114 &2385848349498678956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2211,13 +2211,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3076756669010948351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e997d89c9b76e4b4f9b5db811bf3a742, type: 3}
+  m_Script: {fileID: 11500000, guid: 8aad1ace1fb189647af3cacad737a867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RightHUD: {fileID: 1497587649671708609}
   LeftHUD: {fileID: 5602702590461011718}
   HighlightedColor: {r: 0.09411765, g: 0.6117647, b: 0.19215687, a: 1}
-  UnhighlightedColor: {r: 0.09411765, g: 0.6117647, b: 0.19215687, a: 0.43137255}
+  UnhighlightedColor: {r: 0.09411765, g: 0.6117647, b: 0.19215687, a: 0.5019608}
 --- !u!1 &3255640573694471325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,11 +2626,12 @@ MonoBehaviour:
   BackButton: {fileID: 6043161156650310719}
   SensitivitySlider: {fileID: 7958013476445205656}
   Shield_text: {fileID: 528046060911193370}
-  OuterShield: {fileID: 5716653386317921676}
   Score_text: {fileID: 8181761872313488584}
   Notification_text: {fileID: 2860512084138419208}
+  Lives_text: {fileID: 5719107453910054690}
   SensValue_text: {fileID: 3414865904175882368}
   Countdown_text: {fileID: 6170686781561001219}
+  OuterShield: {fileID: 5716653386317921676}
   BlueKey: {fileID: 1269450485996175584}
   YellowKey: {fileID: 5493068834784680978}
   RedKey: {fileID: 6663574489516940276}
@@ -3492,7 +3493,7 @@ GameObject:
   - component: {fileID: 7788700324313156723}
   - component: {fileID: 5719107453910054690}
   m_Layer: 5
-  m_Name: Lives
+  m_Name: Lives_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5834,7 +5835,7 @@ MonoBehaviour:
   SecondaryWeaponImage: {fileID: 8149840198877557615}
   Energy_Text: {fileID: 2616863489545120587}
   SingleShootingPoint: {fileID: 659317604026145596}
-  MultipleShootingPoints: {fileID: 2416292081318529502}
+  MultipleShootingPoints: {fileID: 2385848349498678956}
   DefaultWeaponImage: {fileID: 2800000, guid: defc73926c853c14cadb289cda9a5e74, type: 3}
   EnergyBarLeft: {fileID: 8595210820675152460}
   EnergyBarRight: {fileID: 6300095512377897626}
@@ -5957,6 +5958,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 895810004569869571, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 895810004569869571, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 934c544de0d63b342bc756949580d163, type: 3}
     - target: {fileID: 1365574222417921918, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
       propertyPath: DefaultVolume
       value: 0.75

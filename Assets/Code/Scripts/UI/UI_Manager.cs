@@ -74,7 +74,7 @@ public class UI_Manager : MonoBehaviour
     private void Start()
     {
         SensValue_text.text = Mathf.RoundToInt (PlayerPrefs.GetFloat("MouseSensitivity")).ToString();
-        Lives_text.text = " x " + Player.Lives.ToString();
+      
         InputManager.InputMap.Overworld.SwitchCamera.started +=(InputAction.CallbackContext hud)=> FullHUD.gameObject.SetActive(false);
         InputManager.InputMap.Overworld.SwitchCamera.canceled += (InputAction.CallbackContext hud) => FullHUD.gameObject.SetActive(true);
         RedFlash.alpha = 0;
