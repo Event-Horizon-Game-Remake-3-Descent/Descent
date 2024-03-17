@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 132267075982956548, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 19bc00076cf2ce54da6f49505c961968, type: 2}
+      objectReference: {fileID: 2100000, guid: 2f9138b268f43b1449be96fa352965b1, type: 2}
     - target: {fileID: 1428228293955590333, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: Speed
       value: 25
@@ -20,10 +20,14 @@ PrefabInstance:
       propertyPath: Damage
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1589802051729350560, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
+      propertyPath: m_Name
+      value: ProjectileMesh
+      objectReference: {fileID: 0}
     - target: {fileID: 2412121825768448341, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: -2934717439318261032, guid: bfaf16048ce5a334c862a44c0a57fad0, type: 3}
     - target: {fileID: 2802289739851038239, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -34,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3759234287113581821, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Color.b
-      value: 0.9564264
+      value: 0.9725305
       objectReference: {fileID: 0}
     - target: {fileID: 3759234287113581821, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Color.g
@@ -42,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3759234287113581821, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.36320752
       objectReference: {fileID: 0}
     - target: {fileID: 3759234287113581821, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Lightmapping
@@ -51,6 +55,34 @@ PrefabInstance:
     - target: {fileID: 6317244324421493203, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Name
       value: BossProjectiles
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375875317820382975, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375875317820382975, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375875317820382975, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375875317820382975, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375875317820382975, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375875317820382975, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375875317820382975, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7883898819634048106, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_LocalPosition.x

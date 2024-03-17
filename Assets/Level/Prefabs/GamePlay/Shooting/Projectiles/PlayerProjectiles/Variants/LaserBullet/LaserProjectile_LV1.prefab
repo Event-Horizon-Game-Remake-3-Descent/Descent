@@ -20,10 +20,26 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1392132082463191132, guid: 14d408605ba44424aa4de8f2382645bb, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392132082463191132, guid: 14d408605ba44424aa4de8f2382645bb, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6781411
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392132082463191132, guid: 14d408605ba44424aa4de8f2382645bb, type: 3}
+      propertyPath: m_Color.r
+      value: 0.2206746
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392132082463191132, guid: 14d408605ba44424aa4de8f2382645bb, type: 3}
+      propertyPath: m_Intensity
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2787529561834429605, guid: 14d408605ba44424aa4de8f2382645bb, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3aa80884cd77b914b99ddb363312a2fa, type: 2}
+      objectReference: {fileID: 2100000, guid: 9d3d6bfbed046344981e64a39b8b8940, type: 2}
     - target: {fileID: 5337785212997970123, guid: 14d408605ba44424aa4de8f2382645bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

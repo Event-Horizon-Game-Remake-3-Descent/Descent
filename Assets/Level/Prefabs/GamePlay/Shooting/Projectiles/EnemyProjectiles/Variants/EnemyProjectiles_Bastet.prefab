@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 132267075982956548, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7c5e4a81e2083af42aa506fb8549dde6, type: 2}
+      objectReference: {fileID: 2100000, guid: 1f9d9818094dc32449f5916b3678b448, type: 2}
     - target: {fileID: 1428228293955590333, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: Speed
       value: 25
@@ -20,29 +20,41 @@ PrefabInstance:
       propertyPath: Damage
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1589802051729350560, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
+      propertyPath: m_Name
+      value: ProjectileMesh
+      objectReference: {fileID: 0}
     - target: {fileID: 2412121825768448341, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -2934717439318261032, guid: bfaf16048ce5a334c862a44c0a57fad0, type: 3}
     - target: {fileID: 3759234287113581821, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
+      propertyPath: m_Range
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759234287113581821, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759234287113581821, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Color.b
-      value: 0.55602527
+      value: 0.9118511
       objectReference: {fileID: 0}
     - target: {fileID: 3759234287113581821, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Color.g
-      value: 0.990566
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3759234287113581821, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Color.r
-      value: 0.6167126
+      value: 0.2117647
       objectReference: {fileID: 0}
     - target: {fileID: 3759234287113581821, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Intensity
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6317244324421493203, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Name
-      value: EnemyProjectiles_Generic
+      value: EnemyProjectiles_Bastet
       objectReference: {fileID: 0}
     - target: {fileID: 6375875317820382975, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_LocalRotation.w

@@ -273,9 +273,6 @@ MonoBehaviour:
   _BombsMag: {fileID: 8498288890113876601}
   ChangeWeaponCooldown: 1
   WeaponReadyAudoClip: {fileID: 8300000, guid: 8b16cbddd0d5b0d45bcb8f112c0e390b, type: 3}
-  CHANGE_PRIMARY: 273
-  CHANGE_SECONDARY: 274
-  FLARE_SHOOTKEY: 102
 --- !u!82 &3533646101876932059
 AudioSource:
   m_ObjectHideFlags: 0
@@ -733,6 +730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RPG
       objectReference: {fileID: 0}
+    - target: {fileID: 4104787826346807245, guid: 95eeb41ad71cada48ba5873d56bef5b1, type: 3}
+      propertyPath: ShootSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c60528ef3d7f8b04ca568f19fe57fcbb, type: 3}
     - target: {fileID: 4655663394668444092, guid: 95eeb41ad71cada48ba5873d56bef5b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

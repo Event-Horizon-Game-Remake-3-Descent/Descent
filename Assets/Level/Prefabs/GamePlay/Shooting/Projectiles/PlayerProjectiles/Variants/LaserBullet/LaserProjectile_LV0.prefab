@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 132267075982956548, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 184c47c2fee3f8d4f95e3d7db31d4cc0, type: 2}
+      objectReference: {fileID: 2100000, guid: b52cd41fc9b9a724b874e1b87c19ce64, type: 2}
     - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: Speed
       value: 30
@@ -33,12 +33,44 @@ PrefabInstance:
       value: 193
       objectReference: {fileID: 0}
     - target: {fileID: 1589802051729350560, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_Name
+      value: LaserMesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589802051729350560, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795602742209358368, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795602742209358368, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795602742209358368, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3282737871335636933, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759234287113581821, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.06007475
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759234287113581821, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.096443735
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759234287113581821, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759234287113581821, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
+      propertyPath: m_Intensity
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3889570054387910653, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: m_Layer

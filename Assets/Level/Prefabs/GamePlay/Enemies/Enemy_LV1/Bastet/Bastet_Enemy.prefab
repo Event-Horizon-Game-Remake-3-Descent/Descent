@@ -5013,7 +5013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e330ca818a7fa4dba54dcd450c363a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileToShoot: {fileID: 4982554394825947373, guid: b9e07d6460976954bb53cdfd7bcfb76f, type: 3}
+  ProjectileToShoot: {fileID: 4982554394825947373, guid: 6aaf5dbdb69758741bdd1af1e2c1a836, type: 3}
   ShootDelay: 0.5
   ShootingPoints:
   - {fileID: 2514822682926178879}
