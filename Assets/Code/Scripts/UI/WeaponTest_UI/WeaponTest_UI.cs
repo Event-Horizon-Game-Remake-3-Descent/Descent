@@ -126,6 +126,8 @@ public class WeaponTest_UI : MonoBehaviour
         };
 
         Collectible.OnUpdateUI += UpdateInfo;
+        EnergyRecoverZone.OnEnergyRecover += (float x) => { UpdateBulletCount(); HandleVisualMag(); };
+
     }
 
     private void OnDisable()
