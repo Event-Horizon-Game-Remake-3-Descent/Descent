@@ -60,6 +60,7 @@ public class UI_Manager : MonoBehaviour
 
     private void Awake()
     { 
+        Countdown_text.gameObject.SetActive(false);
         HUD.gameObject.SetActive(true);
         SettingsPanel.gameObject.SetActive(false);
         MainMenu.gameObject.SetActive(false);
@@ -73,6 +74,7 @@ public class UI_Manager : MonoBehaviour
     private void Start()
     {
         SensValue_text.text = Mathf.RoundToInt (PlayerPrefs.GetFloat("MouseSensitivity")).ToString();
+        Lives_text.text = " x " + Player.Lives.ToString();
         InputManager.InputMap.Overworld.SwitchCamera.started +=(InputAction.CallbackContext hud)=> FullHUD.gameObject.SetActive(false);
         InputManager.InputMap.Overworld.SwitchCamera.canceled += (InputAction.CallbackContext hud) => FullHUD.gameObject.SetActive(true);
         RedFlash.alpha = 0;
@@ -83,14 +85,7 @@ public class UI_Manager : MonoBehaviour
         StartingTextSize = Countdown_text.fontSize;
     }
 
-    // update method for testing
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O)) { FlashingRed(); }
-        if (Input.GetKeyDown(KeyCode.P)) { FlashingBlue(); }
-        if (Input.GetKeyDown(KeyCode.L)) { StartCountDown(); }
-        
-    }
+  
 
 
 
@@ -101,6 +96,9 @@ public class UI_Manager : MonoBehaviour
         PlayerController.OnPlayerDead += () => PlayerIsDead = true;
         PlayerController.OnUpdatingUiCollect += UpdateCollectibles;
         PlayerController.OnUpdatingUiCollect += HandleVisualShield;
+        PlayerController.OnPlayerDead += HideHUD;
+        PlayerController.OnPlayerRespawned += ShowHUD;
+        EscapeSequenceManager.OnEscapeSequenceTriggered += HideHUD;
         KeyCollectible.OnKeyCollected += EnableKey;
         InputManager.OnMinimapOpen += () => FullHUD.gameObject.SetActive(false);
         InputManager.OnMinimapClosed += () => FullHUD.gameObject.SetActive(true);
@@ -121,6 +119,8 @@ public class UI_Manager : MonoBehaviour
         InputManager.OnPauseMenu -= Menu;
         PlayerController.OnUpdatingUiCollect -= UpdateCollectibles;
         PlayerController.OnUpdatingUiCollect -= HandleVisualShield;
+        PlayerController.OnPlayerDead -= HideHUD;
+        EscapeSequenceManager.OnEscapeSequenceTriggered -= HideHUD;
         Notify -= Notifications;
         UpdateUI -= UpdateCollectibles;
     }
@@ -145,6 +145,7 @@ public class UI_Manager : MonoBehaviour
 
     void StartCountDown()
     {
+        Countdown_text.gameObject.SetActive(true);
         StartCoroutine(Countdown());
     }
 
@@ -219,6 +220,7 @@ public class UI_Manager : MonoBehaviour
     {
         Shield_text.text = Mathf.Ceil(Player.HP).ToString();
         Score_text.text = "Score:" + MathF.Round( GameManager.Score).ToString();
+        Lives_text.text = " x " + Player.Lives.ToString();
     }
 
 
@@ -311,6 +313,16 @@ public class UI_Manager : MonoBehaviour
         OnPause = false;
         InputManager.Resume?.Invoke();
         Time.timeScale = 1.0f;
+    }
+
+    void HideHUD()
+    {
+        FullHUD.anchoredPosition = Vector3.up * 1500;
+    }
+
+    void ShowHUD()
+    {
+        FullHUD.anchoredPosition = Vector3.zero;
     }
         
         

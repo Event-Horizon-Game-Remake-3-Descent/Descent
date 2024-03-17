@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     public delegate void PlayerState();
     public static event PlayerState OnPlayerDead = () => { };
     public static event PlayerState OnPlayerRespawned = () => { };
+    public static event PlayerState OnGameOver = () => { };
     public delegate void PlayerReady(PlayerController Player);
     public static event PlayerReady OnPlayerReady;
     public delegate void PlayerCollecting();
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     [SerializeField] float PitchingSpeed;
     [SerializeField] float PlayerMaxSpeed;
     [SerializeField] float hp = 100f;
-    [SerializeField] int Lives = 4;
+    [SerializeField] public int Lives = 4;
     [SerializeField] private float DamageOnCollion;
     [Space]
     [Header("Don't Touch This, it's just for debug")]
@@ -276,6 +277,7 @@ public class PlayerController : MonoBehaviour , IDamageable
 
     void PlayerDeath()
     {
+        Lives--;
         Collider.enabled = false;
         StartCoroutine(TimerForRespawn());
     }
@@ -289,12 +291,21 @@ public class PlayerController : MonoBehaviour , IDamageable
 
     void Respawn()
     {
-        transform.position = RespawnPoint;
-        Rb.rotation = Quaternion.Euler(0,0,0);
-        Collider.enabled = true;
-        HP = 100;
-        OnPlayerRespawned();
-        OnUpdatingUiCollect();
+        if (Lives > 0)
+        {
+            transform.position = RespawnPoint;
+            Rb.rotation = Quaternion.Euler(0, 0, 0);
+            Collider.enabled = true;
+            HP = 100;
+            OnPlayerRespawned();
+            OnUpdatingUiCollect();
+        }
+        else { GameOver(); }
+    }
+
+    void GameOver()
+    {
+
     }
         
 
