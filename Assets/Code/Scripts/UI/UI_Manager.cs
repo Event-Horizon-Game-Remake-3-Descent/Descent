@@ -14,6 +14,8 @@ public class UI_Manager : MonoBehaviour
     public static Action UpdateUI;
     public static Action PausedByInput;
     public static Action UnPausedByInput;
+    public static Action OnFlashingBlue;
+    public static Action OnFlashingRed;
     // All panels and relatives TMPs
     [Header("References, don't touch it")]
     [SerializeField] private RectTransform SettingsPanel;
@@ -27,11 +29,12 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private RectTransform BackButton;
     [SerializeField] private Slider SensitivitySlider;
     [SerializeField] private TMP_Text Shield_text;
-    [SerializeField] private Image OuterShield;
     [SerializeField] private TMP_Text Score_text;
     [SerializeField] private TMP_Text Notification_text;
+    [SerializeField] TMP_Text Lives_text;
     [SerializeField] TMP_Text SensValue_text;
     [SerializeField] TMP_Text Countdown_text;
+    [SerializeField] Image OuterShield;
     [SerializeField] Image BlueKey;
     [SerializeField] Image YellowKey;
     [SerializeField] Image RedKey;
@@ -105,6 +108,8 @@ public class UI_Manager : MonoBehaviour
         UpdateUI += UpdateCollectibles;
         PausedByInput +=()=> OnPause = true;
         UnPausedByInput +=()=> OnPause = false;
+        OnFlashingBlue += FlashingBlue;
+        OnFlashingRed += FlashingRed;
         
         //Collectible.OnIncreaseScore += (float value) => { UpdateCollectibles(); };
     }
@@ -212,7 +217,7 @@ public class UI_Manager : MonoBehaviour
 
     void UpdateCollectibles()
     {
-        Shield_text.text = Player.HP.ToString();
+        Shield_text.text = Mathf.Ceil(Player.HP).ToString();
         Score_text.text = "Score:" + MathF.Round( GameManager.Score).ToString();
     }
 

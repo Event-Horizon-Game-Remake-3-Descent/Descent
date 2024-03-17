@@ -63,6 +63,7 @@ public class InputManager : MonoBehaviour
         InputMap.Overworld.Flare.performed += LaunchFlare;
         InputMap.Menu.Pause.performed += Paused;
         PlayerController.OnPlayerDead += PlayerIsDead;
+        PlayerController.OnPlayerRespawned += PlayerIsRespawned;
         InputMap.MiniMapToggle.OpenMinimap.started += MinimapOpen;
         InputMap.MiniMapToggle.OpenMinimap.canceled += MinimapClosed;
         EscapeSequenceManager.OnEscapeSequenceTriggered += DisableAll;
@@ -227,6 +228,13 @@ public class InputManager : MonoBehaviour
     {   
         PlayerIsAlive = false;
         InputMap.Overworld.Disable();
+    }
+
+    void PlayerIsRespawned()
+    {
+        InputMap.Overworld.Enable();
+        InputMap.Menu.Enable();
+        PlayerIsAlive = true;
     }
 
 
