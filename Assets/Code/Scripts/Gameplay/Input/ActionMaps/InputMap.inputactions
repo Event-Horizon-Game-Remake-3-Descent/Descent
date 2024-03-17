@@ -533,6 +533,17 @@
                 },
                 {
                     "name": "",
+                    "id": "8af64891-d82b-48c7-bb7e-599ad4f388d3",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchPrimary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e573cd6a-0711-461c-999e-f56a8d44c0dd",
                     "path": "<Keyboard>/2",
                     "interactions": "",
@@ -544,8 +555,30 @@
                 },
                 {
                     "name": "",
+                    "id": "7ef5213b-9022-4916-971b-94402f083b5f",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchSecondary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c145b5ed-8d95-4da4-95d5-e77e50acc459",
                     "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flare",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf64bb8d-0906-4074-aeb4-1b7f16ae655b",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

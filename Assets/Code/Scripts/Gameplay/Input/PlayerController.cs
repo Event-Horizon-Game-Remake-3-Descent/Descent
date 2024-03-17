@@ -168,20 +168,22 @@ public class PlayerController : MonoBehaviour , IDamageable
             //Quaternion smoothRot = Quaternion.Slerp(Rb.rotation, pitchRotation, 0);
             Rb.MoveRotation(Rb.rotation * pitchRotation);
         }
-
     }
+
 
     void CheckTypeOfDevice(InputAction.CallbackContext used)
     {
         var usedDevice = used.control;
         if (usedDevice.device is Gamepad && UsingGamepad == false) 
         {
+            Debug.Log(usedDevice);
             mouseSensitivity *= GamepadSensMultiplier; 
             UsingGamepad = true;
             OnGamePad();
         }
         else if (usedDevice.device is Mouse || usedDevice.device is Keyboard)
         {
+            Debug.Log(usedDevice);
             mouseSensitivity = BaseMouseSensitivity;
             UsingGamepad = false;
             OnKeyBoard();
