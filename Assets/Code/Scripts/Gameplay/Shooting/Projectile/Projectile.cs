@@ -78,9 +78,10 @@ public class Projectile : MonoBehaviour
 
     protected virtual IEnumerator OnCollisionCoroutine()
     {
-        if (ExplosionSFX != null && AudioSource!=null) //play explosion sound if present
+        if (ExplosionSFX != null) //play explosion sound if present
         {
-            this.AudioSource.Play();
+            if(AudioSource != null)
+                this.AudioSource.Play();
         }
         
         if(ParticlesOnDestroy != null)
