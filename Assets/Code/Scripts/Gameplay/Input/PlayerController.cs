@@ -9,14 +9,15 @@ public class PlayerController : MonoBehaviour , IDamageable
 {
     //public InputManager inputManager;
     public delegate void GamePad();
-    public static event GamePad OnGamePad;
-    public static event GamePad OnKeyBoard;
+    public static event GamePad OnGamePad = () => { };
+    public static event GamePad OnKeyBoard = () => { };
     public delegate void PlayerState();
-    public static event PlayerState OnPlayerDead;
+    public static event PlayerState OnPlayerDead = () => { };
+    public static event PlayerState OnPlayerRespawned = () => { };
     public delegate void PlayerReady(PlayerController Player);
     public static event PlayerReady OnPlayerReady;
     public delegate void PlayerCollecting();
-    public static event PlayerCollecting OnUpdatingUiCollect;
+    public static event PlayerCollecting OnUpdatingUiCollect = () => { };
     public static Action UpdatePlayerSens;
 
     private float mouseSensitivity = 25f;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     [SerializeField] float PitchingSpeed;
     [SerializeField] float PlayerMaxSpeed;
     [SerializeField] float hp = 100f;
+    [SerializeField] int Lives = 4;
     [SerializeField] private float DamageOnCollion;
     [Space]
     [Header("Don't Touch This, it's just for debug")]
@@ -47,6 +49,8 @@ public class PlayerController : MonoBehaviour , IDamageable
     float X = 0; // up and down mov
     float Y = 0; // left and right mov
     public float HP { get ; set ; }
+    private Vector3 RespawnPoint = new Vector3 (0, 4, -78);
+    private Collider Collider;
     
     
 
@@ -57,10 +61,12 @@ public class PlayerController : MonoBehaviour , IDamageable
         Rb = GetComponent<Rigidbody>();
         HP = hp;
         BaseMouseSensitivity = GameManager.MouseSens;
+        Collider = GetComponent<Collider>();
     }
 
     private void Start()
     {
+        Collider.enabled = true;
         OnPlayerReady(this);
         mouseSensitivity = BaseMouseSensitivity;
         InputManager.InputMap.Overworld.Movement.canceled += Decelerate;
@@ -76,6 +82,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     {
         ShieldCollectible.OnShieldTaken += Healing;
         UpdatePlayerSens += ChangePlayerSensitivity;
+        OnPlayerDead += PlayerDeath;
     }
 
 
@@ -90,6 +97,8 @@ public class PlayerController : MonoBehaviour , IDamageable
         InputManager.InputMap.Overworld.MouseX.started -= CheckTypeOfDevice;
         InputManager.InputMap.Overworld.MouseY.started -= CheckTypeOfDevice;
         ShieldCollectible.OnShieldTaken -= Healing;
+        UpdatePlayerSens -= ChangePlayerSensitivity;
+        OnPlayerDead -= PlayerDeath;
     }
 
     
@@ -175,9 +184,9 @@ public class PlayerController : MonoBehaviour , IDamageable
             UsingGamepad = false;
             OnKeyBoard();
         }
+    }
         
 
-    }
 
         
 
@@ -245,12 +254,14 @@ public class PlayerController : MonoBehaviour , IDamageable
         HP -= Damage;
         if (HP <= 0) { OnPlayerDead(); }
         OnUpdatingUiCollect();
+        UI_Manager.OnFlashingRed();
     }
 
     void Healing(float value)
     {
         HP += value;
         OnUpdatingUiCollect();
+        UI_Manager.OnFlashingBlue();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -259,8 +270,33 @@ public class PlayerController : MonoBehaviour , IDamageable
         {
             damageable.TakeDamage(DamageOnCollion);
             
+            
         }
     }
+
+    void PlayerDeath()
+    {
+        Collider.enabled = false;
+        StartCoroutine(TimerForRespawn());
+    }
+
+    IEnumerator TimerForRespawn()
+    {
+        // TODO: start animation here
+        yield return new WaitForSecondsRealtime(2);
+        Respawn();
+    }
+
+    void Respawn()
+    {
+        transform.position = RespawnPoint;
+        Rb.rotation = Quaternion.Euler(0,0,0);
+        Collider.enabled = true;
+        HP = 100;
+        OnPlayerRespawned();
+        OnUpdatingUiCollect();
+    }
+        
 
     public void ChangePlayerSensitivity()
     {

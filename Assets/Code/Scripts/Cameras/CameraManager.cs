@@ -28,6 +28,7 @@ public class CameraManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerController.OnPlayerDead += DeathCam;
+        PlayerController.OnPlayerRespawned += CameraAfterRespawn;
         InputManager.OnMinimapOpen += MiniMapOpen;
         InputManager.OnMinimapClosed += MiniMapClosed;
     }
@@ -53,6 +54,13 @@ public class CameraManager : MonoBehaviour
         PlayerCamera.enabled = false;
         RearCamera.enabled = false;
         DeathCamera.enabled = true;
+    }
+
+    void CameraAfterRespawn()
+    {
+        PlayerCamera.enabled = true;
+        RearCamera.enabled = false;
+        DeathCamera.enabled = false;
     }
 
     void EscapeCam()

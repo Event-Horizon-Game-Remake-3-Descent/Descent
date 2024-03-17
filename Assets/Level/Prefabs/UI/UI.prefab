@@ -5941,6 +5941,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 637378511645270335, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
+      propertyPath: AudioData.SubMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: e27f0e6e823297443b8df56e5d7f4942, type: 2}
     - target: {fileID: 663813326629566732, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -5956,6 +5960,18 @@ PrefabInstance:
     - target: {fileID: 1365574222417921918, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
       propertyPath: DefaultVolume
       value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365574222417921918, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
+      propertyPath: AudioData.Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365574222417921918, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
+      propertyPath: AudioData.SubMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: e27f0e6e823297443b8df56e5d7f4942, type: 2}
+    - target: {fileID: 1365574222417921918, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
+      propertyPath: AudioData.DefaultVolume
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 1437346281242719149, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6092,6 +6108,18 @@ PrefabInstance:
     - target: {fileID: 4687827724842525419, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831943373256353075, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
+      propertyPath: AudioData.Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831943373256353075, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
+      propertyPath: AudioData.SubMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: e27f0e6e823297443b8df56e5d7f4942, type: 2}
+    - target: {fileID: 4831943373256353075, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
+      propertyPath: AudioData.DefaultVolume
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5271574586007046733, guid: de34fc7bf9d59204ca2b9905f9f888a1, type: 3}
       propertyPath: m_AnchorMax.x
