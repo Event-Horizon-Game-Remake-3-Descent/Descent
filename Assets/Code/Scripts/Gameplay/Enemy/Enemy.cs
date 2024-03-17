@@ -158,6 +158,11 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable, ISpawnable
         CurrentEnemyState = newState;
     }
 
+    private void ResetState()
+    {
+        ChangeState(StartingState);
+    }
+
     #region PATROLLING
     public void Patrol()
     {
@@ -295,12 +300,14 @@ public class Enemy : MonoBehaviour, IDamageable, IPatrollable, ISpawnable
     private void OnEnable()
     {
         PlayerController.OnPlayerReady += (PlayerController Player) => PlayerRef = Player;
+        PlayerController.OnPlayerDead += ResetState;
     }
 
     private void OnDisable()
     {
         PlayerRef = null;
         EnemyBehaviour -= EnemyBehaviour;
+        PlayerController.OnPlayerDead -= ResetState;
     }
 
     private void OnCollisionEnter(Collision collision)
