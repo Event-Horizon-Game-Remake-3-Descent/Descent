@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class EscapeDoor : Door
 {
-    [Header("Escape Door Setting")]
-    [SerializeField] Boss BossReference;
-
     new private void Awake()
     {
         base.Awake();
@@ -12,10 +9,7 @@ public class EscapeDoor : Door
 
     private void Start()
     {
-        if (BossReference != null)
-            BossReference.OnEnemyDead += () => OpenDoor();
-        else
-            Debug.LogError("ENEMY REQUESTED FOR THIS DOOR");
+        Boss.OnBossDefeat += () => OpenDoor();
     }
 
     private void OpenDoor()

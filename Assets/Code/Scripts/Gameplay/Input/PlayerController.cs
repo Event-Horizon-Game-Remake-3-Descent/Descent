@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     float X = 0; // up and down mov
     float Y = 0; // left and right mov
     public float HP { get ; set ; }
-    private Vector3 RespawnPoint = new Vector3 (0, 4, -78);
+    private Vector3 RespawnPoint;
     private Collider Collider;
     
     
@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour , IDamageable
         HP = hp;
         BaseMouseSensitivity = GameManager.MouseSens;
         Collider = GetComponent<Collider>();
+        RespawnPoint = transform.position;
     }
 
     private void Start()

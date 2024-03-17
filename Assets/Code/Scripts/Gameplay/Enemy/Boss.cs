@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static Boss;
 public class Boss : MonoBehaviour, IDamageable
 {
-    public delegate void EnemyDead();
-    public EnemyDead OnEnemyDead = () => { };
+    public delegate void BossDeath();
+    public static BossDeath OnBossDefeat = () => { };
+
+    public delegate void BossTrigger();
+    public static BossTrigger OnBossTrigger = () => { };
 
     private enum EnemyState
     {
@@ -74,7 +78,10 @@ public class Boss : MonoBehaviour, IDamageable
             DistanceFromPlayer = (PlayerRef.transform.position - transform.position).magnitude;
             if (DistanceFromPlayer < TriggerDistance)
                 if (CanAttack())
+                {
+                    OnBossTrigger();
                     ChangeState(EnemyState.Attacking);
+                }
         }
     }
 
@@ -135,7 +142,7 @@ public class Boss : MonoBehaviour, IDamageable
             ParticlesOnDestroy.Play();
         }
         EnemyBehaviour -= EnemyBehaviour;
-        OnEnemyDead();
+        OnBossDefeat();
         ScoreCollectible.OnIncreaseScore?.Invoke(ScoreOnDefeat);
         UI_Manager.Notify("BOSS DEFEATED, GET OUT\nNOW!");
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class WeaponTest_UI : MonoBehaviour
+public class WeaponUI : MonoBehaviour
 {
     [Header("Primay Weapon")]
     [SerializeField] TMP_Text WeaponNamePrimary_Text;
@@ -127,7 +127,12 @@ public class WeaponTest_UI : MonoBehaviour
 
         Collectible.OnUpdateUI += UpdateInfo;
         EnergyRecoverZone.OnEnergyRecover += (float x) => { UpdateBulletCount(); HandleVisualMag(); };
-
+        PlayerController.OnPlayerDead += () =>
+        {
+            UpdateBulletCount();
+            UpdateInfo();
+            HandleVisualMag();
+        };
     }
 
     private void OnDisable()
