@@ -113,13 +113,17 @@ public class WeaponManager : MonoBehaviour
     private void ShootPrimary()
     {
         if (PrimaryWeaponList[PrimaryIndex].Shoot())
+        {
             OnPrimaryFire();
+        }
     }
     
     private void ShootSecondary()
     {
         if (SecondaryWeaponList[SecondaryIndex].Shoot())
+        {
             OnSecondaryFire();
+        }
     }
     
     private void ShootBomb()
