@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 144759801358094623}
   - {fileID: 1503967733295884069}
-  - {fileID: 7348115988502362313}
+  - {fileID: 5471740399857402615}
   m_Father: {fileID: 6691454548893528034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5593526870085817034
@@ -264,7 +264,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5923776073130887104, guid: fadb9b16465c86e439288b8894d072af, type: 3}
---- !u!1001 &2119451975572182332
+--- !u!1001 &3710834424855686914
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -272,67 +272,59 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 185088011891040639}
     m_Modifications:
-    - target: {fileID: -9045417706623436151, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
-      propertyPath: DrawGizmo
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -9045417706623436151, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
-      propertyPath: PatrollingData.PatrollingPositions.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581523010215951242, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+    - target: {fileID: 1581523010215951242, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_Name
-      value: SmallHulk_Enemy (2)
+      value: Bastet_Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 8687460004581076469, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+    - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.26
+      value: 15.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8687460004581076469, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+    - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.3
+      value: 33.31
       objectReference: {fileID: 0}
-    - target: {fileID: 8687460004581076469, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+    - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 121.22
+      value: 121.0233
       objectReference: {fileID: 0}
-    - target: {fileID: 8687460004581076469, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+    - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9939418
+      value: 0.98092395
       objectReference: {fileID: 0}
-    - target: {fileID: 8687460004581076469, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+    - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.14702654
       objectReference: {fileID: 0}
-    - target: {fileID: 8687460004581076469, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+    - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.12576225
       objectReference: {fileID: 0}
-    - target: {fileID: 8687460004581076469, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+    - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.10990777
+      value: -0.018849952
       objectReference: {fileID: 0}
-    - target: {fileID: 8687460004581076469, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+    - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -16.481
       objectReference: {fileID: 0}
-    - target: {fileID: 8687460004581076469, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+    - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 15.253
       objectReference: {fileID: 0}
-    - target: {fileID: 8687460004581076469, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+    - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 12.62
+      value: -4.424
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
---- !u!4 &7348115988502362313 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
+--- !u!4 &5471740399857402615 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8687460004581076469, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
-  m_PrefabInstance: {fileID: 2119451975572182332}
+  m_CorrespondingSourceObject: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
+  m_PrefabInstance: {fileID: 3710834424855686914}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4590972921397218763
 PrefabInstance:
@@ -471,12 +463,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -9045417706623436151, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+      propertyPath: TriggerDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -9045417706623436151, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
       propertyPath: PatrollingData.PatrollingPositions.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1581523010215951242, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
       propertyPath: m_Name
-      value: SmallHulk_Enemy (1)
+      value: SmallHulk_Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8687460004581076469, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -601,6 +597,10 @@ PrefabInstance:
     - target: {fileID: -9045417706623436151, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
       propertyPath: DrawGizmo
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -9045417706623436151, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
+      propertyPath: TriggerDistance
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: -9045417706623436151, guid: 31efd6e582f489444aceb14ad2d4b99c, type: 3}
       propertyPath: PatrollingData.PatrollingPositions.Array.size
