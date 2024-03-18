@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq.Expressions;
+using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -38,6 +38,11 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] Image BlueKey;
     [SerializeField] Image YellowKey;
     [SerializeField] Image RedKey;
+    // button references for gamepad navigation
+    [SerializeField] GameObject AudioButton;
+    [SerializeField] GameObject MasterSlider;
+    [SerializeField] GameObject ControlsButton;
+    [SerializeField] GameObject SensSlider;
     [Space]
     // Flashing Images
     [SerializeField] private CanvasGroup RedFlash;
@@ -50,6 +55,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] float TimeForEscape;
     [SerializeField] float IncreaseTextSizeBy;
     [SerializeField] float StartingTextSize;
+
 
 
 
@@ -91,7 +97,7 @@ public class UI_Manager : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.OnPauseMenu += Menu;
+        InputManager.OnPauseMenu += PauseMenu;
         PlayerController.OnPlayerReady += (PlayerController playerController) => { Player = playerController; UpdateCollectibles(); HandleVisualShield(); };
         PlayerController.OnPlayerDead += () => PlayerIsDead = true;
         PlayerController.OnUpdatingUiCollect += UpdateCollectibles;
@@ -117,7 +123,7 @@ public class UI_Manager : MonoBehaviour
 
     private void OnDisable()
     {
-        InputManager.OnPauseMenu -= Menu;
+        InputManager.OnPauseMenu -= PauseMenu;
         PlayerController.OnUpdatingUiCollect -= UpdateCollectibles;
         PlayerController.OnUpdatingUiCollect -= HandleVisualShield;
         PlayerController.OnPlayerDead -= HideHUD;
@@ -239,7 +245,7 @@ public class UI_Manager : MonoBehaviour
         yield return null;
     }
 
-    public void Menu()
+    public void PauseMenu()
     {
         if (OnPause == false)
         {
@@ -252,6 +258,7 @@ public class UI_Manager : MonoBehaviour
             AudioMenu.gameObject.SetActive(false);
             ControlsMenu.gameObject.SetActive(false);
             AudioMenu.gameObject.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(AudioButton);
             
         }
         else
@@ -263,6 +270,7 @@ public class UI_Manager : MonoBehaviour
             BackButton.gameObject.SetActive(false);
             OnPause = false;
             InputManager.Resume?.Invoke();
+            EventSystem.current.SetSelectedGameObject(null);
             
         }
     }
@@ -282,8 +290,9 @@ public class UI_Manager : MonoBehaviour
     public void OpenControlsMenu()
     {
         ControlsMenu.gameObject.SetActive(true);
-        MainMenu.gameObject.SetActive(false) ;
-        BackButton.gameObject.SetActive(true) ;
+        MainMenu.gameObject.SetActive(false);
+        BackButton.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(SensSlider);
     }
 
     public void OpenAudioSettings()
@@ -291,6 +300,7 @@ public class UI_Manager : MonoBehaviour
         MainMenu.gameObject.SetActive(false);
         AudioMenu.gameObject.SetActive(true);
         BackButton.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(MasterSlider);
     }
 
     public void BackToMainMenu()
@@ -302,6 +312,7 @@ public class UI_Manager : MonoBehaviour
         AudioMenu.gameObject.SetActive(false);
         ControlsMenu.gameObject .SetActive(false);  
         BackButton.gameObject.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(AudioButton);
     }
 
     public void Resume()
@@ -314,6 +325,7 @@ public class UI_Manager : MonoBehaviour
         OnPause = false;
         InputManager.Resume?.Invoke();
         Time.timeScale = 1.0f;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     void HideHUD()

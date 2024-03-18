@@ -467,7 +467,7 @@ MonoBehaviour:
   SnapSpeed: 100
   PitchingSpeed: 650
   PlayerMaxSpeed: 10
-  hp: 150
+  hp: 100
   Lives: 4
   DamageOnCollion: 5
   UsingGamepad: 0
@@ -1026,7 +1026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8934219975485398723, guid: 9315c4091e9a80c42b3598ec854fd0ca, type: 3}
       propertyPath: DrawGizmos
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8934219975485398723, guid: 9315c4091e9a80c42b3598ec854fd0ca, type: 3}
       propertyPath: MinDistance
