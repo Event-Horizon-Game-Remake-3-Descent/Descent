@@ -1,7 +1,8 @@
+using TMPro;
+using UnityEngine;
 using Cinemachine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class VictoryScreenManager : MonoBehaviour
 {
@@ -10,8 +11,11 @@ public class VictoryScreenManager : MonoBehaviour
     [SerializeField] CinemachineDollyCart DollyCart;
     [SerializeField] float ShowAfter = 10f;
     [SerializeField] Canvas CanvasToShow;
+    [SerializeField] TMP_Text Score_Text;
+    [SerializeField] string SceneToLoad = "none";
 
-    float DollyInitialSpeed;
+    private float DollyInitialSpeed;
+    private float Score = 0; 
 
     private void Awake()
     {
@@ -24,6 +28,9 @@ public class VictoryScreenManager : MonoBehaviour
     {
         StartCoroutine(MoveDollyCoroutine());
         StartCoroutine(ShowCoroutine());
+        if (PlayerPrefs.HasKey("PlayerScore"))
+            Score = PlayerPrefs.GetFloat("PlayerScore");
+        Score_Text.text = ("Score: ") +Mathf.RoundToInt(Score).ToString();
     }
 
     private IEnumerator MoveDollyCoroutine()
@@ -36,5 +43,10 @@ public class VictoryScreenManager : MonoBehaviour
     {
         yield return new WaitForSeconds(ShowAfter);
         CanvasToShow.gameObject.SetActive(true);
+    }
+
+    public void LoadScene()
+    {
+        SceneManager.LoadScene(SceneToLoad);
     }
 }
