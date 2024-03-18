@@ -22,6 +22,7 @@ public class VictoryScreenManager : MonoBehaviour
         CanvasToShow.gameObject.SetActive(false);
         DollyInitialSpeed = DollyCart.m_Speed;
         DollyCart.m_Speed = 0f;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void Start()

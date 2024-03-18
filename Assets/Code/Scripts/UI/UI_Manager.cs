@@ -97,7 +97,13 @@ public class UI_Manager : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.OnPauseMenu += PauseMenu;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        //Collectible.OnIncreaseScore += (float value) => { UpdateCollectibles(); };
+    }
+       
+    private void ConnectEvents()
+    {
+        InputManager.OnPauseMenu += PauseMenu;  
         PlayerController.OnPlayerReady += (PlayerController playerController) => { Player = playerController; UpdateCollectibles(); HandleVisualShield(); };
         PlayerController.OnPlayerDead += () => PlayerIsDead = true;
         PlayerController.OnUpdatingUiCollect += UpdateCollectibles;
@@ -111,15 +117,11 @@ public class UI_Manager : MonoBehaviour
         InputManager.OnMinimapClosed += () => FullHUD.gameObject.SetActive(true);
         Notify += Notifications;
         UpdateUI += UpdateCollectibles;
-        PausedByInput +=()=> OnPause = true;
-        UnPausedByInput +=()=> OnPause = false;
+        PausedByInput += () => OnPause = true;
+        UnPausedByInput += () => OnPause = false;
         OnFlashingBlue += FlashingBlue;
         OnFlashingRed += FlashingRed;
-        
-        //Collectible.OnIncreaseScore += (float value) => { UpdateCollectibles(); };
     }
-       
-        
 
     private void OnDisable()
     {
@@ -130,6 +132,11 @@ public class UI_Manager : MonoBehaviour
         EscapeSequenceManager.OnEscapeSequenceTriggered -= HideHUD;
         Notify -= Notifications;
         UpdateUI -= UpdateCollectibles;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ConnectEvents();
     }
 
     public void ShowSensitivityValue()

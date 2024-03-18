@@ -51,6 +51,10 @@ public class AdvancedWeapon : Weapon
                         base.ShootingPointIndex = 0;
                 }
             }
+
+            if (base.Mag.ProjectileLeft < 0)
+                base.Mag.ProjectileLeft = 0;
+
             //Play Sound
             if (base.ShootSounds.Count > 0)
             {

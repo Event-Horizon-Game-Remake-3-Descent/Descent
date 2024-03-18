@@ -18,13 +18,15 @@ public class BasicWeapon : Weapon
                 if (base.SynchronousShooting)
                 {
                     //shoot on all shooting points
-                    float spawnableBulletAmount = base.Mag.ProjectileLeft;
                     base.Mag.ProjectileLeft -= base.ProjectileCost * base.ShootingPoints.Count;
+
+
 
                     for (int i = 0; i < base.ShootingPoints.Count; ++i)
                     {
                         Instantiate(base.ProjectileToShoot, base.ShootingPoints[i].position, base.ShootingPoints[i].rotation);
                     }
+
                 }
                 else
                 {
@@ -36,6 +38,10 @@ public class BasicWeapon : Weapon
                         base.ShootingPointIndex = 0;
                 }
             }
+
+            if (base.Mag.ProjectileLeft < 0)
+                base.Mag.ProjectileLeft = 0;
+
             //Play Sound
             if (base.ShootSounds.Count > 0)
             {
