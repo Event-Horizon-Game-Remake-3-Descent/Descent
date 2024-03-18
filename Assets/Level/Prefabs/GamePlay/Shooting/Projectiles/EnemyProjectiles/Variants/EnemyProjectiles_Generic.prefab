@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428228293955590333, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: Damage
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2412121825768448341, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Mesh
@@ -63,6 +63,10 @@ PrefabInstance:
     - target: {fileID: 6375875317820382975, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493283928935276559, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
+      propertyPath: m_Mass
+      value: 0.0000001
       objectReference: {fileID: 0}
     - target: {fileID: 7883898819634048106, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_LocalPosition.x

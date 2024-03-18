@@ -437,7 +437,7 @@ MonoBehaviour:
   BaseMouseSensitivity: 250
   GamepadSensMultiplier: 10
   CamSpeedSmoother: 0.5
-  PlayerSpeed: 5
+  PlayerSpeed: 2
   DecelerationCurve:
     serializedVersion: 2
     m_Curve:
@@ -469,7 +469,7 @@ MonoBehaviour:
   PlayerMaxSpeed: 10
   hp: 100
   Lives: 4
-  DamageOnCollion: 5
+  DamageOnCollion: 1
   UsingGamepad: 0
   IsBanking: 0
 --- !u!81 &2083452108536339754
