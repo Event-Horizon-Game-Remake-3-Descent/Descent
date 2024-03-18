@@ -408,18 +408,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LV1_Room1
       objectReference: {fileID: 0}
-    - target: {fileID: 5957820267107847291, guid: bd54271b40442934ead669107466e2e3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6747390874945274074, guid: bd54271b40442934ead669107466e2e3, type: 3}
-      propertyPath: m_Size.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6747390874945274074, guid: bd54271b40442934ead669107466e2e3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16946,6 +16934,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1844739820}
     m_Modifications:
+    - target: {fileID: 1735004215734745579, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
+      propertyPath: IsUnlocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3547063329461706690, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
       propertyPath: SnapSpeed
       value: 50
@@ -16977,6 +16969,14 @@ PrefabInstance:
     - target: {fileID: 6763670398067572999, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034566849476948423, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
+      propertyPath: ShootDelay
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034566849476948423, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
+      propertyPath: ProjectileCost
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8236186568755696781, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32165,9 +32165,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1636282941}
     m_Modifications:
+    - target: {fileID: 1513795280850439462, guid: 06ebf25aa936cc041b643039eb004f15, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 1513795280850439462, guid: 06ebf25aa936cc041b643039eb004f15, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 20.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1513795280850439462, guid: 06ebf25aa936cc041b643039eb004f15, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 108
+      objectReference: {fileID: 0}
     - target: {fileID: 2238841874097156021, guid: 06ebf25aa936cc041b643039eb004f15, type: 3}
       propertyPath: TriggerDistance
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2471778815756189450, guid: 06ebf25aa936cc041b643039eb004f15, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 2471778815756189450, guid: 06ebf25aa936cc041b643039eb004f15, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 110.04
       objectReference: {fileID: 0}
     - target: {fileID: 4702033026104672469, guid: 06ebf25aa936cc041b643039eb004f15, type: 3}
       propertyPath: m_IsTrigger
@@ -32321,42 +32341,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1636282941}
     m_Modifications:
-    - target: {fileID: 1514856740350043558, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
-      propertyPath: ShootDelay
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1514856740350043558, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
-      propertyPath: SynchronousShooting
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1514856740350043558, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
-      propertyPath: Direction_GizsmoColor.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5995929758406591233, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
-      propertyPath: DrawGizmo
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5995929758406591233, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
-      propertyPath: TriggerDistance
-      value: 92.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6356617416246738163, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
-      propertyPath: DrawGizmos
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6471177584964661606, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
-      propertyPath: DrawGizmo
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6471177584964661606, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
-      propertyPath: StartingState
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6471177584964661606, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
-      propertyPath: TriggerDistance
-      value: 102.1
-      objectReference: {fileID: 0}
     - target: {fileID: 6691454548893528034, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -32401,16 +32385,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: LV1_Room8
       objectReference: {fileID: 0}
-    - target: {fileID: 7196393859785840500, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 966690048114526199, guid: e27f0e6e823297443b8df56e5d7f4942, type: 2}
-    - target: {fileID: 8330385515864206745, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
-      propertyPath: m_Name
-      value: EscapeDoor
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5599553681162620787, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

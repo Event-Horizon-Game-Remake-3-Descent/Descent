@@ -72,7 +72,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2395391811114472090, guid: c0e89f26cfaec0841992b2187235b9c2, type: 3}
       propertyPath: m_Name
-      value: ConcussionMissileAmmoCollectible
+      value: ConcussionMissileAmmoCollectible 1
       objectReference: {fileID: 0}
     - target: {fileID: 6550343405874957304, guid: c0e89f26cfaec0841992b2187235b9c2, type: 3}
       propertyPath: m_IsActive
@@ -160,5 +160,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceca33a72567beb4caba9d4532962ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileType: 2
+  ProjectileType: 3
   IncreaseAmmoValue: 5
