@@ -120,6 +120,7 @@ MonoBehaviour:
   - {fileID: 8460820658668067691}
   SynchronousShooting: 1
   IsUnlocked: 1
+  ScoreIfAlreadyUnlocked: 0
   _WeaponSprite: {fileID: 2800000, guid: b1f0da4a3e70baf41b6deee35d0b9764, type: 3}
   ShootSounds:
   - {fileID: 8300000, guid: 8c7358b2d0e73624389e292ec621b5b5, type: 3}

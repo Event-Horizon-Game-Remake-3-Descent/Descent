@@ -50,15 +50,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Vulkan
   Type: 2
-  ProjectileToShoot: {fileID: 8422522784167290584, guid: df77af9dbf819164fa5d84644d09c1a7, type: 3}
+  ProjectileToShoot: {fileID: 0}
   ShootDelay: 0.05
   Mag: {fileID: 8647361190352275182}
-  ProjectileCost: 1
+  ProjectileCost: 13
   ShootingPoints:
   - {fileID: 488181205753757307}
   - {fileID: 3579444295666308271}
   SynchronousShooting: 0
   IsUnlocked: 1
+  ScoreIfAlreadyUnlocked: 0
   _WeaponSprite: {fileID: 2800000, guid: 75a347089b167e24b9052ae8c79152c7, type: 3}
   ShootSounds:
   - {fileID: 8300000, guid: c60528ef3d7f8b04ca568f19fe57fcbb, type: 3}
@@ -80,6 +81,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialMagSize: 1500
   MagMagType: 1
+  IsCapped: 0
+  MaxValue: 200
   ProjectileLeft: 0
 --- !u!82 &7133052498384238406
 AudioSource:
