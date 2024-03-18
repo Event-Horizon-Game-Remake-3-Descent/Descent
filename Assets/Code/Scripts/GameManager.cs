@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetFloat("MouseSensitivity", MouseSens);
         }
+
+        if(!PlayerPrefs.HasKey("PlayerScore"))
+        {
+            PlayerPrefs.SetFloat("PlayerScore", 0);
+        }
     }
 
     private void Start()
@@ -32,8 +37,8 @@ public class GameManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        
-        ScoreCollectible.OnIncreaseScore += (float value) => { Score += value; UI_Manager.UpdateUI?.Invoke(); };
+
+        ScoreCollectible.OnIncreaseScore += UpdateScore;
            
     }
 
@@ -42,6 +47,14 @@ public class GameManager : MonoBehaviour
         MouseSens = value;
         PlayerController.UpdatePlayerSens?.Invoke();
         PlayerPrefs.SetFloat("MouseSensitivity", MouseSens);
+    }
+
+    void UpdateScore(float value)
+    {
+        Score += value; 
+        UI_Manager.UpdateUI?.Invoke();
+        PlayerPrefs.SetFloat("PlayerScore", Score);
+
     }
 
 

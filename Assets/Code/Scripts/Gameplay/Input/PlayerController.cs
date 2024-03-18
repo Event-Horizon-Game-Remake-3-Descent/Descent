@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     public delegate void PlayerCollecting();
     public static event PlayerCollecting OnUpdatingUiCollect = () => { };
     public static Action UpdatePlayerSens;
+    
 
     private float mouseSensitivity = 25f;
     private float XSpeed;
@@ -77,6 +78,10 @@ public class PlayerController : MonoBehaviour , IDamageable
         InputManager.InputMap.Overworld.VerticalMovement.started += StopSlowDownCycle;
         InputManager.InputMap.Overworld.MouseX.started += CheckTypeOfDevice;
         InputManager.InputMap.Overworld.MouseY.started += CheckTypeOfDevice;
+        InputManager.InputMap.Overworld.MouseX.performed += CheckTypeOfDevice;
+        InputManager.InputMap.Overworld.MouseY.performed += CheckTypeOfDevice;
+        InputManager.InputMap.Overworld.MouseX.canceled += CheckTypeOfDevice;
+        InputManager.InputMap.Overworld.MouseY.canceled += CheckTypeOfDevice;
     }
         
 
@@ -85,6 +90,7 @@ public class PlayerController : MonoBehaviour , IDamageable
         ShieldCollectible.OnShieldTaken += Healing;
         UpdatePlayerSens += ChangePlayerSensitivity;
         OnPlayerDead += PlayerDeath;
+        
     }
 
 
@@ -103,7 +109,7 @@ public class PlayerController : MonoBehaviour , IDamageable
         OnPlayerDead -= PlayerDeath;
     }
 
-    
+   
     private void FixedUpdate()
     {
         
@@ -176,14 +182,14 @@ public class PlayerController : MonoBehaviour , IDamageable
         var usedDevice = used.control;
         if (usedDevice.device is Gamepad && UsingGamepad == false) 
         {
-            Debug.Log(usedDevice);
+            
             mouseSensitivity *= GamepadSensMultiplier; 
             UsingGamepad = true;
             OnGamePad();
         }
         else if (usedDevice.device is Mouse || usedDevice.device is Keyboard)
         {
-            Debug.Log(usedDevice);
+            
             mouseSensitivity = BaseMouseSensitivity;
             UsingGamepad = false;
             OnKeyBoard();
@@ -315,6 +321,10 @@ public class PlayerController : MonoBehaviour , IDamageable
     public void ChangePlayerSensitivity()
     {
         BaseMouseSensitivity = GameManager.MouseSens;
+        mouseSensitivity = BaseMouseSensitivity;
+        UsingGamepad = false;
+        
+        
     }
 
     //void StartSnapCoroutine(int targetZAngle, float currentZAngle)
