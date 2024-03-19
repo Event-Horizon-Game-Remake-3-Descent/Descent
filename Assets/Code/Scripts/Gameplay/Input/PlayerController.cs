@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     private void OnEnable()
     {
         ShieldCollectible.OnShieldTaken += Healing;
+        EscapeSequenceManager.OnEscapeSequenceTriggered += () => Collider.enabled = false;
         UpdatePlayerSens += ChangePlayerSensitivity;
         OnPlayerDead += PlayerDeath;
         
