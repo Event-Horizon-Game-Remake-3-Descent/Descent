@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class MainMenu_UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<LoadSceneData> PossiblesScenes;
+    [SerializeField] private RectTransform SettingsPanel;
+
+    public void LoadScene(int index)
     {
-        
+        PossiblesScenes[index].LoadScene();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenSettingsScreen()
     {
-        
+        SettingsPanel.gameObject.SetActive(true);
+    }
+
+    public void CloseSettingsScreen()
+    {
+        SettingsPanel.gameObject.SetActive(false);
     }
 }
