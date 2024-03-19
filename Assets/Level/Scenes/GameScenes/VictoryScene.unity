@@ -6489,7 +6489,7 @@ MonoBehaviour:
   ShowAfter: 10
   CanvasToShow: {fileID: 127444525}
   Score_Text: {fileID: 1407422864}
-  SceneToLoad: LV1_Scene
+  SceneToLoad: TitleScreen
 --- !u!1 &1925659116
 GameObject:
   m_ObjectHideFlags: 0
