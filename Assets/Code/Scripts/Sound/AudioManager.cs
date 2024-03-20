@@ -61,4 +61,10 @@ public class AudioManager : MonoBehaviour
         Boss.OnBossTrigger += EnableBossMusic;
         Boss.OnBossDefeat += EnableEscapeMusic;
     }
+
+    private void OnDisable()
+    {
+        Boss.OnBossTrigger -= EnableBossMusic;
+        Boss.OnBossDefeat -= EnableEscapeMusic;
+    }
 }

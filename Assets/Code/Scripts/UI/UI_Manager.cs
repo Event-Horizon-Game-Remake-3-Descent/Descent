@@ -55,6 +55,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] float TimeForEscape;
     [SerializeField] float IncreaseTextSizeBy;
     [SerializeField] float StartingTextSize;
+    bool Updatable = true; // bool che ho usato per sistemare gli errori a fine scena
 
 
 
@@ -98,13 +99,18 @@ public class UI_Manager : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        Player = FindObjectOfType<PlayerController>();
+        UpdateCollectibles(); HandleVisualShield();
+        EscapeSequenceManager.OnEscapeSequenceTriggered +=()=> Updatable = false;
         //Collectible.OnIncreaseScore += (float value) => { UpdateCollectibles(); };
     }
        
     private void ConnectEvents()
     {
-        InputManager.OnPauseMenu += PauseMenu;  
-        PlayerController.OnPlayerReady += (PlayerController playerController) => { Player = playerController; UpdateCollectibles(); HandleVisualShield(); };
+        //Player = FindObjectOfType<PlayerController>();
+        //UpdateCollectibles(); HandleVisualShield();
+        InputManager.OnPauseMenu += PauseMenu;
+        PlayerController.OnPlayerReady += (PlayerController playerController) => { Player = playerController; UpdateCollectibles(); HandleVisualShield();  };
         PlayerController.OnPlayerDead += () => PlayerIsDead = true;
         PlayerController.OnUpdatingUiCollect += UpdateCollectibles;
         PlayerController.OnUpdatingUiCollect += HandleVisualShield;
@@ -121,17 +127,30 @@ public class UI_Manager : MonoBehaviour
         UnPausedByInput += () => OnPause = false;
         OnFlashingBlue += FlashingBlue;
         OnFlashingRed += FlashingRed;
+        
     }
 
     private void OnDisable()
     {
+        
         InputManager.OnPauseMenu -= PauseMenu;
+       
+        PlayerController.OnPlayerDead += () => PlayerIsDead = true;
         PlayerController.OnUpdatingUiCollect -= UpdateCollectibles;
         PlayerController.OnUpdatingUiCollect -= HandleVisualShield;
         PlayerController.OnPlayerDead -= HideHUD;
+        PlayerController.OnPlayerRespawned -= ShowHUD;
         EscapeSequenceManager.OnEscapeSequenceTriggered -= HideHUD;
+        Boss.OnBossDefeat -= StartCountDown;
+        KeyCollectible.OnKeyCollected -= EnableKey;
+       
         Notify -= Notifications;
         UpdateUI -= UpdateCollectibles;
+        PausedByInput += () => OnPause = true;
+        UnPausedByInput += () => OnPause = false;
+        OnFlashingBlue -= FlashingBlue;
+        OnFlashingRed -= FlashingRed;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -231,10 +250,12 @@ public class UI_Manager : MonoBehaviour
 
 
     void UpdateCollectibles()
-    {
-        Shield_text.text = Mathf.Ceil(Player.HP).ToString();
-        Score_text.text = "Score:" + MathF.Round( GameManager.Score).ToString();
-        Lives_text.text = " x " + Player.Lives.ToString();
+    {   if (Updatable)
+        {
+            Shield_text.text = Mathf.Ceil(Player.HP).ToString();
+            Score_text.text = "Score:" + MathF.Round(GameManager.Score).ToString();
+            Lives_text.text = " x " + Player.Lives.ToString();
+        }
     }
 
 
@@ -283,14 +304,16 @@ public class UI_Manager : MonoBehaviour
     }
 
     void HandleVisualShield()
-    {
-        if (Player.HP <= 100)
+    {   if (Updatable)
         {
-            OuterShield.fillAmount = Player.HP / 100;
-        }
-        else if (Player.HP >= 100) 
-        {
-            OuterShield.fillAmount = 1;
+            if (Player.HP <= 100)
+            {
+                OuterShield.fillAmount = Player.HP / 100;
+            }
+            else if (Player.HP >= 100)
+            {
+                OuterShield.fillAmount = 1;
+            }
         }
     }
 

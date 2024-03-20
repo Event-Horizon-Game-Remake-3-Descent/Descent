@@ -33,6 +33,14 @@ public class CameraManager : MonoBehaviour
         InputManager.OnMinimapClosed += MiniMapClosed;
     }
 
+    private void OnDisable()
+    {
+        PlayerController.OnPlayerDead -= DeathCam;
+        PlayerController.OnPlayerRespawned -= CameraAfterRespawn;
+        InputManager.OnMinimapOpen -= MiniMapOpen;
+        InputManager.OnMinimapClosed -= MiniMapClosed;
+    }
+
     void SwitchCam(InputAction.CallbackContext context)
     {
         if (!RearCamActive)

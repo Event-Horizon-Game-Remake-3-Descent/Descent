@@ -9,7 +9,7 @@ public class EscapeDoor : Door
 
     private void Start()
     {
-        Boss.OnBossDefeat += () => OpenDoor();
+        Boss.OnBossDefeat +=  OpenDoor;
     }
 
     private void OpenDoor()
@@ -23,5 +23,10 @@ public class EscapeDoor : Door
         {
             ListOfPanels[i].MovePanel(1, 1f);
         }
+    }
+
+    private void OnDisable()
+    {
+        Boss.OnBossDefeat -= OpenDoor;
     }
 }

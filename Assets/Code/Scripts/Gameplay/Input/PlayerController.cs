@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     private void OnEnable()
     {
         ShieldCollectible.OnShieldTaken += Healing;
-        EscapeSequenceManager.OnEscapeSequenceTriggered += () => Collider.enabled = false;
+        EscapeSequenceManager.OnEscapeSequenceTriggered += DisableCollider;
         UpdatePlayerSens += ChangePlayerSensitivity;
         OnPlayerDead += PlayerDeath;
         
@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour , IDamageable
         InputManager.InputMap.Overworld.MouseX.started -= CheckTypeOfDevice;
         InputManager.InputMap.Overworld.MouseY.started -= CheckTypeOfDevice;
         ShieldCollectible.OnShieldTaken -= Healing;
+        EscapeSequenceManager.OnEscapeSequenceTriggered -= DisableCollider;
         UpdatePlayerSens -= ChangePlayerSensitivity;
         OnPlayerDead -= PlayerDeath;
     }
@@ -176,6 +177,8 @@ public class PlayerController : MonoBehaviour , IDamageable
             Rb.MoveRotation(Rb.rotation * pitchRotation);
         }
     }
+
+    void DisableCollider() { Collider.enabled = false; }
 
 
     void CheckTypeOfDevice(InputAction.CallbackContext used)

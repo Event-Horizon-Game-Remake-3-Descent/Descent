@@ -76,6 +76,16 @@ public class InputManager : MonoBehaviour
         StopAllCoroutines();
         InputMap.Overworld.ShootPrimary.performed -= TriggerPrimary;
         InputMap.Overworld.ShootSecondary.performed -= TriggerSecondary;
+        InputMap.Overworld.SwitchPrimary.performed -= SwitchPrimary;
+        InputMap.Overworld.SwitchSecondary.performed -= SwitchSecondary;
+        InputMap.Overworld.LaunchingBomb.performed -= LaunchBomb;
+        InputMap.Overworld.Flare.performed -= LaunchFlare;
+        InputMap.Menu.Pause.performed -= Paused;
+        PlayerController.OnPlayerDead -= PlayerIsDead;
+        PlayerController.OnPlayerRespawned -= PlayerIsRespawned;
+        InputMap.MiniMapToggle.OpenMinimap.started -= MinimapOpen;
+        InputMap.MiniMapToggle.OpenMinimap.canceled -= MinimapClosed;
+        EscapeSequenceManager.OnEscapeSequenceTriggered -= DisableAll;
         InputMap.Disable();
     }
     private void TriggerPrimary(InputAction.CallbackContext f)

@@ -126,8 +126,8 @@ public class WeaponUI : MonoBehaviour
         };
 
         Collectible.OnUpdateUI += UpdateInfo;
-        EnergyRecoverZone.OnEnergyRecover += (float x) => { UpdateBulletCount(); HandleVisualMag(); };
-        PlayerController.OnPlayerDead += () =>
+        EnergyRecoverZone.OnEnergyRecover += (float x) => { UpdateBulletCount(); HandleVisualMag(); }; // cerca di scomporre queste
+        PlayerController.OnPlayerDead += () => // e pure queste, poi disiscriviti
         {
             UpdateBulletCount();
             UpdateInfo();
@@ -137,9 +137,7 @@ public class WeaponUI : MonoBehaviour
 
     private void OnDisable()
     {
-        //weaponManager.OnSecondaryFire -= UpdateBulletCount;
-        //weaponManager.OnPrimaryFire -= UpdateBulletCount;
-        //weaponManager.OnWeaponChanged -= UpdateInfo;
+        // cazzo palle
     }
 
     void HandleVisualMag()

@@ -173,6 +173,9 @@ public class WeaponManager : MonoBehaviour
         InputManager.OnPrimaryCalled -= ShootPrimary;
         InputManager.OnSecondaryCalled -= ShootSecondary;
         InputManager.OnLaunchingBomb -= ShootBomb;
+        InputManager.OnSwitchPrimary -= ChangePrimary;
+        InputManager.OnSwitchSecondary -= ChangeSecondary;
+        InputManager.OnLaunchingFlare -= ShootFlare;
 
         PlayerController.OnPlayerDead -= OnDeath;
     }
