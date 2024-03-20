@@ -24,6 +24,7 @@ public class KeyCollectible : Collectible
         OnKeyObtained();
         UI_Manager.Notify(KeyName+" Unlocked");
 
+        base.TriggerEvents();
         Destroy(this.gameObject);
     }
 }

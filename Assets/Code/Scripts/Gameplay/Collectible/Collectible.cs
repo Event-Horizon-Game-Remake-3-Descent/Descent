@@ -6,7 +6,10 @@ public class Collectible : MonoBehaviour
     public delegate void UpdateUI();
     public static event UpdateUI OnUpdateUI = () => { };
 
-    protected void TriggerUpdateUI()
+    public delegate void CollectiblePicked(Collectible collectible);
+    public static event CollectiblePicked OnCollectiblePicked = (Collectible collectible) => { };
+    
+    protected void TriggerEvents()
     {
         OnUpdateUI();
     }

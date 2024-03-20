@@ -15,8 +15,10 @@ public class ShieldCollectible : Collectible
             return;
 
         OnShieldTaken(IncreaseShieldValue);
+
         UI_Manager.Notify(IncreaseShieldValue + " Shield Obtained");
 
+        base.TriggerEvents();
         Destroy(this.gameObject);
     }
 }
