@@ -109,37 +109,6 @@ public class WeaponUI : MonoBehaviour
         UpdateSecondary();
     }
 
-    private void OnEnable()
-    {
-        WeaponManager.OnManagerReady += (WeaponManager Mangager) =>
-        {
-            //get weapon manager
-            weaponManager = Mangager;
-            //connect all events
-            weaponManager.OnSecondaryFire += UpdateBulletCount;
-            weaponManager.OnPrimaryFire += UpdateBulletCount;
-            weaponManager.OnWeaponChanged += UpdateInfo;
-            //update UI
-            UpdateInfo();
-            MultipleShootingPoints.UpdateHud(0);
-            weaponManager.OnPrimaryFire += HandleVisualMag;
-        };
-
-        Collectible.OnUpdateUI += UpdateInfo;
-        EnergyRecoverZone.OnEnergyRecover += (float x) => { UpdateBulletCount(); HandleVisualMag(); }; // cerca di scomporre queste
-        PlayerController.OnPlayerDead += () => // e pure queste, poi disiscriviti
-        {
-            UpdateBulletCount();
-            UpdateInfo();
-            HandleVisualMag();
-        };
-    }
-
-    private void OnDisable()
-    {
-        // cazzo palle
-    }
-
     void HandleVisualMag()
     {
         if (EnergyLeft <= 100)
@@ -147,11 +116,53 @@ public class WeaponUI : MonoBehaviour
             EnergyBarLeft.fillAmount = EnergyLeft / 100;
             EnergyBarRight.fillAmount = EnergyLeft / 100;
         }
-        else if(EnergyLeft > 100)
+        else if (EnergyLeft > 100)
         {
             EnergyBarLeft.fillAmount = 1f;
             EnergyBarRight.fillAmount = 1f;
         }
     }
 
+    private void SetUpManager(WeaponManager Manager)
+    {
+        //get weapon manager
+        weaponManager = Manager;
+        //connect all events
+        weaponManager.OnSecondaryFire += UpdateBulletCount;
+        weaponManager.OnPrimaryFire += UpdateBulletCount;
+        weaponManager.OnWeaponChanged += UpdateInfo;
+        //update UI
+        UpdateInfo();
+        MultipleShootingPoints.UpdateHud(0);
+        weaponManager.OnPrimaryFire += HandleVisualMag;
+    }
+
+    private void RecoverEnergyUI(float x)
+    {
+        UpdateBulletCount();
+        HandleVisualMag();
+    }
+
+    private void DeathWeaponUI()
+    {
+        UpdateBulletCount();
+        UpdateInfo();
+        HandleVisualMag();
+    }
+
+    private void OnEnable()
+    {
+        WeaponManager.OnManagerReady += SetUpManager;
+        Collectible.OnUpdateUI += UpdateInfo;
+        EnergyRecoverZone.OnEnergyRecover += RecoverEnergyUI;
+        PlayerController.OnPlayerDead += DeathWeaponUI;
+    }
+
+    private void OnDisable()
+    {
+        WeaponManager.OnManagerReady -= SetUpManager;
+        Collectible.OnUpdateUI -= UpdateInfo;
+        EnergyRecoverZone.OnEnergyRecover -= RecoverEnergyUI;
+        PlayerController.OnPlayerDead -= DeathWeaponUI;
+    }
 }
