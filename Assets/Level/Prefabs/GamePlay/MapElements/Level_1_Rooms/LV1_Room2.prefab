@@ -80,9 +80,9 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 3903
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -263,6 +263,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e62a3f5971e5eb34282c4247f58adace, type: 2}
+    - target: {fileID: 1704527326228996442, guid: fadb9b16465c86e439288b8894d072af, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 515da5b5419eccf4796455a735d9df70, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -351,11 +355,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 33.31
+      value: 25.97
       objectReference: {fileID: 0}
     - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 121.0233
+      value: 121.8
       objectReference: {fileID: 0}
     - target: {fileID: 8687460004581076469, guid: 6623774cce87b0140ae7c2b70952bf61, type: 3}
       propertyPath: m_LocalRotation.w
