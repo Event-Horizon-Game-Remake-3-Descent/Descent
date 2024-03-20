@@ -64,6 +64,7 @@ public class InputManager : MonoBehaviour
         InputMap.Menu.Pause.performed += Paused;
         PlayerController.OnPlayerDead += PlayerIsDead;
         PlayerController.OnPlayerRespawned += PlayerIsRespawned;
+        PlayerController.OnGameOver += GameOverInputs;
         InputMap.MiniMapToggle.OpenMinimap.started += MinimapOpen;
         InputMap.MiniMapToggle.OpenMinimap.canceled += MinimapClosed;
         EscapeSequenceManager.OnEscapeSequenceTriggered += DisableAll;
@@ -245,6 +246,17 @@ public class InputManager : MonoBehaviour
         InputMap.Overworld.Enable();
         InputMap.Menu.Enable();
         PlayerIsAlive = true;
+    }
+
+    void GameOverInputs()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        InputMap.Overworld.Disable();
+        InputMap.Menu.Pause.Disable();
+        InputMap.MiniMap.Disable();
+        InputMap.MiniMapToggle.Disable();
+        InputMap.Menu.Navigation.Enable();
     }
 
 

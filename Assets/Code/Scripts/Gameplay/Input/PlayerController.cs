@@ -290,6 +290,7 @@ public class PlayerController : MonoBehaviour , IDamageable
 
     void PlayerDeath()
     {
+        Rb.velocity = Vector3.zero;
         Lives--;
         Collider.enabled = false;
         StartCoroutine(TimerForRespawn());
@@ -318,7 +319,7 @@ public class PlayerController : MonoBehaviour , IDamageable
 
     void GameOver()
     {
-
+        OnGameOver();
     }
         
 

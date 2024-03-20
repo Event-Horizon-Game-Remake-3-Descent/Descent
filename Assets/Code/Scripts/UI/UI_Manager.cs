@@ -24,6 +24,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private RectTransform MainMenu;
     [SerializeField] private RectTransform ControlsMenu;
     [SerializeField] private RectTransform AudioMenu;
+    [SerializeField] private RectTransform GameOverScreen;
     [SerializeField] private RectTransform QuitButton;
     [SerializeField] private RectTransform ResumeButton;
     [SerializeField] private RectTransform BackButton;
@@ -43,6 +44,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] GameObject MasterSlider;
     [SerializeField] GameObject ControlsButton;
     [SerializeField] GameObject SensSlider;
+    [SerializeField] GameObject PlayAgainButton;
     [Space]
     // Flashing Images
     [SerializeField] private CanvasGroup RedFlash;
@@ -75,6 +77,7 @@ public class UI_Manager : MonoBehaviour
         QuitButton.gameObject.SetActive(false);
         ResumeButton.gameObject.SetActive(false);
         BackButton.gameObject.SetActive(false);
+        GameOverScreen.gameObject.SetActive(false);
         SensValue_text.text = Mathf.RoundToInt(GameManager.MouseSens).ToString(); 
     }
 
@@ -110,12 +113,13 @@ public class UI_Manager : MonoBehaviour
         //Player = FindObjectOfType<PlayerController>();
         //UpdateCollectibles(); HandleVisualShield();
         InputManager.OnPauseMenu += PauseMenu;
-        PlayerController.OnPlayerReady += (PlayerController playerController) => { Player = playerController; UpdateCollectibles(); HandleVisualShield();  };
+        PlayerController.OnPlayerReady += GetPlayerReference;
         PlayerController.OnPlayerDead += () => PlayerIsDead = true;
         PlayerController.OnUpdatingUiCollect += UpdateCollectibles;
         PlayerController.OnUpdatingUiCollect += HandleVisualShield;
         PlayerController.OnPlayerDead += HideHUD;
         PlayerController.OnPlayerRespawned += ShowHUD;
+        PlayerController.OnGameOver += GameOver;
         EscapeSequenceManager.OnEscapeSequenceTriggered += HideHUD;
         Boss.OnBossDefeat += StartCountDown;
         KeyCollectible.OnKeyCollected += EnableKey;
@@ -134,23 +138,30 @@ public class UI_Manager : MonoBehaviour
     {
         
         InputManager.OnPauseMenu -= PauseMenu;
-       
-        PlayerController.OnPlayerDead += () => PlayerIsDead = true;
+        PlayerController.OnPlayerReady -= GetPlayerReference;
+
         PlayerController.OnUpdatingUiCollect -= UpdateCollectibles;
         PlayerController.OnUpdatingUiCollect -= HandleVisualShield;
         PlayerController.OnPlayerDead -= HideHUD;
         PlayerController.OnPlayerRespawned -= ShowHUD;
+        PlayerController.OnGameOver -= GameOver;
         EscapeSequenceManager.OnEscapeSequenceTriggered -= HideHUD;
         Boss.OnBossDefeat -= StartCountDown;
         KeyCollectible.OnKeyCollected -= EnableKey;
        
         Notify -= Notifications;
         UpdateUI -= UpdateCollectibles;
-        PausedByInput += () => OnPause = true;
-        UnPausedByInput += () => OnPause = false;
+        
         OnFlashingBlue -= FlashingBlue;
         OnFlashingRed -= FlashingRed;
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void GetPlayerReference(PlayerController PlayerController)
+    {
+        Player = PlayerController; 
+        UpdateCollectibles(); 
+        HandleVisualShield();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -358,6 +369,13 @@ public class UI_Manager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
     }
 
+    void GameOver()
+    {
+        SettingsPanel.gameObject.SetActive(true);
+        GameOverScreen.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(PlayAgainButton);
+    }
+
     void HideHUD()
     {
         FullHUD.anchoredPosition = Vector3.up * 1500;
@@ -366,6 +384,11 @@ public class UI_Manager : MonoBehaviour
     void ShowHUD()
     {
         FullHUD.anchoredPosition = Vector3.zero;
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
         
         
