@@ -135,6 +135,7 @@ public class WeaponUI : MonoBehaviour
         UpdateInfo();
         MultipleShootingPoints.UpdateHud(0);
         weaponManager.OnPrimaryFire += HandleVisualMag;
+        HandleVisualMag();
     }
 
     private void RecoverEnergyUI(float x)
