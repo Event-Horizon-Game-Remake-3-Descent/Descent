@@ -21,7 +21,7 @@ public class Boss : MonoBehaviour, IDamageable
     //Enemy generic setting
     [Header("Enemy Settings")]
     [SerializeField] private TrackingEnemyWeapon EnemyWeapon;
-    [SerializeField] ParticleSystem ParticlesOnDestroy;
+    [SerializeField] private List<ParticleSystem> ParticlesOnDestroy;
     [SerializeField] private Collider ColliderToDisable;
     [SerializeField] private float ScoreOnDefeat = 1000f;
     [SerializeField] private EnemyState StartingState = EnemyState.Idling;
@@ -131,15 +131,15 @@ public class Boss : MonoBehaviour, IDamageable
     private void Die()
     {
         IsDead = true;
-        if (!ParticlesOnDestroy)
+        if (ParticlesOnDestroy.Count == 0)
         {
             Destroy(RigidBody);
         }
         else
         {
             ColliderToDisable.enabled = false;
-            RigidBody.velocity = Vector3.zero;
-            ParticlesOnDestroy.Play();
+            for(int i = 0; i < ParticlesOnDestroy.Count; ++i)
+                ParticlesOnDestroy[i].Play();
         }
         EnemyBehaviour -= EnemyBehaviour;
         OnBossDefeat();
