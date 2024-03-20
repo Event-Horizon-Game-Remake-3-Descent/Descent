@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour , IDamageable
     [Header("Don't Touch This, it's just for debug")]
     public bool UsingGamepad;
     public bool IsBanking;
+    public bool PlayerIsDead;
     Coroutine Coroutine;
     IEnumerator currentSnapCoroutine;
     Rigidbody Rb;
@@ -287,13 +288,18 @@ public class PlayerController : MonoBehaviour , IDamageable
             
         }
     }
+        
 
     void PlayerDeath()
     {
-        Rb.velocity = Vector3.zero;
-        Lives--;
-        Collider.enabled = false;
-        StartCoroutine(TimerForRespawn());
+        if (!PlayerIsDead)
+        {
+            Lives--;
+            Collider.enabled = false;
+            PlayerIsDead = true;
+            Rb.velocity = Vector3.zero;
+            StartCoroutine(TimerForRespawn());
+        }
     }
 
     IEnumerator TimerForRespawn()
@@ -313,6 +319,7 @@ public class PlayerController : MonoBehaviour , IDamageable
             HP = 100;
             OnPlayerRespawned();
             OnUpdatingUiCollect();
+            PlayerIsDead = false;   
         }
         else { GameOver(); }
     }
