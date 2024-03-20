@@ -11664,18 +11664,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 60546519}
     m_Modifications:
-    - target: {fileID: 384139207837173548, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 384139207837173548, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 384139207837173548, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1382290368845560973, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -11720,9 +11708,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1620076833799876899, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 7.673889
+    - target: {fileID: 2893263653011256836, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.49803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893263653011256836, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.9529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893263653011256836, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.44313726
       objectReference: {fileID: 0}
     - target: {fileID: 3664953397163569565, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
       propertyPath: m_Name
@@ -11866,14 +11862,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6587104956097898960, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7309739441382557900, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7309739441382557900, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8698381641841648945, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
@@ -17683,7 +17671,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3547063329461706690, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
       propertyPath: hp
-      value: 200
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3547063329461706690, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
+      propertyPath: Lives
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3547063329461706690, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
       propertyPath: PlayerSpeed
