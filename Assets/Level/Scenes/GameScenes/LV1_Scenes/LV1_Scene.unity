@@ -34704,6 +34704,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1636282941}
     m_Modifications:
+    - target: {fileID: 1271658239366445732, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
+      propertyPath: startDelay.scalar
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337574490819744514, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
+      propertyPath: startDelay.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630675735298604956, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186009226454176791, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 3362887914610228204, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
+      propertyPath: lengthInSec
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524659133011919870, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
+      propertyPath: startDelay.scalar
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820567699227149801, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434947012636865713, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 6691454548893528034, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -34747,6 +34779,18 @@ PrefabInstance:
     - target: {fileID: 6771646673671672706, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
       propertyPath: m_Name
       value: LV1_Room8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251474632563333336, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842440813492307378, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
+      propertyPath: startDelay.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004979300921366177, guid: 7cecef92c23fee94fadb1d38be943b85, type: 3}
+      propertyPath: startDelay.scalar
+      value: 1.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
