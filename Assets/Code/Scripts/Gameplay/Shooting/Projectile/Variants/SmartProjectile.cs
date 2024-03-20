@@ -68,6 +68,11 @@ public class SmartProjectile : Projectile
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, TriggerSize);
+        if (ExplosionRadius > 0)
+        {
+            Gizmos.color = base.ExplosionGizmoColor;
+            Gizmos.DrawWireSphere(transform.position, ExplosionRadius);
+        }
     }
 #endif
 }
