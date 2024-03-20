@@ -6,8 +6,23 @@ public class WeaponCollectible : Collectible
     public delegate void WeaponTaken(WeaponType type);
     public static event WeaponTaken OnWeaponTaken = (WeaponType type) => { };
 
+    public delegate void WeaponCollectiblePickedUp(WeaponCollectible collectible);
+    public static event WeaponCollectiblePickedUp OnWeaponCollectiblePickedUp = (WeaponCollectible collectible) => { };
+
     [Header("Weapon To Unlock")]
     [SerializeField] WeaponType WeaponType;
+
+    private Rigidbody Rigidbody;
+
+    private void Awake()
+    {
+        Rigidbody = GetComponent<Rigidbody>();
+    }
+
+    public void ApplyForce(Vector3 dir, float force, ForceMode forceMode)
+    {
+        Rigidbody.AddForce(dir*force, forceMode);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +35,8 @@ public class WeaponCollectible : Collectible
         else
             UI_Manager.Notify(WeaponType + " Unlocked");
 
-        Destroy(this.gameObject);
+        OnWeaponCollectiblePickedUp(this);
+
+        base.TriggerEvents();
     }
 }

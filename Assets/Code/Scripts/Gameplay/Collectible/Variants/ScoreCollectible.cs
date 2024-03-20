@@ -15,6 +15,7 @@ public class ScoreCollectible : Collectible
 
         OnIncreaseScore(IncreaseScoreValue);
 
+        base.TriggerEvents();
         Destroy(this.gameObject);
     }
 }
