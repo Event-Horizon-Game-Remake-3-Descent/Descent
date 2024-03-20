@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
 
 #if UNITY_EDITOR
     [Header("Gizmos")]
-    [SerializeField] Color ExplosionGizmoColor = Color.yellow;
+    [SerializeField] protected Color ExplosionGizmoColor = Color.yellow;
 #endif
 
     protected Rigidbody RigidBody;
