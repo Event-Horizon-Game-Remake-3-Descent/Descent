@@ -22,11 +22,11 @@ public class CameraManager : MonoBehaviour
         MapCamera.gameObject.SetActive(false);
         InputManager.InputMap.Overworld.SwitchCamera.started += SwitchCam;
         InputManager.InputMap.Overworld.SwitchCamera.canceled += SwitchCam;
-        EscapeSequenceManager.OnEscapeSequenceTriggered += EscapeCam;
     }
 
     private void OnEnable()
     {
+        EscapeSequenceManager.OnEscapeSequenceTriggered += EscapeCam;
         PlayerController.OnPlayerDead += DeathCam;
         PlayerController.OnPlayerRespawned += CameraAfterRespawn;
         InputManager.OnMinimapOpen += MiniMapOpen;
@@ -39,6 +39,9 @@ public class CameraManager : MonoBehaviour
         PlayerController.OnPlayerRespawned -= CameraAfterRespawn;
         InputManager.OnMinimapOpen -= MiniMapOpen;
         InputManager.OnMinimapClosed -= MiniMapClosed;
+        InputManager.InputMap.Overworld.SwitchCamera.started -= SwitchCam;
+        InputManager.InputMap.Overworld.SwitchCamera.canceled -= SwitchCam;
+        EscapeSequenceManager.OnEscapeSequenceTriggered -= EscapeCam;
     }
 
     void SwitchCam(InputAction.CallbackContext context)

@@ -896,6 +896,56 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""IntroScene"",
+            ""id"": ""59e2a6a7-90d9-422f-a36f-e7f60001f719"",
+            ""actions"": [
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a24eb95-2c3c-400b-b2c5-4d002b60df7c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""dbc11174-50b6-4048-9cbf-0d84154891b3"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26efc1b7-d2d9-4545-b60d-42d779f364a6"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91ae5ef4-a1ed-474d-86e7-acac0e82c86c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -927,6 +977,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         // MiniMapToggle
         m_MiniMapToggle = asset.FindActionMap("MiniMapToggle", throwIfNotFound: true);
         m_MiniMapToggle_OpenMinimap = m_MiniMapToggle.FindAction("OpenMinimap", throwIfNotFound: true);
+        // IntroScene
+        m_IntroScene = asset.FindActionMap("IntroScene", throwIfNotFound: true);
+        m_IntroScene_Skip = m_IntroScene.FindAction("Skip", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1288,6 +1341,52 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         }
     }
     public MiniMapToggleActions @MiniMapToggle => new MiniMapToggleActions(this);
+
+    // IntroScene
+    private readonly InputActionMap m_IntroScene;
+    private List<IIntroSceneActions> m_IntroSceneActionsCallbackInterfaces = new List<IIntroSceneActions>();
+    private readonly InputAction m_IntroScene_Skip;
+    public struct IntroSceneActions
+    {
+        private @InputMap m_Wrapper;
+        public IntroSceneActions(@InputMap wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Skip => m_Wrapper.m_IntroScene_Skip;
+        public InputActionMap Get() { return m_Wrapper.m_IntroScene; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(IntroSceneActions set) { return set.Get(); }
+        public void AddCallbacks(IIntroSceneActions instance)
+        {
+            if (instance == null || m_Wrapper.m_IntroSceneActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_IntroSceneActionsCallbackInterfaces.Add(instance);
+            @Skip.started += instance.OnSkip;
+            @Skip.performed += instance.OnSkip;
+            @Skip.canceled += instance.OnSkip;
+        }
+
+        private void UnregisterCallbacks(IIntroSceneActions instance)
+        {
+            @Skip.started -= instance.OnSkip;
+            @Skip.performed -= instance.OnSkip;
+            @Skip.canceled -= instance.OnSkip;
+        }
+
+        public void RemoveCallbacks(IIntroSceneActions instance)
+        {
+            if (m_Wrapper.m_IntroSceneActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IIntroSceneActions instance)
+        {
+            foreach (var item in m_Wrapper.m_IntroSceneActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_IntroSceneActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public IntroSceneActions @IntroScene => new IntroSceneActions(this);
     public interface IOverworldActions
     {
         void OnMouseX(InputAction.CallbackContext context);
@@ -1318,5 +1417,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     public interface IMiniMapToggleActions
     {
         void OnOpenMinimap(InputAction.CallbackContext context);
+    }
+    public interface IIntroSceneActions
+    {
+        void OnSkip(InputAction.CallbackContext context);
     }
 }

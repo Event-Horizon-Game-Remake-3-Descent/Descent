@@ -16,6 +16,8 @@ public class UI_Manager : MonoBehaviour
     public static Action UnPausedByInput;
     public static Action OnFlashingBlue;
     public static Action OnFlashingRed;
+    public delegate void DeadOnTimer();
+    public static event DeadOnTimer OnCountdownDeath;
     // All panels and relatives TMPs
     [Header("References, don't touch it")]
     [SerializeField] private RectTransform SettingsPanel;
@@ -123,8 +125,8 @@ public class UI_Manager : MonoBehaviour
         EscapeSequenceManager.OnEscapeSequenceTriggered += HideHUD;
         Boss.OnBossDefeat += StartCountDown;
         KeyCollectible.OnKeyCollected += EnableKey;
-        InputManager.OnMinimapOpen += () => FullHUD.gameObject.SetActive(false);
-        InputManager.OnMinimapClosed += () => FullHUD.gameObject.SetActive(true);
+        InputManager.OnMinimapOpen += MinimapIsOpen;
+        InputManager.OnMinimapClosed += MiniMapClosed;
         Notify += Notifications;
         UpdateUI += UpdateCollectibles;
         PausedByInput += () => OnPause = true;
@@ -139,7 +141,8 @@ public class UI_Manager : MonoBehaviour
         
         InputManager.OnPauseMenu -= PauseMenu;
         PlayerController.OnPlayerReady -= GetPlayerReference;
-
+        InputManager.OnMinimapOpen -= MinimapIsOpen;
+        InputManager.OnMinimapClosed -= MiniMapClosed;
         PlayerController.OnUpdatingUiCollect -= UpdateCollectibles;
         PlayerController.OnUpdatingUiCollect -= HandleVisualShield;
         PlayerController.OnPlayerDead -= HideHUD;
@@ -155,6 +158,16 @@ public class UI_Manager : MonoBehaviour
         OnFlashingBlue -= FlashingBlue;
         OnFlashingRed -= FlashingRed;
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void MinimapIsOpen()
+    {
+        FullHUD.gameObject.SetActive(false);
+    }
+
+    void MiniMapClosed()
+    {
+        FullHUD.gameObject.SetActive(true);
     }
 
     void GetPlayerReference(PlayerController PlayerController)
@@ -212,6 +225,7 @@ public class UI_Manager : MonoBehaviour
             
         }
         Countdown_text.text = "0";
+        if (currentTime <= 0) { OnCountdownDeath(); }
         
     }
 
@@ -379,11 +393,13 @@ public class UI_Manager : MonoBehaviour
     void HideHUD()
     {
         FullHUD.anchoredPosition = Vector3.up * 1500;
+        Countdown_text.gameObject.SetActive(false);
     }
 
     void ShowHUD()
     {
         FullHUD.anchoredPosition = Vector3.zero;
+        Countdown_text.gameObject.SetActive(false);
     }
 
     public void PlayAgain()

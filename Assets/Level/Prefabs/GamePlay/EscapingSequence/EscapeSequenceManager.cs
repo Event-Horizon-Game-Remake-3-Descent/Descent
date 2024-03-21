@@ -24,6 +24,11 @@ public class EscapeSequenceManager : MonoBehaviour
         EscapeManagerCamera.enabled = false;
     }
 
+    private void OnDisable()
+    {
+        OnEscapeSequenceTriggered -= PlayEscapeSequence;
+    }
+
     private void PlayEscapeSequence()
     {
         EscapeManagerCamera.enabled = true;

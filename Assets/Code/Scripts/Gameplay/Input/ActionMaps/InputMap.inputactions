@@ -874,6 +874,56 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "IntroScene",
+            "id": "59e2a6a7-90d9-422f-a36f-e7f60001f719",
+            "actions": [
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "8a24eb95-2c3c-400b-b2c5-4d002b60df7c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dbc11174-50b6-4048-9cbf-0d84154891b3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26efc1b7-d2d9-4545-b60d-42d779f364a6",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "91ae5ef4-a1ed-474d-86e7-acac0e82c86c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

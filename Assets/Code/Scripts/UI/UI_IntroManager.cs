@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UI_IntroManager : MonoBehaviour
@@ -18,6 +19,8 @@ public class UI_IntroManager : MonoBehaviour
             IntroPanels[i].gameObject.SetActive(false);
         }
     }
+
+    
 
     private void NextPanel()
     {
@@ -45,11 +48,11 @@ public class UI_IntroManager : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.OnPrimaryCalled += NextPanel;
+        IntroInputManager.OnSkip += NextPanel;
     }
 
     private void OnDisable()
     {
-        InputManager.OnPrimaryCalled -= NextPanel;
+        IntroInputManager.OnSkip -= NextPanel;
     }
 }

@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour , IDamageable
         EscapeSequenceManager.OnEscapeSequenceTriggered += DisableCollider;
         UpdatePlayerSens += ChangePlayerSensitivity;
         OnPlayerDead += PlayerDeath;
+        UI_Manager.OnCountdownDeath += CountdownDeath;
         
     }
 
@@ -110,6 +111,7 @@ public class PlayerController : MonoBehaviour , IDamageable
         EscapeSequenceManager.OnEscapeSequenceTriggered -= DisableCollider;
         UpdatePlayerSens -= ChangePlayerSensitivity;
         OnPlayerDead -= PlayerDeath;
+        UI_Manager.OnCountdownDeath -= CountdownDeath;
     }
 
    
@@ -327,6 +329,12 @@ public class PlayerController : MonoBehaviour , IDamageable
     void GameOver()
     {
         OnGameOver();
+    }
+
+    void CountdownDeath()
+    {
+        Lives = 0;
+        PlayerDeath();
     }
         
 
