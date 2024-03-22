@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: Damage
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: ExplosionRadius
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 1005341607007181484}
     - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: ExplosionLayerMask.m_Bits
-      value: 193
+      value: 129
       objectReference: {fileID: 0}
     - target: {fileID: 1589802051729350560, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: m_Name

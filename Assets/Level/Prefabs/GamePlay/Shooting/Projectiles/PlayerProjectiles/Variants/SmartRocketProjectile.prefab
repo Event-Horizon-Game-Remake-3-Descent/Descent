@@ -209,22 +209,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e698c67d1bf194f9d60985ab06890d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
+  Damage: 30
   ExplosionRadius: 2.78
   ExplosionLayerMask:
     serializedVersion: 2
     m_Bits: 193
-  Speed: 45
+  Speed: 35
   MeshToHide: {fileID: 514338931766561076}
   ParticlesOnDestroy: {fileID: 7343101996648577780}
   ExplosionSFX: {fileID: 8300000, guid: 63a8f76af126f724b8bad651fac81759, type: 3}
   ExplosionGizmoColor: {r: 0.37885165, g: 1, b: 0, a: 1}
   StartAfterSec: 1.5
-  TriggerSize: 3.2
+  TriggerSize: 20
   Target:
     serializedVersion: 2
     m_Bits: 128
-  SteeringSpeed: 3
+  SteeringSpeed: 10
 --- !u!136 &6475846574294209870
 CapsuleCollider:
   m_ObjectHideFlags: 0

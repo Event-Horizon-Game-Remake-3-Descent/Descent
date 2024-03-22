@@ -570,7 +570,7 @@ MonoBehaviour:
   ScoreOnDefeat: 1000
   StartingState: 0
   DamageOnCollision: 0
-  EnemyHP: 30
+  EnemyHP: 180
   TriggerDistance: 90
   DrawGizmo: 1
 --- !u!114 &3458446242302888046
@@ -586,7 +586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileToShoot: {fileID: 4982554394825947373, guid: bed9019dca4dab44c89bed6bb9531970, type: 3}
-  ShootDelay: 0.5
+  ShootDelay: 30
   ShootingPoints:
   - {fileID: 7446564934015787999}
   - {fileID: 6420435550995580702}

@@ -166,8 +166,8 @@ MonoBehaviour:
   ExplosionRadius: 0.5
   ExplosionLayerMask:
     serializedVersion: 2
-    m_Bits: 1217
-  Speed: 15
+    m_Bits: 1153
+  Speed: 45
   MeshToHide: {fileID: 0}
   ParticlesOnDestroy: {fileID: 0}
   ExplosionSFX: {fileID: 0}

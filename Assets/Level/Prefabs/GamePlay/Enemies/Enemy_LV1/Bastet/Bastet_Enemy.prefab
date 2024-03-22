@@ -4978,14 +4978,14 @@ MonoBehaviour:
   RotationSpeed: 1
   EnemyWeapon: {fileID: 5928622362966370038}
   StartingState: 0
-  DamageOnCollision: 2
-  EnemyHP: 3
+  DamageOnCollision: 1
+  EnemyHP: 21
   PatrollingData:
     PatrollingPositions: []
-  PathSpeed: 9
+  PathSpeed: 6
   PathThreshold: 0.25
   DecelerationDistance: 6
-  TriggerDistance: 30
+  TriggerDistance: 50
   DistanceOnceTriggered: 7
   ParticlesOnDestroy: {fileID: 3302734903917584149}
   ColliderToDisable: {fileID: 8578108118191250631}
@@ -5014,7 +5014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileToShoot: {fileID: 4982554394825947373, guid: 6aaf5dbdb69758741bdd1af1e2c1a836, type: 3}
-  ShootDelay: 1.5
+  ShootDelay: 3.5
   ShootingPoints:
   - {fileID: 2514822682926178879}
   - {fileID: 1554138235232291306}

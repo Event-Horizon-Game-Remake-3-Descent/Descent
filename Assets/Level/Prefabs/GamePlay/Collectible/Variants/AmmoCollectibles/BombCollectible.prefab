@@ -90,4 +90,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileType: 5
-  IncreaseAmmoValue: 2
+  IncreaseAmmoValue: 3

@@ -423,12 +423,13 @@ MonoBehaviour:
   BankingSpeed: 250
   SnapSpeed: 100
   PitchingSpeed: 650
-  PlayerMaxSpeed: 10
+  PlayerMaxSpeed: 15
   hp: 200
   Lives: 4
   DamageOnCollion: 1
   UsingGamepad: 0
   IsBanking: 0
+  PlayerIsDead: 0
 --- !u!81 &2083452108536339754
 AudioListener:
   m_ObjectHideFlags: 0
@@ -911,6 +912,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 208460977447748659, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
+      propertyPath: ShootDelay
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 208460977447748659, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
       propertyPath: _WeaponSprite
       value: 
       objectReference: {fileID: 2800000, guid: 00188099bf604584e84cb3bbf6b8fe63, type: 3}
@@ -1023,6 +1028,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5998350794650244737, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
+      propertyPath: ShootDelay
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998350794650244737, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
       propertyPath: ProjectileToShoot
       value: 
       objectReference: {fileID: 5666662115196366501, guid: 9fd0ab14ba57e074585991b8c9b091d0, type: 3}
@@ -1095,9 +1104,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6994938973494098557, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
+      propertyPath: ShootDelay
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6994938973494098557, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
       propertyPath: ProjectileToShoot
       value: 
       objectReference: {fileID: -217553149786810842, guid: c1efc0ac9d4e4664788732f6ad2a4374, type: 3}
+    - target: {fileID: 7231734092637408824, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
+      propertyPath: ShootDelay
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7231734092637408824, guid: ba873c17e1e1bae4f9542a73156546ba, type: 3}
       propertyPath: ProjectileCost
       value: 0.125
@@ -1661,7 +1678,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4104787826346807245, guid: 95eeb41ad71cada48ba5873d56bef5b1, type: 3}
       propertyPath: IsUnlocked
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104787826346807245, guid: 95eeb41ad71cada48ba5873d56bef5b1, type: 3}
+      propertyPath: ShootDelay
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4104787826346807245, guid: 95eeb41ad71cada48ba5873d56bef5b1, type: 3}
       propertyPath: ProjectileToShoot
