@@ -70,8 +70,6 @@ public class WeaponManager : MonoBehaviour
         OnManagerReady(this);
     }
 
-    
-
     //Use The next index weapon
     private void ChangeWeapon(ref int Index, List<Weapon> WeaponList)
     {
@@ -197,6 +195,5 @@ public class WeaponManager : MonoBehaviour
     private void OnDeath()
     {
         ResetManager();
-        //TODO: DROP COLLECTIBLES
     }
 }

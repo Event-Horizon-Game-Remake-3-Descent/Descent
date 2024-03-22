@@ -30,6 +30,12 @@ public abstract class SpecialZone : MonoBehaviour
         }
     }
 
+    private void StopEffect()
+    {
+        if(EffectCoroutine != null)
+            StopCoroutine(EffectCoroutine);
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
         EffectCoroutine = StartCoroutine(EffectEnumerator(collider));
@@ -38,5 +44,15 @@ public abstract class SpecialZone : MonoBehaviour
     private void OnTriggerExit(Collider collider)
     {
         StopCoroutine(EffectCoroutine);
+    }
+
+    private void OnEnable()
+    {
+        PlayerController.OnPlayerDead += StopEffect;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.OnPlayerDead -= StopEffect;
     }
 }

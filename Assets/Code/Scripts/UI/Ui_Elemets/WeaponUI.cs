@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class WeaponUI : MonoBehaviour
 {
     [Header("Primay Weapon")]
@@ -60,6 +59,7 @@ public class WeaponUI : MonoBehaviour
     {
         UpdatePrimaryBulletCount();
         UpdateSecondaryBulletCount();
+        HandleVisualMag();
     }
 
     private void UpdatePrimary()
@@ -107,6 +107,7 @@ public class WeaponUI : MonoBehaviour
     {
         UpdatePrimary();
         UpdateSecondary();
+        UpdateBulletCount();
     }
 
     void HandleVisualMag()
