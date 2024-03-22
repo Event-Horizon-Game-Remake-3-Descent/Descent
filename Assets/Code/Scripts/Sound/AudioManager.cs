@@ -42,6 +42,13 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void NormalMusic()
+    {
+        BackGroundMusic.Pause();
+        BackGroundMusic.clip = MainMusic;
+        BackGroundMusic.Play();
+    }
+
     private void EnableBossMusic()
     {
         BackGroundMusic.Pause();
@@ -60,11 +67,13 @@ public class AudioManager : MonoBehaviour
     {
         Boss.OnBossTrigger += EnableBossMusic;
         Boss.OnBossDefeat += EnableEscapeMusic;
+        PlayerController.OnPlayerRespawned += NormalMusic;
     }
 
     private void OnDisable()
     {
         Boss.OnBossTrigger -= EnableBossMusic;
         Boss.OnBossDefeat -= EnableEscapeMusic;
+        PlayerController.OnPlayerRespawned -= NormalMusic;
     }
 }
