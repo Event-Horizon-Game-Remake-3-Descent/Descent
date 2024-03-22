@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6ab61945cf27cb54592f25d6c2e43a57
+guid: c5bb53a3eede642458cebcb565820bfb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,18 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: barre
-    second: {fileID: 2100000, guid: 3fbefd85743e9b84d816d98e67246882, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: parte_sopra
-    second: {fileID: 2100000, guid: 474897b0d08dbe34480c25b4e204dde9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: standardSurface8
-    second: {fileID: 2100000, guid: 474897b0d08dbe34480c25b4e204dde9, type: 2}
+      name: standardSurface3
+    second: {fileID: 2100000, guid: 63a0aa64c9f6245438a52cdc4c819c7b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -82,7 +72,7 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
     strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
