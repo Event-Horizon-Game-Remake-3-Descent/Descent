@@ -89,6 +89,9 @@ public class DoorPanel : MonoBehaviour, IDamageable
     {
         OnPanelOpen -= OnPanelOpen; 
         OnPanelClose -= OnPanelClose;
+    }
+    private void OnDestroy()
+    {
         OnPanelTrigger -= OnPanelTrigger;
     }
 
