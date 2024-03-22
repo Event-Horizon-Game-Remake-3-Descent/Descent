@@ -54,6 +54,7 @@ public class InputManager : MonoBehaviour
     private void OnEnable()
     {
         InputMap.Enable();
+        InputMap.IntroScene.Disable();
         InputMap.Menu.Navigation.Disable();
         InputMap.Overworld.ShootPrimary.performed += TriggerPrimary;
         InputMap.Overworld.ShootSecondary.performed += TriggerSecondary;
@@ -228,11 +229,14 @@ public class InputManager : MonoBehaviour
         OnMinimapClosed();
     }
 
+
+
     void DisableAll()
     {
         InputMap.Overworld.Disable();
         InputMap.Menu.Disable();
         InputMap.MiniMap.Disable();
+        InputMap.MiniMapToggle.Disable();
     }
 
     void PlayerIsDead()
