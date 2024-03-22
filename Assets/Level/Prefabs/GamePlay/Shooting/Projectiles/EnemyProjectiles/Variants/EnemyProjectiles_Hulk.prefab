@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7c5e4a81e2083af42aa506fb8549dde6, type: 2}
     - target: {fileID: 1428228293955590333, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: Speed
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1428228293955590333, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: Damage
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2412121825768448341, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Mesh
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6317244324421493203, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_Name
-      value: EnemyProjectiles_Generic
+      value: EnemyProjectiles_Hulk
       objectReference: {fileID: 0}
     - target: {fileID: 6375875317820382975, guid: 7fd70eb69cd2d764abce9dc9d8a45e3c, type: 3}
       propertyPath: m_LocalRotation.w
