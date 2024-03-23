@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class WeaponUI : MonoBehaviour
@@ -152,12 +153,37 @@ public class WeaponUI : MonoBehaviour
         HandleVisualMag();
     }
 
+    void DisableUI(InputAction.CallbackContext ui)
+    {
+        Energy_Text.gameObject.SetActive(false);
+        SingleShootingPoint.gameObject.SetActive(false);
+        MultipleShootingPoints.gameObject.SetActive(false);
+        EnergyBarLeft.gameObject.SetActive(false);
+        EnergyBarRight.gameObject.SetActive(false); 
+    }
+
+    void EnableUI(InputAction.CallbackContext noui)
+    {
+        Energy_Text.gameObject.SetActive(true);
+        SingleShootingPoint.gameObject.SetActive(true);
+        MultipleShootingPoints.gameObject.SetActive(true);
+        EnergyBarLeft.gameObject.SetActive(true);
+        EnergyBarRight.gameObject.SetActive(true);
+    }
+
+    private void Start()
+    {
+        InputManager.InputMap.Overworld.SwitchCamera.started += DisableUI;
+        InputManager.InputMap.Overworld.SwitchCamera.canceled += EnableUI;
+    }
+
     private void OnEnable()
     {
         WeaponManager.OnManagerReady += SetUpManager;
         Collectible.OnUpdateUI += UpdateInfo;
         EnergyRecoverZone.OnEnergyRecover += RecoverEnergyUI;
         PlayerController.OnPlayerDead += DeathWeaponUI;
+        
     }
 
     private void OnDisable()
@@ -166,5 +192,7 @@ public class WeaponUI : MonoBehaviour
         Collectible.OnUpdateUI -= UpdateInfo;
         EnergyRecoverZone.OnEnergyRecover -= RecoverEnergyUI;
         PlayerController.OnPlayerDead -= DeathWeaponUI;
+        InputManager.InputMap.Overworld.SwitchCamera.started -= DisableUI;
+        InputManager.InputMap.Overworld.SwitchCamera.canceled -= EnableUI;
     }
 }

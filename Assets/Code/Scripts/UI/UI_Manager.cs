@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Linq.Expressions;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -41,6 +42,9 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] Image BlueKey;
     [SerializeField] Image YellowKey;
     [SerializeField] Image RedKey;
+    [SerializeField] Image RearImage;
+    [SerializeField] Image FrontImage;
+    [SerializeField] GameObject Backgrounds;
     // button references for gamepad navigation
     [SerializeField] GameObject AudioButton;
     [SerializeField] GameObject MasterSlider;
@@ -86,9 +90,9 @@ public class UI_Manager : MonoBehaviour
     private void Start()
     {
         SensValue_text.text = Mathf.RoundToInt (PlayerPrefs.GetFloat("MouseSensitivity")).ToString();
-      
-        InputManager.InputMap.Overworld.SwitchCamera.started +=(InputAction.CallbackContext hud)=> FullHUD.gameObject.SetActive(false);
-        InputManager.InputMap.Overworld.SwitchCamera.canceled += (InputAction.CallbackContext hud) => FullHUD.gameObject.SetActive(true);
+        RearImage.gameObject.SetActive(false);
+        //InputManager.InputMap.Overworld.SwitchCamera.started +=(InputAction.CallbackContext hud)=> FullHUD.gameObject.SetActive(false);
+        //InputManager.InputMap.Overworld.SwitchCamera.canceled += (InputAction.CallbackContext hud) => FullHUD.gameObject.SetActive(true);
         RedFlash.alpha = 0;
         BlueFlash.alpha = 0;
         BlueKey.color = Color.black;
@@ -133,7 +137,9 @@ public class UI_Manager : MonoBehaviour
         UnPausedByInput += () => OnPause = false;
         OnFlashingBlue += FlashingBlue;
         OnFlashingRed += FlashingRed;
-        
+        InputManager.InputMap.Overworld.SwitchCamera.started += ActivateRearHUD;
+        InputManager.InputMap.Overworld.SwitchCamera.canceled += DeactivateRearHUD;
+
     }
 
     private void OnDisable()
@@ -151,7 +157,9 @@ public class UI_Manager : MonoBehaviour
         EscapeSequenceManager.OnEscapeSequenceTriggered -= HideHUD;
         Boss.OnBossDefeat -= StartCountDown;
         KeyCollectible.OnKeyCollected -= EnableKey;
-       
+        InputManager.InputMap.Overworld.SwitchCamera.started -= ActivateRearHUD;
+        InputManager.InputMap.Overworld.SwitchCamera.canceled -= DeactivateRearHUD;
+
         Notify -= Notifications;
         UpdateUI -= UpdateCollectibles;
         
@@ -326,6 +334,20 @@ public class UI_Manager : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             
         }
+    }
+
+    void ActivateRearHUD(InputAction.CallbackContext img)
+    {
+        FrontImage.gameObject.SetActive(false);
+        RearImage.gameObject.SetActive(true);
+        Backgrounds.SetActive(false);
+    }
+
+    void DeactivateRearHUD(InputAction.CallbackContext noimg)
+    {
+        RearImage.gameObject.SetActive(false);
+        FrontImage.gameObject.SetActive(true);
+        Backgrounds.SetActive(true);
     }
 
     void HandleVisualShield()
