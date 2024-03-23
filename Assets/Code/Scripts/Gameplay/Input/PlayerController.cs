@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour , IDamageable
     public float HP { get ; set ; }
     private Vector3 RespawnPoint;
     private Collider Collider;
+    private Animator Animator;
+    [SerializeField] private ParticleSystem Explosion;
     
     
 
@@ -65,11 +67,14 @@ public class PlayerController : MonoBehaviour , IDamageable
         HP = hp;
         BaseMouseSensitivity = GameManager.MouseSens;
         Collider = GetComponent<Collider>();
+        Animator = GetComponent<Animator>();
         RespawnPoint = transform.position;
+        
     }
 
     private void Start()
     {
+        
         Collider.enabled = true;
         OnPlayerReady(this);
         mouseSensitivity = BaseMouseSensitivity;
@@ -303,10 +308,13 @@ public class PlayerController : MonoBehaviour , IDamageable
             StartCoroutine(TimerForRespawn());
         }
     }
+            
+            
 
     IEnumerator TimerForRespawn()
     {
-        // TODO: start animation here
+        Explosion.Play();
+        Animator.SetBool("Death", true);
         yield return new WaitForSecondsRealtime(2);
         Respawn();
     }
@@ -321,7 +329,8 @@ public class PlayerController : MonoBehaviour , IDamageable
             HP = 100;
             OnPlayerRespawned();
             OnUpdatingUiCollect();
-            PlayerIsDead = false;   
+            PlayerIsDead = false;
+            Animator.SetBool("Death", false);
         }
         else { GameOver(); }
     }
