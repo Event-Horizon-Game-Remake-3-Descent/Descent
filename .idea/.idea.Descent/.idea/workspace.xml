@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="87e463af-4cc7-4372-b8da-f62ca7dbcc53" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/MetalTexture.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/MetalTexture.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room4.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room5.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room5.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room6.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room6.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room7.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/MapElements/Level_1_Rooms/LV1_Room7.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Level/Scenes/GameScenes/LV1_Scenes/LV1_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Level/Scenes/GameScenes/LV1_Scenes/LV1_Scene.unity" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6f7018b8b8c149e68c4a65a05ac289be175400/44/f7b1e06c/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2eBlECQMYlbImxNDc0nqeYlZfa9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\RICVA\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\RICVA\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\RICVA\\AppData\\Local\\Symbols\\src"
+    ]
+  }
+}]]></component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\RICVA\Desktop\Projects\EventHorizon\descent\Descent -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\RICVA\Desktop\Projects\EventHorizon\descent\Descent" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\RICVA\Desktop\Projects\EventHorizon\descent\Descent -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\RICVA\Desktop\Projects\EventHorizon\descent\Descent" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="11912">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="11912" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="87e463af-4cc7-4372-b8da-f62ca7dbcc53" name="Changes" comment="" />
+      <created>1711385740650</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711385740650</updated>
+      <workItem from="1711385744200" duration="299000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Code/Scripts/Gameplay/MapElements/SpecialZones/SpecialZone.cs</url>
+          <line>45</line>
+          <properties documentPath="C:\Users\RICVA\Desktop\Projects\EventHorizon\descent\Descent\Assets\Code\Scripts\Gameplay\MapElements\SpecialZones\SpecialZone.cs" initialLine="45" containingFunctionPresentation="Method 'OnTriggerExit'">
+            <startOffsets>
+              <option value="1031" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1062" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Code/Scripts/Gameplay/MapElements/SpecialZones/SpecialZone.cs</url>
+          <line>40</line>
+          <properties documentPath="C:\Users\RICVA\Desktop\Projects\EventHorizon\descent\Descent\Assets\Code\Scripts\Gameplay\MapElements\SpecialZones\SpecialZone.cs" initialLine="40" containingFunctionPresentation="Method 'OnTriggerEnter'">
+            <startOffsets>
+              <option value="898" />
+            </startOffsets>
+            <endOffsets>
+              <option value="959" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
