@@ -37328,6 +37328,11 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &805853281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3255640573694471325, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
+  m_PrefabInstance: {fileID: 1096664685}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &859619614 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8453189832153176634, guid: 15f4a4c8e98ea954e8e0a7322bdc9b84, type: 3}
@@ -43222,6 +43227,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178888174354793418, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
+      propertyPath: LivesImage
+      value: 
+      objectReference: {fileID: 805853281}
     - target: {fileID: 5262088475085429528, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -43249,6 +43258,10 @@ PrefabInstance:
     - target: {fileID: 6587104956097898960, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882904733939158846, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8698381641841648945, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
       propertyPath: m_AnchorMax.y

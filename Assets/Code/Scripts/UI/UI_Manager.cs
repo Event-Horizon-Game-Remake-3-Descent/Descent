@@ -45,6 +45,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] Image RearImage;
     [SerializeField] Image FrontImage;
     [SerializeField] GameObject Backgrounds;
+    [SerializeField] GameObject LivesImage;
     // button references for gamepad navigation
     [SerializeField] GameObject AudioButton;
     [SerializeField] GameObject MasterSlider;
@@ -170,12 +171,12 @@ public class UI_Manager : MonoBehaviour
 
     void MinimapIsOpen()
     {
-        FullHUD.gameObject.SetActive(false);
+        FullHUD.anchoredPosition = Vector3.up *10000;
     }
 
     void MiniMapClosed()
     {
-        FullHUD.gameObject.SetActive(true);
+        FullHUD.anchoredPosition = Vector3.zero;
     }
 
     void GetPlayerReference(PlayerController PlayerController)
@@ -341,6 +342,10 @@ public class UI_Manager : MonoBehaviour
         FrontImage.gameObject.SetActive(false);
         RearImage.gameObject.SetActive(true);
         Backgrounds.SetActive(false);
+        LivesImage.SetActive(false);
+        Lives_text.gameObject.SetActive(false);
+        Score_text.gameObject.SetActive(false);
+        
     }
 
     void DeactivateRearHUD(InputAction.CallbackContext noimg)
@@ -348,6 +353,9 @@ public class UI_Manager : MonoBehaviour
         RearImage.gameObject.SetActive(false);
         FrontImage.gameObject.SetActive(true);
         Backgrounds.SetActive(true);
+        LivesImage.SetActive(true);
+        Lives_text.gameObject.SetActive(true);
+        Score_text.gameObject.SetActive(true);
     }
 
     void HandleVisualShield()
