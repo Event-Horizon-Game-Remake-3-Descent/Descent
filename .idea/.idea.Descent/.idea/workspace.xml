@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87e463af-4cc7-4372-b8da-f62ca7dbcc53" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/Collectible/Variants/AmmoCollectibles/EnergyCollectible.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Level/Prefabs/GamePlay/Collectible/Variants/AmmoCollectibles/EnergyCollectible.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-    </list>
+    <list default="true" id="87e463af-4cc7-4372-b8da-f62ca7dbcc53" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
