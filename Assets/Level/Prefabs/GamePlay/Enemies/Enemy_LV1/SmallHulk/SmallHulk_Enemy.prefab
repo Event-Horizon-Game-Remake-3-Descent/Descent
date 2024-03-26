@@ -4989,12 +4989,12 @@ MonoBehaviour:
   DistanceOnceTriggered: 5
   ParticlesOnDestroy: {fileID: 3302734903917584149}
   ColliderToDisable: {fileID: 8578108118191250631}
-  ScoreOnDefeat: 1000
+  ScoreOnDefeat: 600
   SpawnOnDeath:
   - ObjectToGenerate: {fileID: 7137559070928493990, guid: b6a2f49852d522f49868035cd338b295, type: 3}
-    Probability: 0.05
+    Probability: 0.3
   - ObjectToGenerate: {fileID: 7137559070928493990, guid: 86b5d1f5f0f029148a7aa7c1fa95638c, type: 3}
-    Probability: 0.1
+    Probability: 0.3
   DrawGizmo: 0
   PathColor: {r: 1, g: 1, b: 1, a: 1}
   PointColor: {r: 1, g: 0, b: 0, a: 0}
@@ -5014,11 +5014,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileToShoot: {fileID: 4982554394825947373, guid: d2a749b9ddddc674c83b9f9a8fd05f00, type: 3}
-  ShootDelay: 3.5
+  ShootDelay: 1
   ShootingPoints:
   - {fileID: 2514822682926178879}
   - {fileID: 1554138235232291306}
-  SynchronousShooting: 0
+  SynchronousShooting: 1
   ShootSounds:
   - {fileID: 8300000, guid: 4ba923bb40db7614d8c6a4cf92f986ba, type: 3}
   Weapon_GizsmoColor: {r: 0, g: 1, b: 0.03644681, a: 1}

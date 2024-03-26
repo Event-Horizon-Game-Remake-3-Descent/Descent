@@ -586,7 +586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileToShoot: {fileID: 4982554394825947373, guid: bed9019dca4dab44c89bed6bb9531970, type: 3}
-  ShootDelay: 30
+  ShootDelay: 40
   ShootingPoints:
   - {fileID: 7446564934015787999}
   - {fileID: 6420435550995580702}

@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: Speed
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: Damage
-      value: 4.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1428228293955590333, guid: 8f243580dc4ef5d41a6a1a285374332a, type: 3}
       propertyPath: ExplosionRadius

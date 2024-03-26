@@ -37,6 +37,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 2a610e2e0b0977146ac3c86cbda9c5fc, type: 2}
     - target: {fileID: 3794482224034323484, guid: 14d408605ba44424aa4de8f2382645bb, type: 3}
+      propertyPath: Speed
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794482224034323484, guid: 14d408605ba44424aa4de8f2382645bb, type: 3}
+      propertyPath: Damage
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794482224034323484, guid: 14d408605ba44424aa4de8f2382645bb, type: 3}
       propertyPath: ExplosionLayerMask.m_Bits
       value: 129
       objectReference: {fileID: 0}

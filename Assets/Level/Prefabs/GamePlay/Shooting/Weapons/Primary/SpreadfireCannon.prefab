@@ -112,8 +112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Spread Fire Cannon
   Type: 3
-  ProjectileToShoot: {fileID: 8540976507305406916, guid: 35f2c28a43988b74cb0901ffd504794c, type: 3}
-  ShootDelay: 1
+  ProjectileToShoot: {fileID: 3794482224034323484, guid: 14d408605ba44424aa4de8f2382645bb, type: 3}
+  ShootDelay: 1.5
   Mag: {fileID: 2530549692162416831}
   ProjectileCost: 1
   ShootingPoints:
@@ -121,6 +121,7 @@ MonoBehaviour:
   - {fileID: 987879705831637878}
   SynchronousShooting: 0
   IsUnlocked: 1
+  ScoreIfAlreadyUnlocked: 0
   _WeaponSprite: {fileID: 0}
   ShootSounds: []
   Weapon_GizsmoColor: {r: 0, g: 0.91849303, b: 1, a: 1}
@@ -141,6 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialMagSize: 1500
   MagMagType: 2
+  IsCapped: 0
+  MaxValue: 200
   ProjectileLeft: 0
 --- !u!82 &1438675172145536965
 AudioSource:
