@@ -8145,6 +8145,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1618720732}
+    - target: {fileID: 5904639835574015583, guid: 0e1826be89080644d8682ea6cf01adec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6627017200152256288, guid: 0e1826be89080644d8682ea6cf01adec, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -8194,7 +8198,8 @@ PrefabInstance:
       value: LV1_Room6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5904639835574015583, guid: 0e1826be89080644d8682ea6cf01adec, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e1826be89080644d8682ea6cf01adec, type: 3}
@@ -19783,6 +19788,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3132500766085908391, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
+      propertyPath: m_text
+      value: 'QUIT GAME
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132500766085908391, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
       propertyPath: m_fontSize
       value: 50
       objectReference: {fileID: 0}
@@ -20093,6 +20104,14 @@ PrefabInstance:
     - target: {fileID: 6974784224914250005, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229096353845279836, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7990556350829587580, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 692
       objectReference: {fileID: 0}
     - target: {fileID: 8075406367303872679, guid: bfa90013d73087447a86b2d1719424a2, type: 3}
       propertyPath: m_Type
